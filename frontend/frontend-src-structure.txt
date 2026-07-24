@@ -1,0 +1,164 @@
+Folder PATH listing
+Volume serial number is 00000098 B6E3:F6AF
+C:\USERS\USER\DESKTOP\KR\FRONTEND\SRC
+|   App.jsx
+|   main.jsx
+|   
++---admin
+|       AdminLayout.jsx
+|       AdminLogin.jsx
+|       AdminUsers.jsx
+|       ApplicationDetailsDrawer.jsx
+|       Applications.jsx
+|       ApplicationStatusBadge.jsx
+|       ConsultationLeadDetails.jsx
+|       ConsultationLeads.jsx
+|       Dashboard.jsx
+|       DeleteApplicationModal.jsx
+|       DeleteJobModal.jsx
+|       DeleteLeadModal.jsx
+|       DeleteSuccessStoryModal.jsx
+|       EmailLogsAdmin.jsx
+|       EventsAdmin.jsx
+|       FAQsAdmin.jsx
+|       Header.jsx
+|       JobForm.jsx
+|       Jobs.jsx
+|       JobStatusBadge.jsx
+|       LeadDetailsDrawer.jsx
+|       LeadStatusBadge.jsx
+|       LeadTable.jsx
+|       ManageAppointments.jsx
+|       ManageConsultationLeads.jsx
+|       ManageServices.jsx
+|       ManageStrategies.jsx
+|       MediaAdmin.jsx
+|       NewsletterAdmin.jsx
+|       PageHeader.jsx
+|       Profile.jsx
+|       ReportsAdmin.jsx
+|       ReviewsAdmin.jsx
+|       SearchBox.jsx
+|       SettingsAdmin.jsx
+|       Sidebar.jsx
+|       StatCard.jsx
+|       SubscribersAdmin.jsx
+|       SuccessStories.jsx
+|       SuccessStoriesAdmin.jsx
+|       SuccessStoryStatusBadge.jsx
+|       WhatsAppLogsAdmin.jsx
+|       
++---assets
+|   |   key-routes-logo.png
+|   |   
+|   \---images
++---components
+|   |   BookAppointmentModal.jsx
+|   |   CaseStudiesPreview.jsx
+|   |   ConsultationPopup.jsx
+|   |   FinalCTA.jsx
+|   |   Footer.jsx
+|   |   HeroSlider.jsx
+|   |   HomeFAQ.jsx
+|   |   MegaMenu.jsx
+|   |   Navbar.jsx
+|   |   ProcessTimeline.jsx
+|   |   ProductsHighlights.jsx
+|   |   ScrollToHash.jsx
+|   |   SEO.jsx
+|   |   ServicesHighlights.jsx
+|   |   StrategyDeepDive.jsx
+|   |   StrategyHighlights.jsx
+|   |   TechnologyEcosystem.jsx
+|   |   WhatWeDo.jsx
+|   |   WhyKeyRoutes.jsx
+|   |   
+|   +---caseStudyPdf
+|   |       CaseStudyTemplate.jsx
+|   |       
+|   \---successStories
+|           CampaignResults.jsx
+|           DownloadsSection.jsx
+|           PerformanceStats.jsx
+|           ProjectGrid.jsx
+|           SeoGeoResults.jsx
+|           SuccessCTA.jsx
+|           SuccessHero.jsx
+|           WebsiteShowcase.jsx
+|           
++---context
+|       AuthContext.jsx
+|       
++---data
+|       successStoriesData.js
+|       
++---hooks
+|       useAuth.js
+|       
++---pages
+|       About.jsx
+|       Careers.jsx
+|       Contact.jsx
+|       Home.jsx
+|       Products.jsx
+|       ProductSolutions.jsx
+|       ServiceDetail.jsx
+|       Services.jsx
+|       Strategy.jsx
+|       StrategyConsulting.jsx
+|       SuccessStories.jsx
+|       SupportingServices.jsx
+|       ThankYou.jsx
+|       
++---routes
+|       ProtectedRoute.jsx
+|       
++---services
+|       adminApi.js
+|       
+\---styles
+    |   about.css
+    |   careers.css
+    |   case-studies-preview.css
+    |   case-study-template.css
+    |   consultation-popup.css
+    |   contact.css
+    |   final-cta.css
+    |   footer.css
+    |   global.css
+    |   hero-slider.css
+    |   home-faq.css
+    |   home.css
+    |   megamenu.css
+    |   navbar.css
+    |   process-timeline.css
+    |   product-solutions.css
+    |   products-highlights.css
+    |   products.css
+    |   service-detail.css
+    |   services-highlights.css
+    |   services.css
+    |   strategy-consulting.css
+    |   strategy-deep-dive.css
+    |   strategy-highlights.css
+    |   strategy-page.css
+    |   supporting-services.css
+    |   technology-ecosystem.css
+    |   thank-you.css
+    |   what-we-do.css
+    |   why-keyroutes.css
+    |   
+    \---admin
+            admin-dashboard.css
+            admin-form.css
+            admin-layout.css
+            admin-login.css
+            admin-modal.css
+            admin-responsive.css
+            admin-table.css
+            applications.css
+            consultation-leads.css
+            jobs.css
+            success-stories.css
+            SuccessStoryForm.css
+            

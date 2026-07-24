@@ -1,0 +1,393 @@
+.kr-tech-section {
+  position: relative;
+  padding: 115px 20px;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(225, 6, 0, 0.1), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+  overflow: hidden;
+}
+
+.kr-tech-container {
+  max-width: 1400px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.kr-tech-head {
+  max-width: 930px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.kr-tech-head span {
+  color: var(--kr-red);
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.kr-tech-head h2 {
+  color: var(--kr-black);
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 900;
+  margin: 14px 0;
+}
+
+.kr-tech-head h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-tech-head p {
+  color: var(--kr-grey);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+/* Layout */
+.kr-tech-layout {
+  display: grid;
+  grid-template-columns: 430px 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+/* Hub */
+.kr-tech-hub {
+  position: relative;
+  width: 390px;
+  height: 390px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(225, 6, 0, 0.35);
+  animation: techRotate 22s linear infinite;
+}
+
+.ring-one {
+  width: 390px;
+  height: 390px;
+}
+
+.ring-two {
+  width: 295px;
+  height: 295px;
+  animation-direction: reverse;
+}
+
+.hub-core {
+  position: relative;
+  z-index: 2;
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(225, 6, 0, 0.55), transparent 42%),
+    var(--kr-black);
+  color: #ffffff;
+  text-align: center;
+  padding: 42px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow:
+    0 0 0 16px rgba(225, 6, 0, 0.08),
+    0 24px 55px rgba(0, 0, 0, 0.18);
+  animation: hubPulse 3.5s ease-in-out infinite;
+}
+
+.hub-core small {
+  color: var(--kr-red);
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.hub-core h3 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.hub-core p {
+  color: #d6d6d6;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* Cards */
+.kr-tech-nodes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.kr-tech-nodes::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto -44px;
+  width: 44px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--kr-red), transparent);
+  opacity: 0.5;
+}
+
+.kr-tech-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.kr-tech-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(225, 6, 0, 0.08), transparent 45%);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.kr-tech-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--kr-red);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.kr-tech-card:hover::before {
+  opacity: 1;
+}
+
+.kr-tech-icon,
+.kr-tech-content,
+.kr-tech-pulse {
+  position: relative;
+  z-index: 2;
+}
+
+.kr-tech-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: #fff4f4;
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.kr-tech-content h3 {
+  font-size: 1.08rem;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin-bottom: 10px;
+}
+
+.kr-tech-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.kr-tech-content li {
+  color: var(--kr-grey);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kr-tech-content li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--kr-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.kr-tech-pulse {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--kr-red);
+  box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.45);
+  animation: nodePulse 2s infinite;
+}
+
+/* Background */
+.kr-tech-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  animation: techGridMove 20s linear infinite;
+  z-index: 0;
+}
+
+.kr-tech-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+  opacity: 0.18;
+  z-index: 0;
+}
+
+.glow-red {
+  width: 260px;
+  height: 260px;
+  background: var(--kr-red);
+  right: -80px;
+  top: 120px;
+}
+
+.glow-dark {
+  width: 180px;
+  height: 180px;
+  background: var(--kr-black);
+  left: -60px;
+  bottom: 100px;
+}
+
+@keyframes techRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hubPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes nodePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(225, 6, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0);
+  }
+}
+
+@keyframes techGridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 120px 120px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .kr-tech-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-tech-nodes::before {
+    display: none;
+  }
+
+  .kr-tech-hub {
+    width: 340px;
+    height: 340px;
+  }
+
+  .ring-one {
+    width: 340px;
+    height: 340px;
+  }
+
+  .ring-two {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 760px) {
+  .kr-tech-section {
+    padding: 80px 16px;
+  }
+
+  .kr-tech-head h2 {
+    font-size: 2.1rem;
+  }
+
+  .kr-tech-nodes {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-tech-hub {
+    width: 290px;
+    height: 290px;
+  }
+
+  .ring-one {
+    width: 290px;
+    height: 290px;
+  }
+
+  .ring-two {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hub-core {
+    width: 205px;
+    height: 205px;
+    padding: 32px 24px;
+  }
+
+  .hub-core h3 {
+    font-size: 1.45rem;
+  }
+
+  .kr-tech-card {
+    grid-template-columns: 52px 1fr;
+    padding: 20px 18px;
+  }
+
+  .kr-tech-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.2rem;
+  }
+}

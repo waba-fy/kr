@@ -1,0 +1,108 @@
+.kr-final-cta {
+  position: relative;
+  padding: 115px 20px;
+  background: var(--kr-black);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.kr-final-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1050px;
+  margin: auto;
+  text-align: center;
+}
+
+.kr-final-container span {
+  color: var(--kr-red);
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.kr-final-container h2 {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 900;
+  margin: 18px 0;
+}
+
+.kr-final-container h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-final-container p {
+  color: #d7d7d7;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 34px;
+}
+
+.kr-final-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.kr-final-actions a {
+  background: var(--kr-red);
+  color: #ffffff;
+  padding: 15px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.kr-final-actions a.outline {
+  background: transparent;
+  border: 2px solid #ffffff;
+}
+
+.kr-final-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: finalGridMove 18s linear infinite;
+}
+
+.kr-final-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: var(--kr-red);
+  border-radius: 50%;
+  right: -140px;
+  top: -120px;
+  opacity: 0.35;
+  filter: blur(8px);
+}
+
+@keyframes finalGridMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kr-final-cta {
+    padding: 85px 16px;
+  }
+
+  .kr-final-container h2 {
+    font-size: 2.4rem;
+  }
+
+  .kr-final-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}

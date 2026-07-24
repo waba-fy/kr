@@ -1,0 +1,391 @@
+/* =========================
+   NAVBAR BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.kr-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3000;
+  background: #ffffff;
+  border-bottom: 1px solid var(--kr-border);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.kr-navbar-inner {
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  padding: 14px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* LOGO */
+.kr-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.kr-logo img {
+  width: 190px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* DESKTOP NAV */
+.kr-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.kr-nav-links button {
+  border: none;
+  font-size: 1.05rem;
+  background: transparent;
+  color: var(--kr-black);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.kr-nav-links button.active,
+.kr-nav-links button:hover {
+  color: var(--kr-red);
+}
+
+.kr-nav-links button.active .kr-chevron {
+  transform: rotate(180deg);
+}
+
+.kr-chevron {
+  font-size: 1.05rem;
+  transition: 0.25s ease;
+}
+
+/* RIGHT ACTIONS */
+.kr-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.kr-whatsapp-btn {
+  background: var(--kr-black);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.kr-whatsapp-btn:hover {
+  background: #000000;
+}
+
+.kr-book-btn {
+  border: none;
+  background: var(--kr-red);
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.kr-book-btn:hover {
+  background: var(--kr-red-dark);
+}
+
+.kr-mobile-call {
+  display: none;
+  background: var(--kr-black);
+  color: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.kr-mobile-btn {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: var(--kr-black);
+  line-height: 1;
+  padding: 4px;
+}
+
+/* =========================
+   MOBILE OVERLAY
+========================= */
+
+.kr-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1998;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.kr-mobile-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =========================
+   MOBILE DRAWER
+========================= */
+
+.kr-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(390px, 88vw);
+  height: 100dvh;
+  background: #ffffff;
+  z-index: 1999;
+  padding: 18px;
+  transition: 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.kr-mobile-drawer.active {
+  right: 0;
+}
+
+.kr-mobile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.kr-mobile-head .kr-logo img {
+  width: 145px;
+}
+
+.kr-mobile-head button {
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.kr-mobile-highlight {
+  background: var(--kr-light);
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 22px;
+}
+
+.kr-mobile-highlight strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.kr-mobile-highlight p {
+  color: var(--kr-grey);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.kr-mobile-whatsapp {
+  display: block;
+  background: var(--kr-black);
+  color: #ffffff;
+  padding: 11px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.kr-book-btn.mobile {
+  width: 100%;
+}
+
+.kr-mobile-main button,
+.kr-mobile-subpanel a {
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1px solid var(--kr-border);
+  background: transparent;
+  color: var(--kr-black);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.kr-mobile-back {
+  border: none;
+  background: transparent;
+  color: var(--kr-red);
+  font-weight: 700;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.kr-mobile-subpanel h4 {
+  margin-bottom: 12px;
+}
+
+.kr-mobile-cta {
+  background: var(--kr-red);
+  color: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 24px;
+}
+
+.kr-mobile-cta p {
+  font-size: 0.9rem;
+  margin: 8px 0 14px;
+}
+
+.kr-mobile-cta a {
+  background: #ffffff;
+  color: var(--kr-red);
+  padding: 10px 16px;
+  border-radius: 999px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+  .kr-navbar-inner {
+    gap: 12px;
+  }
+
+  .kr-nav-links {
+    gap: 18px;
+  }
+
+  .kr-whatsapp-btn,
+  .kr-book-btn {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .kr-logo img {
+    width: 165px;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    padding-top: 68px;
+  }
+  .kr-navbar-inner {
+    padding: 15px 14px;
+    gap: 8px;
+  }
+
+  .kr-nav-links,
+  .kr-whatsapp-btn,
+  .kr-book-btn:not(.mobile) {
+    display: none;
+  }
+
+  .kr-logo img {
+    width: 145px;
+  }
+
+  .kr-mobile-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kr-mobile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .kr-navbar-inner {
+    padding: 15px 10px;
+  }
+
+  .kr-logo img {
+    width: 125px;
+  }
+
+  .kr-mobile-call {
+    font-size: 0.72rem;
+    padding: 8px 9px;
+  }
+
+  .kr-mobile-btn {
+    font-size: 1.45rem;
+  }
+
+  .kr-mobile-drawer {
+    width: 92vw;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .kr-logo img {
+    width: 112px;
+  }
+
+  .kr-mobile-call {
+    font-size: 0.68rem;
+    padding: 7px 8px;
+  }
+
+  .kr-mobile-btn {
+    font-size: 1.35rem;
+  }
+}

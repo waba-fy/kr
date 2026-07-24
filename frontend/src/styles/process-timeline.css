@@ -1,0 +1,214 @@
+.kr-process-section {
+  position: relative;
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(225, 6, 0, 0.08), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+  overflow: hidden;
+}
+
+.kr-process-container {
+  max-width: 1400px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.kr-process-head {
+  max-width: 840px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.kr-process-head span {
+  color: var(--kr-red);
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.kr-process-head h2 {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin: 14px 0;
+}
+
+.kr-process-head h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-process-head p {
+  color: var(--kr-grey);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+/* timeline */
+.kr-process-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.kr-process-timeline::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 7%;
+  right: 7%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--kr-red),
+    var(--kr-black),
+    var(--kr-red),
+    transparent
+  );
+  opacity: 0.28;
+  z-index: 0;
+}
+
+.kr-process-step {
+  position: relative;
+  z-index: 2;
+}
+
+.kr-process-marker {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--kr-red);
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 0 10px rgba(225, 6, 0, 0.07);
+}
+
+.kr-process-marker span {
+  font-weight: 900;
+}
+
+.kr-process-card {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 24px;
+  padding: 28px 22px;
+  text-align: center;
+  min-height: 255px;
+  transition: all 0.3s ease;
+}
+
+.kr-process-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--kr-red);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.kr-process-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: #fff4f4;
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin: 0 auto 18px;
+}
+
+.kr-process-card h3 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin-bottom: 10px;
+}
+
+.kr-process-card p {
+  color: var(--kr-grey);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* background effects */
+.kr-process-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(225, 6, 0, 0.16) 1.5px, transparent 2px);
+  background-size: 42px 42px;
+  opacity: 0.35;
+  animation: processDotsMove 18s linear infinite;
+}
+
+.kr-process-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.18;
+}
+
+.glow-one {
+  width: 240px;
+  height: 240px;
+  background: var(--kr-red);
+  right: -80px;
+  top: 100px;
+}
+
+.glow-two {
+  width: 180px;
+  height: 180px;
+  background: var(--kr-black);
+  left: -70px;
+  bottom: 80px;
+}
+
+@keyframes processDotsMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 120px;
+  }
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+  .kr-process-timeline {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .kr-process-timeline::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .kr-process-section {
+    padding: 80px 16px;
+  }
+
+  .kr-process-head h2 {
+    font-size: 2.1rem;
+  }
+
+  .kr-process-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-process-card {
+    min-height: auto;
+  }
+
+  .kr-process-marker {
+    margin-bottom: 16px;
+  }
+}

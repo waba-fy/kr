@@ -1,0 +1,57 @@
+.kr-scroll-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+
+  width: 52px;
+  height: 52px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #111111;
+  color: #ffffff;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity .3s,
+    transform .3s,
+    background .25s;
+}
+
+.kr-scroll-top:hover {
+  background: #e10600;
+}
+
+.kr-scroll-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.kr-scroll-top svg {
+  font-size: 15px;
+}
+
+@media (max-width:768px){
+
+.kr-scroll-top{
+    width:46px;
+    height:46px;
+
+    right:18px;
+    bottom:18px;
+}
+
+}

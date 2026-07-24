@@ -1,0 +1,237 @@
+.kr-why-section {
+  position: relative;
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(225, 6, 0, 0.1), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  overflow: hidden;
+}
+
+.kr-why-container {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.kr-why-label {
+  display: inline-block;
+  color: var(--kr-red);
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+}
+
+.kr-why-left h2 {
+  font-size: 3.2rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin-bottom: 20px;
+}
+
+.kr-why-left h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-why-left p {
+  color: var(--kr-grey);
+  font-size: 1.08rem;
+  line-height: 1.8;
+  max-width: 620px;
+  margin-bottom: 34px;
+}
+
+.kr-why-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.kr-why-stats div {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 18px;
+  padding: 20px 18px;
+}
+
+.kr-why-stats h3 {
+  color: var(--kr-red);
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.kr-why-stats span {
+  color: var(--kr-grey);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Right Cards */
+.kr-why-right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.kr-why-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.kr-why-card::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 0;
+  background: linear-gradient(180deg, transparent, rgba(225, 6, 0, 0.08));
+  transition: 0.3s ease;
+}
+
+.kr-why-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--kr-red);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.kr-why-card:hover::before {
+  height: 100%;
+}
+
+.kr-why-icon,
+.kr-why-card h3,
+.kr-why-card p {
+  position: relative;
+  z-index: 2;
+}
+
+.kr-why-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 16px;
+  background: #fff4f4;
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.kr-why-card h3 {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin-bottom: 8px;
+}
+
+.kr-why-card p {
+  color: var(--kr-grey);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+/* Background Effects */
+.kr-why-bg-dot {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(var(--kr-red) 1.8px, transparent 2px);
+  background-size: 14px 14px;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.dot-a {
+  top: 80px;
+  right: 8%;
+}
+
+.dot-b {
+  bottom: 70px;
+  left: 6%;
+  background-image: radial-gradient(#222 1.5px, transparent 2px);
+}
+
+.kr-why-line {
+  position: absolute;
+  height: 2px;
+  width: 360px;
+  background: linear-gradient(90deg, transparent, var(--kr-red), transparent);
+  opacity: 0.25;
+  animation: whyLineMove 7s linear infinite;
+}
+
+.line-a {
+  top: 180px;
+  left: 36%;
+}
+
+.line-b {
+  bottom: 150px;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+@keyframes whyLineMove {
+  0% {
+    transform: translateX(-70px);
+  }
+  50% {
+    transform: translateX(70px);
+  }
+  100% {
+    transform: translateX(-70px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .kr-why-container {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-why-left {
+    text-align: center;
+  }
+
+  .kr-why-left p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .kr-why-section {
+    padding: 80px 16px;
+  }
+
+  .kr-why-left h2 {
+    font-size: 2.25rem;
+  }
+
+  .kr-why-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-why-right {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-why-card {
+    padding: 22px;
+  }
+}

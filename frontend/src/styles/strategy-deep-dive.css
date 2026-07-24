@@ -1,0 +1,162 @@
+.kr-sdd-section {
+  padding: 105px 20px;
+  background: #ffffff;
+}
+
+.kr-sdd-container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.kr-sdd-head {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 65px;
+}
+
+.kr-sdd-head span,
+.kr-sdd-content span {
+  color: var(--kr-red);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.kr-sdd-head h2 {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin: 14px 0;
+}
+
+.kr-sdd-head h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-sdd-head p {
+  color: var(--kr-grey);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.kr-sdd-list {
+  display: grid;
+  gap: 32px;
+}
+
+.kr-sdd-block {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+  padding: 48px;
+  border: 1px solid var(--kr-border);
+  border-radius: 34px;
+  background: #ffffff;
+  scroll-margin-top: 110px;
+}
+
+.kr-sdd-block.reverse {
+  grid-template-columns: 0.9fr 1fr;
+}
+
+.kr-sdd-block.reverse .kr-sdd-content {
+  order: 2;
+}
+
+.kr-sdd-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background: #fff4f4;
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  margin-bottom: 22px;
+}
+
+.kr-sdd-content h3 {
+  font-size: 2.35rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin: 14px 0 16px;
+}
+
+.kr-sdd-content p {
+  color: var(--kr-grey);
+  line-height: 1.75;
+  font-size: 1.02rem;
+  max-width: 650px;
+}
+
+.kr-sdd-link {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--kr-red);
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.kr-sdd-points {
+  background: var(--kr-black);
+  border-radius: 28px;
+  padding: 30px;
+  display: grid;
+  gap: 14px;
+}
+
+.kr-sdd-point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.kr-sdd-point:last-child {
+  border-bottom: none;
+}
+
+.kr-sdd-point svg {
+  color: var(--kr-red);
+  flex-shrink: 0;
+}
+
+.kr-sdd-point p {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .kr-sdd-section {
+    padding: 75px 16px;
+  }
+
+  .kr-sdd-head h2 {
+    font-size: 2.1rem;
+  }
+
+  .kr-sdd-block,
+  .kr-sdd-block.reverse {
+    grid-template-columns: 1fr;
+    padding: 30px 22px;
+  }
+
+  .kr-sdd-block.reverse .kr-sdd-content {
+    order: 0;
+  }
+
+  .kr-sdd-content h3 {
+    font-size: 1.85rem;
+  }
+
+  .kr-sdd-points {
+    padding: 24px;
+  }
+}

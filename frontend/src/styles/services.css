@@ -1,0 +1,495 @@
+/* =========================
+   SERVICES PAGE BASE
+========================= */
+
+.kr-services-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+.kr-sv-container {
+  max-width: 1400px;
+  margin: 5px 40px 10px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.kr-sv-hero {
+  position: relative;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(225, 6, 0, 0.18), transparent 28%),
+    linear-gradient(120deg, #ffffff 0%, #ffffff 55%, #fff1f1 100%);
+  overflow: hidden;
+}
+
+.kr-sv-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  animation: svGridMove 18s linear infinite;
+}
+.kr-sv-breadcrumb {
+  color: var(--kr-grey);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.kr-sv-breadcrumb a {
+  color: var(--kr-red);
+  text-decoration: none;
+}
+
+.kr-sv-breadcrumb span {
+  margin: 0 8px;
+  color: var(--kr-grey);
+}
+.kr-sv-hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.kr-sv-hero-content span,
+.kr-sv-head span,
+.kr-sv-why-content span {
+  display: inline-block;
+  color: var(--kr-red);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.kr-sv-hero h1 {
+  font-size: 4rem;
+  line-height: 1.08;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin-bottom: 22px;
+}
+
+.kr-sv-hero h1 strong {
+  color: var(--kr-red);
+}
+
+.kr-sv-hero p {
+  color: var(--kr-grey);
+  font-size: 1.12rem;
+  line-height: 1.75;
+  max-width: 820px;
+  margin-bottom: 30px;
+}
+
+.kr-sv-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.kr-sv-actions a {
+  background: var(--kr-red);
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.kr-sv-actions a.outline {
+  background: #ffffff;
+  color: var(--kr-black);
+  border: 2px solid var(--kr-black);
+}
+
+/* HERO CARD */
+.kr-sv-hero-card {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 30px;
+  padding: 34px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.1);
+}
+
+.kr-sv-mini-stat {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--kr-border);
+}
+
+.kr-sv-mini-stat svg {
+  color: var(--kr-red);
+  font-size: 1.35rem;
+}
+
+.kr-sv-mini-stat strong {
+  color: var(--kr-black);
+  font-weight: 900;
+}
+
+.kr-sv-mini-stat p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+}
+
+.kr-sv-progress {
+  margin: 28px 0 16px;
+  height: 12px;
+  background: #f1f1f1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.kr-sv-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--kr-red), var(--kr-black));
+  border-radius: 999px;
+}
+
+.kr-sv-card-note {
+  font-size: 0.9rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* =========================
+   SECTION HEAD
+========================= */
+
+.kr-sv-head {
+  max-width: 900px;
+  margin-bottom: 55px;
+}
+
+.kr-sv-head.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kr-sv-head h2,
+.kr-sv-why-content h2 {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--kr-black);
+  margin: 14px 0;
+}
+
+.kr-sv-head h2 strong {
+  color: var(--kr-red);
+}
+
+.kr-sv-head p,
+.kr-sv-why-content p {
+  color: var(--kr-grey);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* =========================
+   GROWTH FRAMEWORK
+========================= */
+
+.kr-sv-framework {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.kr-sv-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kr-sv-flow-card {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 24px;
+  padding: 28px 24px;
+  transition: 0.3s ease;
+}
+
+.kr-sv-flow-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--kr-red);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.kr-sv-flow-card span {
+  color: var(--kr-red);
+  font-size: 0.85rem;
+  font-weight: 900;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.kr-sv-flow-card h3 {
+  color: var(--kr-black);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+/* =========================
+   SERVICE CATEGORIES
+========================= */
+
+.kr-sv-categories {
+  padding: 105px 20px;
+  background: #fafafa;
+}
+
+.kr-sv-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.kr-sv-category-card {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 28px;
+  padding: 34px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.kr-sv-category-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--kr-red);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.kr-sv-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background: #fff4f4;
+  color: var(--kr-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  margin-bottom: 24px;
+}
+
+.kr-sv-category-card h3 {
+  color: var(--kr-black);
+  font-size: 1.28rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.kr-sv-category-card p {
+  color: var(--kr-grey);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.kr-sv-category-card span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--kr-red);
+  font-weight: 900;
+}
+
+/* =========================
+   WHY KEYROUTES
+========================= */
+
+.kr-sv-why {
+  padding: 105px 20px;
+  background: #ffffff;
+}
+
+.kr-sv-why-grid-wrap {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.kr-sv-why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.kr-sv-why-card {
+  background: #fafafa;
+  border: 1px solid var(--kr-border);
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.kr-sv-why-card svg {
+  color: var(--kr-red);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.kr-sv-why-card p {
+  color: var(--kr-black);
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.kr-sv-results {
+  padding: 105px 20px;
+  background: #fafafa;
+}
+
+.kr-sv-results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.kr-sv-result-card {
+  background: #ffffff;
+  border: 1px solid var(--kr-border);
+  border-radius: 24px;
+  padding: 28px;
+  transition: 0.3s ease;
+}
+
+.kr-sv-result-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--kr-red);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.kr-sv-result-card div {
+  color: var(--kr-red);
+  font-size: 1.75rem;
+  margin-bottom: 18px;
+}
+
+.kr-sv-result-card h3 {
+  color: var(--kr-black);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.kr-sv-result-card p {
+  color: var(--kr-grey);
+  line-height: 1.65;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.kr-sv-cta {
+  padding: 105px 20px;
+  background: var(--kr-black);
+  color: #ffffff;
+  text-align: center;
+}
+
+.kr-sv-cta h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.kr-sv-cta p {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  color: #d7d7d7;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.kr-sv-cta a {
+  display: inline-block;
+  background: var(--kr-red);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes svGridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 120px 120px;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .kr-sv-hero-grid,
+  .kr-sv-why-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .kr-sv-flow,
+  .kr-sv-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .kr-sv-category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .kr-sv-hero,
+  .kr-sv-framework,
+  .kr-sv-categories,
+  .kr-sv-why,
+  .kr-sv-results,
+  .kr-sv-cta {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .kr-sv-hero h1,
+  .kr-sv-head h2,
+  .kr-sv-why-content h2,
+  .kr-sv-cta h2 {
+    font-size: 2.15rem;
+  }
+
+  .kr-sv-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .kr-sv-flow,
+  .kr-sv-why-grid,
+  .kr-sv-results-grid {
+    grid-template-columns: 1fr;
+  }
+}

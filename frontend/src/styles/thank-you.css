@@ -1,0 +1,164 @@
+/* ==========================================
+   Thank You Page
+========================================== */
+
+.kr-thank-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f9fb 0%, #eef2f7 100%);
+}
+
+.kr-thank-box {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 60px 50px;
+  text-align: center;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #ececec;
+  position: relative;
+  overflow: hidden;
+}
+
+.kr-thank-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #e10600,
+    #ff6b00
+  );
+}
+
+.kr-thank-box span {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #fff2f2;
+  color: #e10600;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.kr-thank-box h1 {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: #111111;
+}
+
+.kr-thank-box p {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666666;
+}
+
+.kr-thank-box a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background: #e10600;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+.kr-thank-box a:hover {
+  background: #111111;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.18);
+}
+
+.kr-thank-box a:active {
+  transform: translateY(0);
+}
+
+/* Success Circle */
+
+.kr-thank-box::after {
+  content: "✓";
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(22,163,74,.25);
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 768px) {
+
+  .kr-thank-page {
+    padding: 40px 20px;
+  }
+
+  .kr-thank-box {
+    padding: 45px 30px;
+  }
+
+  .kr-thank-box::after {
+    width: 50px;
+    height: 50px;
+    top: 24px;
+    right: 24px;
+    font-size: 26px;
+  }
+
+  .kr-thank-box p {
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .kr-thank-box {
+    padding: 40px 24px;
+    border-radius: 18px;
+  }
+
+  .kr-thank-box h1 {
+    font-size: 2rem;
+  }
+
+  .kr-thank-box p {
+    font-size: 15px;
+  }
+
+  .kr-thank-box a {
+    width: 100%;
+  }
+
+}
