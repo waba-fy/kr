@@ -24,6 +24,8 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://localhost:5176",
   "http://localhost:5173",
+  "https://keyroutes.co",
+  "https://www.keyroutes.co"
 ].filter(Boolean);
 
 console.log("Environment check:", {
