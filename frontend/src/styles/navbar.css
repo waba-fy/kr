@@ -429,15 +429,37 @@ body {
 
 @media (max-width: 480px) {
   .kr-navbar-inner {
+    min-height: 68px;
     padding: 10px 12px;
+    gap: 6px;
   }
 
   .kr-logo img {
-    width: 125px;
+    width: 118px;
+  }
+
+  .kr-nav-actions {
+    gap: 6px;
   }
 
   .kr-mobile-call {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .kr-mobile-btn {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    font-size: 1.45rem;
   }
 
   .kr-mobile-drawer {
@@ -447,13 +469,29 @@ body {
 }
 
 @media (max-width: 360px) {
+  .kr-navbar-inner {
+    padding: 9px 8px;
+    gap: 4px;
+  }
+
   .kr-logo img {
-    width: 112px;
+    width: 102px;
+  }
+
+  .kr-nav-actions {
+    gap: 4px;
+  }
+
+  .kr-mobile-call {
+    min-height: 36px;
+    padding: 7px 7px;
+    font-size: 0.6rem;
   }
 
   .kr-mobile-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.45rem;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    font-size: 1.35rem;
   }
 }
