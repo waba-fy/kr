@@ -555,9 +555,9 @@ export const clientStories = [
 
         whatsapp: "https://wa.me/918309436998",
 
-        email: "info@keyroutes.in",
+        email: "hello@keyroutes.co",
 
-        emailHref: "mailto:info@keyroutes.in",
+        emailHref: "mailto:hello@keyroutes.co",
       },
     },
 
@@ -1066,9 +1066,9 @@ export const clientStories = [
 
       whatsapp: "https://wa.me/918309436998",
 
-      email: "info@keyroutes.in",
+      email: "hello@keyroutes.co",
 
-      emailHref: "mailto:info@keyroutes.in",
+      emailHref: "mailto:hello@keyroutes.co",
     },
   },
 

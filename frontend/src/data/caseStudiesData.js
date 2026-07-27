@@ -877,12 +877,14 @@ export const caseStudies = [
    8. WEBSITE SHOWCASE & LEARNINGS
 ===================================================== */
 
-evidence: {
-  eyebrow:
-    "WEBSITE SHOWCASE",
+/* =====================================================
+   8. WEBSITE SHOWCASE & LEARNINGS
+===================================================== */
 
-  title:
-    "Project Websites & Landing Pages",
+evidence: {
+  eyebrow: "WEBSITE SHOWCASE",
+
+  title: "Project Websites & Landing Pages",
 
   description:
     "Each project received a dedicated digital experience designed to align with campaign messaging, improve buyer confidence and generate qualified property enquiries.",
@@ -905,6 +907,22 @@ evidence: {
     },
 
     {
+      id: "myscape-palma-website",
+
+      platform: "Premium Residential Apartments",
+
+      title: "Myscape Palma Website",
+
+      capturedOn: "2026-07-26",
+
+      image:
+        "/case-studies/images/myscape-palma.png",
+
+      note:
+        "A premium residential website designed to present the project clearly, communicate lifestyle value and guide prospective buyers towards enquiry actions.",
+    },
+
+    {
       id: "profound-website",
 
       platform: "Premium Apartments",
@@ -914,7 +932,7 @@ evidence: {
       capturedOn: "2026-07-26",
 
       image:
-        "/case-studies/images/profound-vanam.PNG",
+        "/case-studies/images/profound-vanam.png",
 
       note:
         "A campaign-focused landing page built to present the project clearly, improve user engagement and convert advertising traffic into qualified leads.",
@@ -925,12 +943,12 @@ evidence: {
 
       platform: "Residential Apartments",
 
-      title: "Ramky One Landing Page",
+      title: "Ramky One Odyssey Landing Page",
 
       capturedOn: "2026-07-26",
 
       image:
-        "/case-studies/images/ramky-one.PNG",
+        "/case-studies/images/ramky-one.png",
 
       note:
         "A responsive project landing page developed to communicate project advantages and encourage enquiry submissions across Google and Meta campaigns.",

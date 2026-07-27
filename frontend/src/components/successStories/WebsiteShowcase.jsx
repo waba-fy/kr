@@ -15,12 +15,28 @@ const WebsiteShowcase = ({ story }) => {
     return null;
   }
 
- 
-  const websites = Array.isArray(story?.projects)
+  const showcaseWebsites = Array.isArray(
+    story?.showcase?.websites
+  )
+    ? story.showcase.websites.filter(Boolean)
+    : [];
+
+  const projectWebsites = Array.isArray(story?.projects)
     ? story.projects.filter(Boolean)
-    : Array.isArray(story?.showcase?.websites)
-      ? story.showcase.websites.filter(Boolean)
-      : [];
+    : [];
+
+  const partnershipProjects = Array.isArray(
+    story?.partnership?.projects
+  )
+    ? story.partnership.projects.filter(Boolean)
+    : [];
+
+  const websites =
+    showcaseWebsites.length > 0
+      ? showcaseWebsites
+      : projectWebsites.length > 0
+        ? projectWebsites
+        : partnershipProjects;
 
   const serviceNames = Array.isArray(
     story?.servicesDelivered?.services
@@ -49,17 +65,22 @@ const WebsiteShowcase = ({ story }) => {
       : [];
 
   const mainCoverImage =
-    normaliseText(story?.coverImage) ||
-    normaliseText(story?.showcase?.coverImage);
+    normaliseText(story?.showcase?.coverImage) ||
+    normaliseText(story?.hero?.coverImage) ||
+    normaliseText(story?.coverImage);
 
   const mainWebsite =
     normaliseText(story?.website) ||
     normaliseText(
       story?.showcase?.websites?.[0]?.website
+    ) ||
+    normaliseText(
+      story?.partnership?.projects?.[0]?.website
     );
 
   const mainTitle =
     normaliseText(story?.hero?.title) ||
+    normaliseText(story?.title) ||
     "Client Website";
 
   const sectionEyebrow =
@@ -81,6 +102,17 @@ const WebsiteShowcase = ({ story }) => {
     return null;
   }
 
+  const handleImageError = (event) => {
+    event.currentTarget.style.display = "none";
+
+    const fallback =
+      event.currentTarget.nextElementSibling;
+
+    if (fallback) {
+      fallback.classList.add("is-visible");
+    }
+  };
+
   return (
     <section
       className="kr-website-showcase"
@@ -101,70 +133,6 @@ const WebsiteShowcase = ({ story }) => {
           )}
         </header>
 
-        {/* =================================================
-            MAIN CLIENT COVER IMAGE
-        ================================================= */}
-
-        {mainCoverImage && (
-          <article className="kr-website-showcase-main">
-            <div className="kr-website-showcase-main-preview">
-              <img
-                src={mainCoverImage}
-                alt={`${mainTitle} main website showcase`}
-                loading="lazy"
-              />
-
-              <span className="kr-website-showcase-main-badge">
-                Featured Digital Experience
-              </span>
-            </div>
-
-            <div className="kr-website-showcase-main-content">
-              <div>
-                <span className="kr-website-showcase-main-label">
-                  MAIN CLIENT EXPERIENCE
-                </span>
-
-                <h3>{mainTitle}</h3>
-
-                {sectionDescription && (
-                  <p>{sectionDescription}</p>
-                )}
-              </div>
-
-              {mainWebsite && (
-                <div className="kr-website-showcase-main-actions">
-                  <a
-                    href={mainWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="kr-website-showcase-primary"
-                  >
-                    Visit Main Website
-                    <FaArrowRight aria-hidden="true" />
-                  </a>
-
-                  <a
-                    href={mainWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="kr-website-showcase-icon"
-                    aria-label={`Open ${mainTitle} website`}
-                  >
-                    <FaExternalLinkAlt
-                      aria-hidden="true"
-                    />
-                  </a>
-                </div>
-              )}
-            </div>
-          </article>
-        )}
-
-        {/* =================================================
-            PROJECT-WISE WEBSITE CARDS
-        ================================================= */}
-
         {websites.length > 0 ? (
           <div className="kr-website-showcase-grid">
             {websites.map((item, index) => {
@@ -174,8 +142,9 @@ const WebsiteShowcase = ({ story }) => {
                 `${mainTitle} Project`;
 
               const projectImage =
-                normaliseText(item?.coverImage) ||
                 normaliseText(item?.image) ||
+                normaliseText(item?.coverImage) ||
+                normaliseText(item?.thumbnail) ||
                 mainCoverImage;
 
               const projectWebsite =
@@ -199,20 +168,24 @@ const WebsiteShowcase = ({ story }) => {
                   }
                 >
                   <div className="kr-website-showcase-preview">
-                    {projectImage ? (
+                    {projectImage && (
                       <img
                         src={projectImage}
                         alt={`${projectName} website preview`}
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
+                        onError={handleImageError}
                       />
-                    ) : (
-                      <div className="kr-website-showcase-fallback">
-                        <FaGlobe aria-hidden="true" />
-                        <span>
-                          Website Preview
-                        </span>
-                      </div>
                     )}
+
+                    <div
+                      className={`kr-website-showcase-fallback ${
+                        projectImage ? "" : "is-visible"
+                      }`}
+                    >
+                      <FaGlobe aria-hidden="true" />
+                      <span>Website Preview</span>
+                    </div>
 
                     {projectCategory && (
                       <span className="kr-website-showcase-category">
@@ -228,7 +201,6 @@ const WebsiteShowcase = ({ story }) => {
                           <FaMapMarkerAlt
                             aria-hidden="true"
                           />
-
                           {projectLocation}
                         </span>
                       </div>

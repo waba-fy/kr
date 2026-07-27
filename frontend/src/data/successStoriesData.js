@@ -208,7 +208,7 @@ services: [
 
     kpis: [
       {
-        value: "3",
+        value: "4",
         label: "Projects Supported",
       },
       {
