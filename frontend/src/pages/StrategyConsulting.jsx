@@ -11,7 +11,14 @@ import {
   FaRobot,
   FaGoogle,
 } from "react-icons/fa";
-import SEO from "../components/SEO";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import { createWebPageSchema } from "../seo/schemaHelper";
+import { createServiceSchema } from "../seo/serviceSchema";
+import { createBreadcrumbSchema } from "../seo/breadcrumbSchema";
+
 import "../styles/strategy-consulting.css";
 
 const strategyData = [
@@ -202,32 +209,66 @@ const growthItems = [
   },
 ];
 
+const strategyConsultingDescription =
+  "Explore KeyRoutes real estate strategy consulting covering brand strategy, digital strategy, marketing, sales, SEO, GEO, CRM and automation for builders.";
+
+const strategyConsultingPageSchema = createWebPageSchema({
+  name: "Real Estate Strategy Consulting",
+  description: strategyConsultingDescription,
+  url: "/strategy-consulting",
+});
+
+const strategyConsultingServiceSchema = createServiceSchema({
+  name: "Real Estate Strategy Consulting",
+  description: strategyConsultingDescription,
+  url: "/strategy-consulting",
+  serviceType:
+    "Real Estate Brand, Digital, Marketing and Sales Strategy Consulting",
+  areaServed: "India",
+});
+
+const strategyConsultingBreadcrumbSchema =
+  createBreadcrumbSchema([
+    {
+      name: "Home",
+      url: "/",
+    },
+    {
+      name: "Strategy",
+      url: "/strategy",
+    },
+    {
+      name: "Strategy Consulting",
+      url: "/strategy-consulting",
+    },
+  ]);
+
 const StrategyConsulting = () => {
   return (
     <main className="kr-sc-page">
       <SEO
-        title="Real Estate Strategy Consulting | Brand, Digital, Marketing & Sales | KeyRoutes"
-        description="Explore KeyRoutes real estate strategy consulting covering brand strategy, digital strategy, marketing, sales, SEO, GEO, CRM and automation for builders."
-        keywords="real estate strategy consulting, brand strategy for builders, digital strategy for real estate, real estate marketing strategy, real estate sales strategy, SEO for builders, GEO SEO for real estate, CRM automation for real estate"
-        canonical="https://keyroutes.in/strategy-consulting"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Real Estate Strategy Consulting",
-          provider: {
-            "@type": "Organization",
-            name: "KeyRoutes",
-            url: "https://keyroutes.in",
-          },
-          areaServed: "Hyderabad",
-          serviceType: [
-            "Brand Strategy",
-            "Digital Strategy",
-            "Marketing and Sales Strategy",
-            "Real Estate SEO",
-            "Real Estate GEO SEO",
-          ],
-        }}
+        title="Real Estate Strategy Consulting"
+        description={strategyConsultingDescription}
+        canonical="/strategy-consulting"
+        keywords={[
+          "real estate strategy consulting",
+          "brand strategy for builders",
+          "digital strategy for real estate",
+          "real estate marketing strategy",
+          "real estate sales strategy",
+          "SEO for builders",
+          "GEO for real estate",
+          "CRM automation for real estate",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          strategyConsultingPageSchema,
+          strategyConsultingServiceSchema,
+          strategyConsultingBreadcrumbSchema,
+        ]}
       />
 
       <section className="kr-sc-hero">

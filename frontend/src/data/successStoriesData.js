@@ -8,7 +8,7 @@ export const successStories = [
 
     title: "Landrise Realty",
     slug: "/success-stories/landrise-realty",
-    client: "Landrise Realty",
+    client: "Jayabheri Pinnacle",
     builder: "Landrise Realty Channel Partner",
     category: "Real Estate Marketing Partnership",
     projectType: "Multi-Project Portfolio",
@@ -35,50 +35,56 @@ export const successStories = [
       "The engagement began in 2024 and continues across multiple developments. Each project receives a dedicated campaign and landing-page strategy while sharing a consistent framework for tracking, lead generation, reporting and optimization.",
 
     projects: [
-      {
-        id: "myscape-palma",
-        name: "Myscape Palma",
-        website: "https://myscapepalma.com/",
-        status: "READY TO MOVE",
-      },
-      {
-        id: "jayabheri-pinnacle",
-        name: "Jayabheri Pinnacle",
-        website: "https://jayabheripinnacle.com/",
-        status: "READY TO MOVE",
-      },
-      {
-        id: "profound-vanam",
-        name: "Profound Vanam",
-        website: "https://profoundvanam.in/",
-        status: "UNDER CONSTRUCTION",
-      },
-    ],
-
-    coverImage:
-      "/case-studies/images/jayabheri-web.png",
-
-    logo:
-      "/case-studies/images/landrise-realty-logo.png",
-
+  {
+    id: "myscape-palma",
+    name: "Myscape Palma",
     website: "https://myscapepalma.com/",
+    status: "READY TO MOVE",
+    coverImage: "/case-studies/images/myscape-palma.png",
+  },
 
-    pdf:
-      "/case-studies/pdf/landrise-realty-case-study.pdf",
+  {
+    id: "jayabheri-pinnacle",
+    name: "Jayabheri Pinnacle",
+    website: "https://jayabheripinnacle.com/",
+    status: "READY TO MOVE",
+    coverImage: "/case-studies/images/jayabheri-web.png",
+  },
 
-    externalUrl: "",
+  {
+    id: "profound-vanam",
+    name: "Profound Vanam",
+    website: "https://profoundvanam.in/",
+    status: "UNDER CONSTRUCTION",
+    coverImage: "/case-studies/images/profound-vanam.png",
+  },
 
-    services: [
-      "Landing Page Development",
-      "Google Ads",
-      "Meta Ads",
-      "Campaign Strategy",
-      "Conversion Tracking",
-      "Analytics",
-      "Lead Generation",
-      "Campaign Optimization",
-       "Lead Automation",
-    ],
+  {
+    id: "ramkyone-odyssey",
+    name: "Ramkyone Odyssey",
+    website: "https://ramkyone-odyssey.in/",
+    status: "UNDER CONSTRUCTION",
+    coverImage: "/case-studies/images/ramky-one.png",
+  },
+],
+
+logo: "/reviews/images/landrise.png",
+coverImage:
+      "/case-studies/images/urbanwoods-web.png",
+
+externalUrl: "",
+
+services: [
+  "Landing Page Development",
+  "Google Ads",
+  "Meta Ads",
+  "Campaign Strategy",
+  "Conversion Tracking",
+  "Analytics",
+  "Lead Generation",
+  "Campaign Optimization",
+  "Lead Automation",
+],
 
     challenges: [
       "Managing campaigns across multiple real estate projects",
@@ -263,17 +269,7 @@ export const successStories = [
       },
     ],
 
-    downloads: [
-      {
-        id: "landrise-case-study",
-        title: "Landrise Realty Case Study",
-        description:
-          "Multi-project landing-page and paid-media partnership overview.",
-        file:
-          "/case-studies/pdf/landrise-realty-case-study.pdf",
-        fileType: "PDF",
-      },
-    ],
+  
 
     testimonial: {
       quote:
@@ -354,12 +350,11 @@ export const successStories = [
       "/case-studies/images/urbanwoods-web.png",
 
     logo:
-      "/case-studies/images/urban-woods-villas-logo.png",
+      "/reviews/images/sree-chaitanya.avif",
 
     website: "https://urbanwoods-villas.com/",
 
-    pdf:
-      "/case-studies/pdf/urban-woods-villas-case-study.pdf",
+    
 
     externalUrl: "",
 
@@ -427,23 +422,40 @@ export const successStories = [
     ],
 
     campaign: {
-      leads: 607,                
-      qualifiedLeads: 430,
-      costPerLead: "₹162.88",
-      conversionRate: "70.84%",
-      adSpend: "₹98,870.95",
-    },
+  leads: 607,
+
+  qualifiedLeads: 430,
+
+  qualifiedLeadRate: "70.84%",
+
+  conversionRate: "70.84%",
+
+  costPerLead: "₹162.88",
+
+  adSpend: "₹98,870.95",
+
+  googleConversions: 19,
+
+  metaResults: 298,
+
+  metaMessagingConversations: 279,
+
+  metaLeadForms: 19,
+
+  metaSpend: "₹80,305.90",
+
+  metaImpressions: "1.15M+",
+
+  metaReach: "503K+",
+},
 
     campaigns: {
       googleAds: {
         active: true,
-
         snapshotDate: "2026-07-22",
-
         clicks: 335,
         impressions: 5535,
         spend: 26536.49,
-
         averageCpc: 79.21,
         ctr: "6.05%",
 
@@ -454,22 +466,49 @@ export const successStories = [
       },
 
       metaAds: {
-        active: true,
+  active: true,
 
-        snapshotDate: "2026-07-22",
+  snapshotDate: "2026-07-26",
 
-        resultTypes: [
-          "Messaging Conversations",
-          "Meta Leads",
-          "Post Engagement",
-        ],
+  totalCampaigns: 4,
 
-        dashboard:
-          "/case-studies/images/urban-woods-meta-ads-dashboard.jpg",
+  results: 298,
 
-        note:
-          "Campaigns use different result objectives and should be reported separately.",
-      },
+  resultLabel: "Total Meta Results",
+
+  messagingConversations: 279,
+
+  leadForms: 19,
+
+  spend: 80305.9,
+
+  impressions: 1153349,
+
+  reach: 503224,
+
+  costPerResult: 269.48,
+
+  costLabel: "Blended Cost / Result",
+
+  currency: "INR",
+
+  resultTypes: [
+    "Messaging Conversations",
+    "Meta Lead Forms",
+  ],
+
+  highlights: [
+    "298 total Meta results generated",
+    "279 messaging conversations recorded",
+    "19 Meta lead-form results generated",
+    "1.15M+ impressions delivered",
+    "503K+ cumulative campaign reach",
+    "₹80,305.90 verified Meta Ads spend",
+  ],
+
+  note:
+    "Meta results include 279 messaging conversations and 19 lead-form results. These campaign objectives are reported separately because messaging conversations and lead forms represent different customer actions. Cumulative reach may include overlapping users across campaigns.",
+},
     },
 
     socialMedia: {
@@ -551,18 +590,7 @@ export const successStories = [
       },
     ],
 
-    downloads: [
-      {
-        id: "urban-woods-case-study",
-        title: "Urban Woods Villas Case Study",
-        description:
-          "Website, SEO, GEO, paid media and lead-automation implementation overview.",
-        file:
-          "/case-studies/pdf/urban-woods-villas-case-study.pdf",
-        fileType: "PDF",
-      },
-    ],
-
+    
    testimonial: {
         quote:
           "Working with GrowthDesk has been a great experience. Their data-driven marketing strategies consistently generated quality leads and helped us achieve our business goals efficiently.",
@@ -642,14 +670,12 @@ export const successStories = [
       "/case-studies/images/sujaysierra-web.png",
 
     logo:
-      "/case-studies/images/sujay-infra-logo.png",
+      "/reviews/images/sujay.png",
 
 
     website: "https://sujay-sierra.com/",
 
-    pdf:
-      "/case-studies/pdf/Sujay_Sierra_Branded_Reference_Report.pdf",
-
+   
     externalUrl: "",
 
     services: [
@@ -737,7 +763,7 @@ export const successStories = [
     averageCpc: 54.91,
     ctr: "16.19%",
     costPerConversion: 1354.60,
-    conversionRate: "4.05%",
+    conversionRate: "74.05%",
 
     currency: "INR",
 
@@ -854,17 +880,7 @@ export const successStories = [
       },
     ],
 
-    downloads: [
-      {
-        id: "sujay-sierra-case-study",
-        title: "Sujay Sierra Case Study",
-        description:
-          "Landing-page, paid-campaign and social media partnership overview.",
-        file:
-          "/case-studies/pdf/Sujay_Sierra_Branded_Reference_Report.pdf",
-        fileType: "PDF",
-      },
-    ],
+    
 
     testimonial: {
       quote:

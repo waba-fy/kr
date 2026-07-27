@@ -1,81 +1,147 @@
+import { Link } from "react-router-dom";
+
 import {
   FaArrowRight,
   FaCalendarAlt,
-  FaDownload,
+  FaChartLine,
   FaIndustry,
   FaMapMarkerAlt,
-  FaTrophy,
+  FaStar,
 } from "react-icons/fa";
 
-const SuccessStoryCard = ({
-  story,
-  onViewDetails,
-}) => {
-  if (!story) {
+const normalizeSlug = (value = "") =>
+  String(value)
+    .trim()
+    .replace(/^\/+/, "")
+    .replace(/^success-stories\//, "")
+    .replace(/^case-studies\//, "");
+
+const getServiceName = (service) => {
+  if (typeof service === "string") {
+    return service;
+  }
+
+  return service?.title || "";
+};
+
+const SuccessStoryCard = ({ story }) => {
+  if (!story || typeof story !== "object") {
     return null;
   }
 
-  const {
-    title,
-    client,
-    builder,
-    projectName,
-    category,
-    projectType,
-    location,
-    year,
-    coverImage,
-    summary,
-    services,
-    result,
-    featured,
-    pdf,
-  } = story;
+  const hero = story.hero || {};
+  const partnership = story.partnership || {};
+  const performance = story.performance || {};
+  const clientHappiness = story.clientHappiness || {};
+  const servicesDelivered = story.servicesDelivered || {};
 
   const displayTitle =
-    title ||
-    projectName ||
-    client ||
-    "Success Story";
-
-  const displayClient =
-    builder || client || "";
+    hero.title || "Client Success Story";
 
   const displayIndustry =
-    category || projectType || "";
+    partnership.category ||
+    partnership.projectType ||
+    hero.subtitle ||
+    "";
 
-  const safeServices = Array.isArray(services)
-    ? services.filter(Boolean)
-    : [];
+  const displayLocation =
+    hero.location ||
+    partnership.location ||
+    "";
+
+  const displayYear =
+    partnership.duration ||
+    partnership.since ||
+    "";
+
+  const displayStatus =
+    partnership.status ||
+    hero.status ||
+    "";
+
+  const displayImage =
+    hero.coverImage ||
+    hero.logo ||
+    "";
+
+  const displaySummary =
+    hero.description ||
+    partnership.description ||
+    "";
 
   const resultText =
-    typeof result === "string"
-      ? result
-      : result?.value ||
-        result?.label ||
-        "";
+    hero.result ||
+    performance.title ||
+    "";
+
+  const safeServices = Array.isArray(
+    servicesDelivered.services
+  )
+    ? servicesDelivered.services
+        .map(getServiceName)
+        .filter(Boolean)
+    : [];
+
+  const metrics = Array.isArray(
+    performance.cards
+  )
+    ? performance.cards.filter(Boolean)
+    : [];
+
+  const normalizedSlug =
+    normalizeSlug(story.slug);
+
+  const rating = Number(
+    clientHappiness.rating || 0
+  );
 
   return (
     <article
       className={`kr-success-story-card ${
-        featured ? "is-featured" : ""
+        story.featured ? "is-featured" : ""
       }`.trim()}
     >
-      
+      <div className="kr-success-story-image">
+        {displayImage ? (
+          <img
+            src={displayImage}
+            alt={`${displayTitle} success story`}
+            loading="lazy"
+          />
+        ) : (
+          <div className="kr-success-story-image-fallback">
+            <FaChartLine aria-hidden="true" />
+            <span>Client Success Story</span>
+          </div>
+        )}
+
+        <div
+          className="kr-success-story-image-overlay"
+          aria-hidden="true"
+        />
+
+       
+
+        {displayStatus && (
+          <span className="kr-success-story-status">
+            {displayStatus}
+          </span>
+        )}
+      </div>
 
       <div className="kr-success-story-content">
         <div className="kr-success-story-meta">
-          {location && (
+          {displayLocation && (
             <span>
               <FaMapMarkerAlt aria-hidden="true" />
-              {location}
+              {displayLocation}
             </span>
           )}
 
-          {year && (
+          {displayYear && (
             <span>
               <FaCalendarAlt aria-hidden="true" />
-              {year}
+              {displayYear}
             </span>
           )}
 
@@ -89,27 +155,69 @@ const SuccessStoryCard = ({
 
         <h3>{displayTitle}</h3>
 
-        {displayClient &&
-          displayClient !== displayTitle && (
-            <p className="kr-success-story-client">
-              {displayClient}
-            </p>
-          )}
+        {hero.subtitle && (
+          <p className="kr-success-story-client">
+            {hero.subtitle}
+          </p>
+        )}
 
-        {summary && (
+        {displaySummary && (
           <p className="kr-success-story-summary">
-            {summary}
+            {displaySummary}
           </p>
         )}
 
         {resultText && (
           <div className="kr-success-story-result">
-            <FaTrophy aria-hidden="true" />
+            <FaChartLine aria-hidden="true" />
 
             <div>
-              <span>Key Result</span>
+              <span>Partnership Result</span>
               <strong>{resultText}</strong>
             </div>
+          </div>
+        )}
+
+        {metrics.length > 0 && (
+          <div className="kr-success-story-metrics">
+            {metrics
+              .slice(0, 4)
+              .map((metric, index) => (
+                <div
+                  key={`${story.id}-metric-${index}`}
+                >
+                  <strong>
+                    {metric?.value || "—"}
+                  </strong>
+
+                  <span>
+                    {metric?.label ||
+                      "Performance Result"}
+                  </span>
+                </div>
+              ))}
+          </div>
+        )}
+
+        {rating > 0 && (
+          <div
+            className="kr-success-story-rating"
+            aria-label={`${rating} out of 5 client rating`}
+          >
+            <div>
+              {Array.from({
+                length: Math.min(rating, 5),
+              }).map((_, index) => (
+                <FaStar
+                  key={index}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+
+            <span>
+              Client partnership satisfaction
+            </span>
           </div>
         )}
 
@@ -132,30 +240,25 @@ const SuccessStoryCard = ({
         )}
 
         <div className="kr-success-story-actions">
-          {typeof onViewDetails === "function" && (
-            <button
-              type="button"
-              className="kr-success-story-view"
-              onClick={() => onViewDetails(story)}
-              aria-label={`View details for ${displayTitle}`}
-            >
-              View Story
-              <FaArrowRight aria-hidden="true" />
-            </button>
-          )}
+          <Link
+            to={`/success-stories/${normalizedSlug}`}
+            className="kr-success-story-view"
+            aria-label={`View success story for ${displayTitle}`}
+          >
+            View Success Story
+            <FaArrowRight aria-hidden="true" />
+          </Link>
 
-          {pdf && (
-            <a
-              href={pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="kr-success-story-download"
-              aria-label={`Open ${displayTitle} PDF`}
-            >
-              <FaDownload aria-hidden="true" />
-              Open PDF
-            </a>
-          )}
+          <Link
+            to={`/case-studies/${
+              story.relatedCaseStudy ||
+              normalizedSlug
+            }`}
+            className="kr-success-story-case-study"
+            aria-label={`View detailed case study for ${displayTitle}`}
+          >
+            Detailed Case Study
+          </Link>
         </div>
       </div>
     </article>

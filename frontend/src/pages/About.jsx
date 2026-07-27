@@ -5,30 +5,53 @@ import {
   FaHandshake,
   FaRoute,
   FaSearch,
-  FaLaptopCode,
   FaChartLine,
   FaNewspaper,
   FaArrowRight,
   FaCheckCircle,
 } from "react-icons/fa";
-import SEO from "../components/SEO";
+
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import {
+  createAboutPageSchema,
+} from "../seo/schemaHelper";
+import {
+  aboutBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
+
 import "../styles/about.css";
+
+const aboutDescription =
+  "Learn about KeyRoutes, our mission, vision, process and commitment to helping real estate businesses grow through strategy, websites, SEO, GEO, campaigns, CRM and automation.";
+
+const aboutPageSchema =
+  createAboutPageSchema({
+    name: "About KeyRoutes",
+    description: aboutDescription,
+    url: "/about",
+  });
 
 const pillars = [
   {
     icon: <FaBullseye />,
     title: "Our Mission",
-    desc: "To help real estate businesses grow with clear strategy, stronger visibility, better lead systems and measurable execution.",
+    desc:
+      "To help real estate businesses grow with clear strategy, stronger visibility, better lead systems and measurable execution.",
   },
   {
     icon: <FaEye />,
     title: "Our Vision",
-    desc: "To become a trusted growth route for builders, developers and lead-driven businesses across India and global markets.",
+    desc:
+      "To become a trusted growth route for builders, developers and lead-driven businesses across India and global markets.",
   },
   {
     icon: <FaHandshake />,
     title: "Our Commitment",
-    desc: "We focus on transparent planning, practical execution and growth systems that support real business outcomes.",
+    desc:
+      "We focus on transparent planning, practical execution and growth systems that support real business outcomes.",
   },
 ];
 
@@ -48,7 +71,7 @@ const resources = [
     title: "Reviews & Feedback",
     desc:
       "Discover what our clients say about working with KeyRoutes through real experiences, project outcomes and business growth stories.",
-    link: "/reviews",
+    link: "/reviews-feedback",
     linkLabel: "Read Reviews",
   },
   {
@@ -63,32 +86,39 @@ const resources = [
   {
     id: "market-reports",
     icon: <FaChartLine />,
-    title: "Market Reports",
+    title: "Success Stories",
     desc:
-      "Access insights on real estate visibility, lead quality, market trends and buyer behaviour.",
-    link: "/market-reports",
-    linkLabel: "Explore Reports",
+      "Explore project websites, landing pages, SEO, GEO optimization, paid campaigns, analytics.",
+    link: "/success-stories",
+    linkLabel: "Success Stories",
   },
 ];
+
 const About = () => {
   return (
     <main className="kr-about-page">
       <SEO
-        title="About KeyRoutes | Real Estate Growth Strategy, SEO, CRM & Automation"
-        description="Learn about KeyRoutes, our mission, vision, process and commitment to helping real estate businesses grow through strategy, websites, SEO, campaigns, CRM and automation."
-        keywords="about KeyRoutes, real estate growth company, real estate marketing agency, SEO for builders, CRM automation, real estate strategy consulting"
-        canonical="https://keyroutes.in/about"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          name: "About KeyRoutes",
-          url: "https://keyroutes.in/about",
-          about: {
-            "@type": "Organization",
-            name: "KeyRoutes",
-            url: "https://keyroutes.in",
-          },
-        }}
+        title="About KeyRoutes"
+        description={aboutDescription}
+        canonical="/about"
+        keywords={[
+          "about KeyRoutes",
+          "real estate growth company",
+          "real estate marketing agency",
+          "real estate strategy consulting",
+          "SEO for builders",
+          "GEO for real estate",
+          "CRM automation",
+          "real estate marketing automation",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          aboutPageSchema,
+          aboutBreadcrumbSchema,
+        ]}
       />
 
       <section className="kr-about-hero">
@@ -96,13 +126,16 @@ const About = () => {
 
         <div className="kr-about-container">
           <div className="kr-about-breadcrumb">
-            <Link to="/">Home</Link> <span>›</span> About
+            <Link to="/">Home</Link>
+            <span>›</span>
+            About
           </div>
 
           <span>ABOUT KEYROUTES</span>
 
           <h1>
-            Building Growth Routes for <strong>Real Estate Businesses.</strong>
+            Building Growth Routes for{" "}
+            <strong>Real Estate Businesses.</strong>
           </h1>
 
           <p>
@@ -119,10 +152,14 @@ const About = () => {
         </div>
       </section>
 
-      <section className="kr-about-intro" id="about-us">
+      <section
+        className="kr-about-intro"
+        id="about-us"
+      >
         <div className="kr-about-container kr-about-intro-grid">
           <div>
             <span>ABOUT US</span>
+
             <h2>
               Discover Our Mission, Vision and Commitment to{" "}
               <strong>Real Estate Growth.</strong>
@@ -140,8 +177,11 @@ const About = () => {
 
         <div className="kr-about-container">
           <div className="kr-about-pillar-grid">
-            {pillars.map((item, index) => (
-              <div className="kr-about-pillar-card" key={index}>
+            {pillars.map((item) => (
+              <div
+                className="kr-about-pillar-card"
+                key={item.title}
+              >
                 <div>{item.icon}</div>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
@@ -151,13 +191,19 @@ const About = () => {
         </div>
       </section>
 
-      <section className="kr-about-work" id="how-we-work">
+      <section
+        className="kr-about-work"
+        id="how-we-work"
+      >
         <div className="kr-about-container">
           <div className="kr-about-head center">
             <span>HOW WE WORK</span>
+
             <h2>
-              From Strategy to <strong>Lead Generation</strong>
+              From Strategy to{" "}
+              <strong>Lead Generation</strong>
             </h2>
+
             <p>
               Our process is designed to give businesses clarity before
               execution and measurable systems after launch.
@@ -166,8 +212,14 @@ const About = () => {
 
           <div className="kr-about-process-grid">
             {process.map((item, index) => (
-              <div className="kr-about-process-card" key={index}>
-                <span>0{index + 1}</span>
+              <div
+                className="kr-about-process-card"
+                key={item}
+              >
+                <span>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
                 <h3>{item}</h3>
               </div>
             ))}
@@ -179,9 +231,11 @@ const About = () => {
         <div className="kr-about-container kr-about-system-grid">
           <div className="kr-about-system-content">
             <span>OUR GROWTH SYSTEM</span>
+
             <h2>
               Strategy, Marketing and Automation Working Together.
             </h2>
+
             <p>
               We do not treat services as separate tasks. Every website,
               campaign, CRM flow and automation is planned as part of one
@@ -195,9 +249,10 @@ const About = () => {
                 "Lead-focused website structure",
                 "CRM and automation workflows",
                 "Performance tracking and reporting",
-              ].map((item, index) => (
-                <p key={index}>
-                  <FaCheckCircle /> {item}
+              ].map((item) => (
+                <p key={item}>
+                  <FaCheckCircle />
+                  {item}
                 </p>
               ))}
             </div>
@@ -205,19 +260,29 @@ const About = () => {
 
           <div className="kr-about-system-card">
             <FaRoute />
+
             <h3>KeyRoutes Growth Route</h3>
-            <p>Research → Strategy → Website → SEO → Campaigns → CRM → Sales</p>
+
+            <p>
+              Research → Strategy → Website → SEO → Campaigns → CRM → Sales
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="kr-about-resources" id="media-resources">
+      <section
+        className="kr-about-resources"
+        id="media-resources"
+      >
         <div className="kr-about-container">
           <div className="kr-about-head center">
             <span>REVIEWS & RESOURCES</span>
+
             <h2>
-              Case Studies and <strong>Growth Insights</strong>
+              Case Studies and{" "}
+              <strong>Growth Insights</strong>
             </h2>
+
             <p>
               Explore practical resources from the KeyRoutes team to understand
               digital growth, search visibility and lead automation better.
@@ -254,6 +319,7 @@ const About = () => {
       <section className="kr-about-cta">
         <div className="kr-about-container">
           <h2>Want to Build a Clear Growth Route?</h2>
+
           <p>
             Let’s review your current strategy, website, campaigns, CRM and
             automation system.
@@ -262,7 +328,7 @@ const About = () => {
           <a
             href="https://wa.me/918309436998"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Talk to KeyRoutes ›
           </a>

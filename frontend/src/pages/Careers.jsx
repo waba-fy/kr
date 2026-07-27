@@ -10,7 +10,17 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
-import SEO from "../components/SEO";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import {
+  createCollectionPageSchema,
+} from "../seo/schemaHelper";
+import {
+  careersBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
+
 import "../styles/careers.css";
 
 const API_BASE_URL =
@@ -84,6 +94,16 @@ const openings = [
     skills: ["Communication", "Lead Follow-up", "Sales", "CRM"],
   },
 ];
+
+const careersDescription =
+  "Join KeyRoutes and work on real estate growth systems, SEO, websites, campaigns, CRM and automation projects. Explore open positions and submit your CV.";
+
+const careersPageSchema =
+  createCollectionPageSchema({
+    name: "Careers at KeyRoutes",
+    description: careersDescription,
+    url: "/careers",
+  });
 
 const Careers = () => {
   const fileInputRef = useRef(null);
@@ -375,18 +395,27 @@ const Careers = () => {
   return (
     <main className="kr-careers-page">
       <SEO
-        title="Careers at KeyRoutes | Digital Marketing, Development & Growth Roles"
-        description="Join KeyRoutes and work on real estate growth systems, SEO, websites, campaigns, CRM and automation projects. Explore open positions and submit your CV."
-        keywords="KeyRoutes careers, digital marketing jobs Hyderabad, frontend developer jobs Hyderabad, business development jobs, SEO jobs, React jobs, marketing careers"
-        canonical="https://keyroutes.co/careers"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Careers at KeyRoutes",
-          url: "https://keyroutes.co/careers",
-          description:
-            "Career opportunities at KeyRoutes for digital marketing, frontend development and business growth roles.",
-        }}
+        title="Careers at KeyRoutes"
+        description={careersDescription}
+        canonical="/careers"
+        keywords={[
+          "KeyRoutes careers",
+          "digital marketing jobs Hyderabad",
+          "frontend developer jobs Hyderabad",
+          "business development jobs Hyderabad",
+          "SEO jobs",
+          "React jobs",
+          "marketing careers",
+          "real estate marketing jobs",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          careersPageSchema,
+          careersBreadcrumbSchema,
+        ]}
       />
 
       <section className="kr-careers-hero">

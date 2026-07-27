@@ -12,6 +12,8 @@ import {
   FaRobot,
   FaUsers,
   FaBullhorn,
+  FaTable,
+  FaPlug,
 } from "react-icons/fa";
 import SEO from "../components/SEO";
 import "../styles/product-solutions.css";
@@ -94,7 +96,91 @@ const productData = [
     outcome:
       "A faster and more reliable communication system that helps your sales team respond quickly, nurture leads properly and convert more enquiries into site visits.",
   },
-    {
+
+  {
+    id: "google-sheet-automations",
+    icon: <FaTable />,
+    label: "GOOGLE SHEET AUTOMATIONS",
+    title: "Turn Google Sheets into an Automated Business Workflow",
+
+    what:
+      "Google Sheet Automations connect your spreadsheets with WhatsApp, email, CRM, forms and other business tools. Every new row, update or status change can automatically trigger actions without manual effort.",
+
+    why:
+      "Many businesses already manage enquiries in Google Sheets. Instead of manually sending messages or updating customers, automation ensures every lead receives timely communication and your team spends less time on repetitive tasks.",
+
+    problems: [
+      "Manual lead updates",
+      "Delayed follow-ups",
+      "Repeated data entry",
+      "Human errors",
+      "No automatic notifications",
+      "Sales team dependency",
+      "No workflow automation",
+      "Missed customer communication",
+    ],
+
+    solutions: [
+      "Automatic WhatsApp messages",
+      "Email triggers",
+      "CRM synchronization",
+      "Lead assignment workflows",
+      "Google Form integration",
+      "Status-based automation",
+      "Reminder automation",
+      "Reporting dashboards",
+    ],
+
+    features: [
+      "Google Sheets",
+      "WhatsApp Integration",
+      "Email Automation",
+      "CRM Sync",
+      "Google Forms",
+      "Workflow Triggers",
+      "Notifications",
+    ],
+
+    deliverables: [
+      "Automation workflow",
+      "Google Sheet integration",
+      "Message templates",
+      "Notification setup",
+      "CRM connectivity",
+      "Reporting dashboard",
+    ],
+
+    businessImpact: [
+      "Less manual work",
+      "Faster response time",
+      "Improved lead tracking",
+      "Reduced human errors",
+      "Higher productivity",
+      "Better customer experience",
+    ],
+
+    relatedServices: [
+      "WhatsApp API",
+      "CRM",
+      "Email Marketing",
+      "Automation",
+      "Website Forms",
+    ],
+
+    flow: [
+      "Google Form",
+      "Google Sheet",
+      "Automation",
+      "WhatsApp",
+      "CRM",
+      "Sales Team",
+    ],
+
+    outcome:
+      "An automated workflow that turns Google Sheets into a practical lead-management and communication engine.",
+  },
+
+  {
     id: "email-marketing",
     icon: <FaEnvelopeOpenText />,
     label: "EMAIL MARKETING",
@@ -272,6 +358,90 @@ const productData = [
     outcome:
       "A structured communication system that captures every customer enquiry, improves response efficiency and provides complete visibility into business conversations.",
   },
+
+
+  {
+    id: "integrations",
+    icon: <FaPlug />,
+    label: "BUSINESS INTEGRATIONS",
+    title: "Connect Your Business Systems into One Workflow",
+
+    what:
+      "Integrations connect websites, CRM platforms, Google Sheets, WhatsApp, email tools, forms and third-party applications into one connected ecosystem where information can move automatically.",
+
+    why:
+      "Disconnected systems create duplicate work, delayed communication and inconsistent customer experiences. Integration helps teams maintain accurate information and run faster workflows.",
+
+    problems: [
+      "Disconnected software",
+      "Duplicate data entry",
+      "Manual information transfer",
+      "Missed updates",
+      "Slow workflows",
+      "Different customer records",
+      "No centralized data flow",
+      "Low productivity",
+    ],
+
+    solutions: [
+      "CRM integrations",
+      "Website and form integrations",
+      "WhatsApp connectivity",
+      "Email platform integration",
+      "Google Workspace integration",
+      "API integration",
+      "Automation workflows",
+      "Reporting integration",
+    ],
+
+    features: [
+      "API Integration",
+      "CRM Connectivity",
+      "Website Forms",
+      "Google Workspace",
+      "Email Platforms",
+      "Workflow Automation",
+      "Data Synchronization",
+    ],
+
+    deliverables: [
+      "Integration planning",
+      "Workflow mapping",
+      "API or connector setup",
+      "Testing and validation",
+      "Deployment support",
+      "Basic monitoring setup",
+    ],
+
+    businessImpact: [
+      "A more consistent data flow",
+      "Better team productivity",
+      "Faster communication",
+      "Reduced manual work",
+      "Improved customer experience",
+      "More scalable operations",
+    ],
+
+    relatedServices: [
+      "CRM",
+      "Website Development",
+      "WhatsApp API",
+      "Email Marketing",
+      "Automation",
+    ],
+
+    flow: [
+      "Website",
+      "CRM",
+      "Google Sheets",
+      "WhatsApp",
+      "Email",
+      "Reports",
+    ],
+
+    outcome:
+      "A connected business ecosystem where websites, CRM, communication tools and reporting systems work together more efficiently.",
+  },
 ];
 const platformItems = [
   {
@@ -386,15 +556,17 @@ const ProductSolutions = () => {
           </h1>
 
           <p>
-            Explore WhatsApp API, email marketing and IVR solutions built to help
+            Explore WhatsApp API, Google Sheet automation, email marketing, IVR and integrations built to help
             real estate businesses respond faster, track leads better, reduce
             missed enquiries and improve enquiry-to-site-visit conversion.
           </p>
 
           <div className="kr-ps-actions">
             <a href="#whatsapp-business-api">WhatsApp API</a>
+            <a href="#google-sheet-automations">Google Sheets</a>
             <a href="#email-marketing">Email Marketing</a>
             <a href="#ivr-voice">IVR & Voice</a>
+            <a href="#integrations">Integrations</a>
           </div>
         </div>
       </section>

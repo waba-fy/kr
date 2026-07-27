@@ -184,12 +184,12 @@ const Footer = () => {
           <div className="kr-footer-card">
   <h4>Resources</h4>
 
-  <Link to="/success-stories">
+  <Link to="/case-studies">
     01 Case Studies
   </Link>
 
-  <Link to="/market-reports">
-    02 Marketing Reports
+  <Link to="/success-stories">
+    02 Success Stories
   </Link>
 
   <Link to="/reviews-feedback">

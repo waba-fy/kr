@@ -9,7 +9,17 @@ import {
   FaFilePdf,
 } from "react-icons/fa";
 
-import SEO from "../components/SEO";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import {
+  createReviewSchema,
+  reviewsCollectionSchema,
+} from "../seo/reviewSchema";
+import {
+  reviewsBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
 import ReviewHero from "../components/reviews/ReviewHero";
 import ReviewFilters from "../components/reviews/ReviewFilters";
 import ReviewGrid from "../components/reviews/ReviewGrid";
@@ -17,6 +27,36 @@ import ReviewGrid from "../components/reviews/ReviewGrid";
 import { reviews } from "../data/reviewsData";
 
 import "../styles/reviews.css";
+
+const reviewsDescription =
+  "Read reviews and feedback from businesses that partnered with KeyRoutes for strategy, website development, SEO, advertising, CRM and automation.";
+
+const reviewSchemas = reviews
+  .filter(
+    (review) =>
+      (review.reviewer ||
+        review.client ||
+        review.company) &&
+      (review.review || review.shortReview)
+  )
+  .map((review, index) =>
+    createReviewSchema({
+      author:
+        review.reviewer ||
+        review.client ||
+        review.company,
+      reviewBody:
+        review.review ||
+        review.shortReview,
+      rating:
+        Number(review.rating || 5),
+      datePublished:
+        review.datePublished ||
+        review.publishedDate,
+      url:
+        `/reviews-feedback#review-${index + 1}`,
+    })
+  );
 
 const Reviews = () => {
   const [search, setSearch] = useState("");
@@ -112,30 +152,42 @@ const Reviews = () => {
       }
     };
 
+    const previousOverflow =
+      document.body.style.overflow;
+
     document.addEventListener("keydown", handleEscape);
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [selectedReview]);
 
   return (
     <main className="kr-reviews-page">
       <SEO
-        title="Client Reviews & Feedback | KeyRoutes"
-        description="Read reviews and feedback from businesses that partnered with KeyRoutes for strategy, website development, SEO, advertising, CRM and automation."
-        keywords="KeyRoutes reviews, client feedback, digital marketing testimonials, website development reviews, SEO agency reviews, automation services feedback"
-        canonical="https://keyroutes.co/reviews"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "KeyRoutes Client Reviews and Feedback",
-          url: "https://keyroutes.co/reviews",
-          description:
-            "Client reviews and feedback for KeyRoutes strategy, marketing, technology and automation services.",
-        }}
+        title="Client Reviews & Feedback"
+        description={reviewsDescription}
+        canonical="/reviews-feedback"
+        keywords={[
+          "KeyRoutes reviews",
+          "KeyRoutes client feedback",
+          "real estate marketing testimonials",
+          "website development reviews",
+          "SEO agency reviews",
+          "CRM automation feedback",
+          "digital marketing client reviews",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          reviewsCollectionSchema,
+          reviewsBreadcrumbSchema,
+          ...reviewSchemas,
+        ]}
       />
 
       <ReviewHero

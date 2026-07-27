@@ -228,7 +228,7 @@ const SuccessStoryModal = ({
           <div className="kr-success-story-modal-actions">
             {story.pdf && (
               <DownloadButton
-                title="Download Full Case Study"
+                title="Download Full Story"
                 description={story.subtitle || story.result}
                 href={story.pdf}
               />

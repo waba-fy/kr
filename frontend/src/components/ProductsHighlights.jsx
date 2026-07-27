@@ -13,31 +13,31 @@ const products = [
     icon: <FaWhatsapp />,
     title: "WhatsApp API",
     desc: "Automate customer conversations, lead replies, reminders and follow-ups through WhatsApp.",
-    link: "/whatsapp-business-api",
+    link: "/product-solutions#whatsapp-business-api",
   },
   {
     icon: <FaTable />,
     title: "Google Sheet Automations",
     desc: "Trigger emails, WhatsApp messages and workflows directly from new Google Sheet entries.",
-    link: "/google-sheet-automations",
+    link: "/product-solutions#google-sheet-automations",
   },
   {
     icon: <FaEnvelopeOpenText />,
     title: "Email Marketing",
     desc: "Send targeted campaigns, nurture leads and manage follow-up communication at scale.",
-    link: "/email-marketing",
+    link: "/product-solutions#email-marketing",
   },
   {
     icon: <FaPhoneAlt />,
     title: "IVR & Toll-free Numbers",
     desc: "Manage incoming calls professionally with IVR flows, call routing and toll-free solutions.",
-    link: "/ivr-toll-free-numbers",
+    link: "/product-solutions#ivr-toll-free-numbers",
   },
   {
     icon: <FaPlug />,
     title: "Integrations",
     desc: "Connect websites, CRMs, sheets, forms and communication tools into one smooth workflow.",
-    link: "/integrations",
+    link: "/product-solutions#integrations",
   },
 ];
 

@@ -9,7 +9,16 @@ import {
   FaExternalLinkAlt,
 } from "react-icons/fa";
 
-import SEO from "../components/SEO";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import {
+  marketReportsCollectionSchema,
+} from "../seo/reportSchema";
+import {
+  marketReportsBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
 import ReportHero from "../components/reports/ReportHero";
 import ReportFilters from "../components/reports/ReportFilters";
 import ReportGrid from "../components/reports/ReportGrid";
@@ -18,6 +27,9 @@ import DownloadButton from "../components/common/DownloadButton";
 import { marketReports } from "../data/marketReportsData";
 
 import "../styles/market-reports.css";
+
+const marketReportsDescription =
+  "Explore KeyRoutes market reports, industry research, digital trends, customer behaviour, technology insights and real estate intelligence.";
 
 const MarketReports = () => {
   const [search, setSearch] = useState("");
@@ -101,10 +113,7 @@ const MarketReports = () => {
     (report) => report.featured
   ).length;
 
-  /*
-   * downloads is an array in marketReportsData.
-   * Count the available downloadable files across all reports.
-   */
+  
   const totalDownloads = marketReports.reduce(
     (total, report) =>
       total +
@@ -153,30 +162,43 @@ const MarketReports = () => {
       }
     };
 
+    const previousOverflow =
+      document.body.style.overflow;
+
     document.addEventListener("keydown", handleEscape);
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [selectedReport]);
 
   return (
     <main className="kr-market-reports-page">
       <SEO
-        title="Market Reports & Industry Insights | KeyRoutes"
-        description="Explore KeyRoutes market reports, industry research, digital trends, customer behaviour, technology insights and real estate intelligence."
-        keywords="market reports, industry insights, KeyRoutes research, real estate reports, digital marketing trends, business intelligence"
-        canonical="https://keyroutes.co/market-reports"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "KeyRoutes Market Reports",
-          url: "https://keyroutes.co/market-reports",
-          description:
-            "Market reports and research published by KeyRoutes.",
-        }}
+        title="Market Reports & Industry Insights"
+        description={marketReportsDescription}
+        canonical="/market-reports"
+        keywords={[
+          "market reports",
+          "industry insights",
+          "KeyRoutes research",
+          "real estate reports",
+          "real estate market intelligence",
+          "digital marketing trends",
+          "customer behaviour insights",
+          "business intelligence",
+          "technology insights",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          marketReportsCollectionSchema,
+          marketReportsBreadcrumbSchema,
+        ]}
       />
 
       <ReportHero
@@ -270,13 +292,7 @@ const MarketReports = () => {
                 )}
               </div>
 
-              <div
-                className="kr-report-modal-document-mark"
-                aria-hidden="true"
-              >
-                <FaFilePdf />
-                <span>REPORT</span>
-              </div>
+             
             </header>
 
             <div className="kr-report-modal-body">

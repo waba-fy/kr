@@ -1,162 +1,112 @@
-import { useEffect, useState } from "react";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
 
-import SEO from "../components/SEO";
+import organizationSchema from "../seo/organizationSchema";
+
+import {
+  createCollectionPageSchema,
+} from "../seo/schemaHelper";
+
+import {
+  successStoriesBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
+
 import SuccessHero from "../components/successStories/SuccessHero";
 import ProjectGrid from "../components/successStories/ProjectGrid";
-import PerformanceStats from "../components/successStories/PerformanceStats";
-import DownloadsSection from "../components/successStories/DownloadsSection";
-import WebsiteShowcase from "../components/successStories/WebsiteShowcase";
-import SeoGeoResults from "../components/successStories/SeoGeoResults";
-import CampaignResults from "../components/successStories/CampaignResults";
 import SuccessCTA from "../components/successStories/SuccessCTA";
-import SuccessStoryModal from "../components/successStories/SuccessStoryModal";
 
 import "../styles/success-stories.css";
 
+const successStoriesDescription =
+  "Explore KeyRoutes client success stories featuring digital experiences, performance marketing, lead generation, automation and measurable business growth.";
+
+const successStoriesPageSchema =
+  createCollectionPageSchema({
+    name: "Client Success Stories",
+    description: successStoriesDescription,
+    url: "/success-stories",
+  });
+
+const successStoriesTopicSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+
+  "@id":
+    "https://keyroutes.co/success-stories#collection",
+
+  name:
+    "Client Success Stories by KeyRoutes",
+
+  description:
+    successStoriesDescription,
+
+  url:
+    "https://keyroutes.co/success-stories",
+
+  inLanguage: "en-IN",
+
+  isPartOf: {
+    "@id":
+      "https://keyroutes.co/#website",
+  },
+
+  about: {
+    "@id":
+      "https://keyroutes.co/#organization",
+  },
+
+  publisher: {
+    "@id":
+      "https://keyroutes.co/#organization",
+  },
+
+  keywords: [
+    "KeyRoutes success stories",
+    "digital marketing success stories",
+    "website development projects",
+    "performance marketing results",
+    "Google Ads success stories",
+    "Meta Ads success stories",
+    "lead generation success stories",
+    "lead automation",
+    "client growth stories",
+  ],
+};
+
 const SuccessStories = () => {
-  const [selectedStory, setSelectedStory] = useState(null);
-
-  const closeStory = () => {
-    setSelectedStory(null);
-  };
-
-  useEffect(() => {
-    if (!selectedStory) {
-      return undefined;
-    }
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        closeStory();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
-    };
-  }, [selectedStory]);
-
   return (
     <main className="kr-success-stories-page">
       <SEO
-        title="Real Estate Success Stories | Websites, SEO, Ads & Automation | KeyRoutes"
-        description="Explore KeyRoutes real estate success stories including SEO-ready project websites, GEO-focused landing pages, Google Ads, Meta Ads, CRM, WhatsApp automation and lead systems for builders."
-        keywords="real estate success stories, real estate case studies, builder marketing case studies, real estate website projects, SEO for real estate projects, GEO SEO for builders, Google Ads real estate case study, real estate CRM automation, Hyderabad real estate marketing"
-        canonical="https://keyroutes.in/success-stories"
-        schema={{
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              "@id": "https://keyroutes.in/#organization",
-              name: "KeyRoutes",
-              url: "https://keyroutes.in",
-              logo: "https://keyroutes.in/key-routes-logo.png",
-              parentOrganization: {
-                "@type": "Organization",
-                name: "Sixedge Innovations",
-              },
-            },
-            {
-              "@type": "WebPage",
-              "@id": "https://keyroutes.in/success-stories",
-              url: "https://keyroutes.in/success-stories",
-              name: "Real Estate Success Stories",
-              description:
-                "Real estate growth stories showing project websites, landing pages, SEO, GEO SEO, Google Ads, CRM, WhatsApp automation and analytics systems.",
-            },
-            {
-              "@type": "CollectionPage",
-              name: "Real Estate Success Stories by KeyRoutes",
-              url: "https://keyroutes.in/success-stories",
-              about: [
-                "Real Estate Website Development",
-                "SEO for Real Estate",
-                "GEO SEO for Builders",
-                "Google Ads for Real Estate",
-                "CRM Automation for Builders",
-                "WhatsApp Automation",
-              ],
-              hasPart: [
-                {
-                  "@type": "CreativeWork",
-                  name: "Urban Woods Villas",
-                  url: "https://keyroutes.in/success-stories/urban-woods-villas",
-                },
-                {
-                  "@type": "CreativeWork",
-                  name: "Jayabheri Pinnacle",
-                  url: "https://keyroutes.in/success-stories/jayabheri-pinnacle",
-                },
-                {
-                  "@type": "CreativeWork",
-                  name: "Ramky One Odyssey",
-                  url: "https://keyroutes.in/success-stories/ramky-one-odyssey",
-                },
-                {
-                  "@type": "CreativeWork",
-                  name: "Profound Vanam",
-                  url: "https://keyroutes.in/success-stories/profound-vanam",
-                },
-                {
-                  "@type": "CreativeWork",
-                  name: "Sujay Sierra",
-                  url: "https://keyroutes.in/success-stories/sujay-sierra",
-                },
-                {
-                  "@type": "CreativeWork",
-                  name: "RR Zenora Villas",
-                  url: "https://keyroutes.in/success-stories/rr-zenora-villas",
-                },
-              ],
-            },
-            {
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://keyroutes.in",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Success Stories",
-                  item: "https://keyroutes.in/success-stories",
-                },
-              ],
-            },
-          ],
-        }}
+        title="Client Success Stories"
+        description={successStoriesDescription}
+        canonical="/success-stories"
+        keywords={[
+          "client success stories",
+          "digital marketing success stories",
+          "KeyRoutes clients",
+          "website development success stories",
+          "Google Ads results",
+          "Meta Ads results",
+          "lead generation projects",
+          "business growth stories",
+          "marketing automation success stories",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          successStoriesPageSchema,
+          successStoriesTopicSchema,
+          successStoriesBreadcrumbSchema,
+        ]}
       />
 
       <SuccessHero />
 
-      <ProjectGrid onViewDetails={setSelectedStory} />
-
-      
-
-      <DownloadsSection />
-
-      <WebsiteShowcase />
-
-      <SeoGeoResults />
-
-      <CampaignResults />
+      <ProjectGrid />
 
       <SuccessCTA />
-
-      {selectedStory && (
-        <SuccessStoryModal
-          story={selectedStory}
-          onClose={closeStory}
-        />
-      )}
     </main>
   );
 };

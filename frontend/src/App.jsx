@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToHash from "./components/ScrollToHash";
 import ConsultationPopup from "./components/ConsultationPopup";
+import ScrollToTopButton from "./components/common/ScrollToTopButton";
 
 /* Public pages */
 import Home from "./pages/Home";
@@ -21,17 +22,19 @@ import ProductSolutions from "./pages/ProductSolutions";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import SuccessStories from "./pages/SuccessStories";
-import MarketReports from "./pages/MarketReports";
-import ThankYou from "./pages/ThankYou";
-import Reviews from "./pages/Reviews";
+import CaseStudies from "./pages/CaseStudies";
+import CaseStudyDetails from "./pages/CaseStudyDetails";
 
+import Reviews from "./pages/Reviews";
+import ThankYou from "./pages/ThankYou";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiesPolicy from "./pages/CookiesPolicy";
-import ScrollToTopButton from "./components/common/ScrollToTopButton";
+import SuccessStoryDetails from "./pages/SuccessStoryDetails";
 
 export default function App() {
-  const [consultOpen, setConsultOpen] = useState(false);
+  const [consultOpen, setConsultOpen] =
+    useState(false);
 
   const openConsultation = () => {
     setConsultOpen(true);
@@ -43,12 +46,17 @@ export default function App() {
 
   return (
     <>
-      <Navbar onConsultationClick={openConsultation} />
+      <Navbar
+        onConsultationClick={openConsultation}
+      />
 
       <ScrollToHash />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
         <Route
           path="/strategy"
@@ -90,22 +98,37 @@ export default function App() {
           element={<Careers />}
         />
 
+        {/* SUCCESS STORIES */}
         <Route
           path="/success-stories"
           element={<SuccessStories />}
         />
-        <Route 
-        path="/reviews-feedback" 
-        element={<Reviews />} 
-        />
         <Route
-          path="/market-reports"
-          element={<MarketReports />}
+            path="/success-stories/:slug"
+            element={<SuccessStoryDetails />}
+          />
+        {/* CASE STUDIES LISTING */}
+        <Route
+          path="/case-studies"
+          element={<CaseStudies />}
         />
+
+        {/* INDIVIDUAL CASE STUDY */}
+        <Route
+          path="/case-studies/:slug"
+          element={<CaseStudyDetails />}
+        />
+
+        <Route
+          path="/reviews-feedback"
+          element={<Reviews />}
+        />
+
         <Route
           path="/thank-you"
           element={<ThankYou />}
         />
+
         <Route
           path="/terms"
           element={<Terms />}
@@ -120,14 +143,22 @@ export default function App() {
           path="/cookies-policy"
           element={<CookiesPolicy />}
         />
+
         <Route
           path="*"
-          element={<Navigate to="/" replace />}
+          element={
+            <Navigate
+              to="/"
+              replace
+            />
+          }
         />
       </Routes>
 
       <Footer />
+
       <ScrollToTopButton />
+
       <ConsultationPopup
         open={consultOpen}
         onClose={closeConsultation}

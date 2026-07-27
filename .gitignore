@@ -4,6 +4,8 @@ frontend/node_modules/
 
 .env
 .env.*
+!.env.production
+!frontend/.env.production
 dist/
 build/
 uploads/

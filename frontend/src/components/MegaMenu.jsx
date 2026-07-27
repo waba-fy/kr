@@ -15,14 +15,13 @@ import {
   FaBriefcase,
   FaUsers,
 } from "react-icons/fa";
-import "../styles/megamenu.css";
 
-const toSlug = (text) =>
-  "/" + text.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-");
+import "../styles/megamenu.css";
 
 export const menuData = {
   strategy: {
     title: "Strategy Consulting",
+
     cta: {
       icon: "↗",
       title: "Free Strategy Consultation",
@@ -30,6 +29,7 @@ export const menuData = {
       btnText: "Strategy Consultation ›",
       link: "/strategy",
     },
+
     items: [
       {
         title: "Brand Strategy",
@@ -53,75 +53,82 @@ export const menuData = {
   },
 
   services: {
-  title: "Our Services",
-  cta: {
-    icon: "✓",
-    title: "Free Service Audit",
-    desc: "Review your website, SEO, campaigns and lead management with our experts.",
-    btnText: "Check Service List ›",
-    link: "/services",
+    title: "Our Services",
+
+    cta: {
+      icon: "✓",
+      title: "Free Service Audit",
+      desc: "Review your website, SEO, campaigns and lead management with our experts.",
+      btnText: "Check Service List ›",
+      link: "/services",
+    },
+
+    items: [
+      {
+        title: "Market Research & Audits",
+        desc: "Research competitors, locations, buyer behaviour and identify growth opportunities.",
+        icon: <FaSearchDollar />,
+        link: "/supporting-services#market-research-audits",
+      },
+      {
+        title: "SEO, GEO & Performance Marketing",
+        desc: "Grow visibility through SEO, GEO, Google Ads, Meta Ads and campaign tracking.",
+        icon: <FaShareAlt />,
+        link: "/supporting-services#seo-geo-performance",
+      },
+      {
+        title: "Website, CRM & Automation",
+        desc: "Develop conversion-focused project websites integrated with CRM and automation.",
+        icon: <FaDesktop />,
+        link: "/supporting-services#website-crm-automation",
+      },
+    ],
   },
-  items: [
-    {
-      title: "Market Research & Audits",
-      desc: "Research competitors, locations, buyer behaviour and identify growth opportunities.",
-      icon: <FaSearchDollar />,
-      link: "/supporting-services#market-research-audits",
-    },
-    {
-      title: "SEO, GEO & Performance Marketing",
-      desc: "Grow visibility through SEO, GEO, Google Ads, Meta Ads and campaign tracking.",
-      icon: <FaShareAlt />,
-      link: "/supporting-services#seo-geo-performance",
-    },
-    {
-      title: "Website, CRM & Automation",
-      desc: "Develop conversion-focused project websites integrated with CRM and automation.",
-      icon: <FaDesktop />,
-      link: "/supporting-services#website-crm-automation",
-    },
-  ],
-},
+
   products: {
-  title: "Products",
-  cta: {
-    icon: "✦",
-    title: "Product Demo Support",
-    desc: "Discover automation products designed for real estate businesses.",
-    btnText: "Ask for Demo ›",
-    link: "/products",
+    title: "Products",
+
+    cta: {
+      icon: "✦",
+      title: "Product Demo Support",
+      desc: "Discover automation products designed for real estate businesses.",
+      btnText: "Ask for Demo ›",
+      link: "/products",
+    },
+
+    items: [
+      {
+        title: "WhatsApp Business API",
+        desc: "Automate customer conversations and improve enquiry response time.",
+        icon: <FaWhatsapp />,
+        link: "/product-solutions#whatsapp-business-api",
+      },
+      {
+        title: "Email Marketing",
+        desc: "Nurture buyers with automated email campaigns and project updates.",
+        icon: <FaEnvelopeOpenText />,
+        link: "/product-solutions#email-marketing",
+      },
+      {
+        title: "IVR & Voice",
+        desc: "Manage incoming enquiries using IVR and smart call routing.",
+        icon: <FaPhoneAlt />,
+        link: "/product-solutions#ivr-voice",
+      },
+    ],
   },
-  items: [
-    {
-      title: "WhatsApp Business API",
-      desc: "Automate customer conversations and improve enquiry response time.",
-      icon: <FaWhatsapp />,
-      link: "/product-solutions#whatsapp-business-api",
-    },
-    {
-      title: "Email Marketing",
-      desc: "Nurture buyers with automated email campaigns and project updates.",
-      icon: <FaEnvelopeOpenText />,
-      link: "/product-solutions#email-marketing",
-    },
-    {
-      title: "IVR & Voice",
-      desc: "Manage incoming enquiries using IVR and smart call routing.",
-      icon: <FaPhoneAlt />,
-      link: "/product-solutions#ivr-voice",
-    },
-  ],
-},
 
   about: {
     title: "About KeyRoutes",
+
     cta: {
       icon: "●",
       title: "Know KeyRoutes Better",
       desc: "Learn how KeyRoutes helps builders grow through digital strategy.",
-      btnText: "Chat With Us ›",
-      link: "https://wa.me/918309436998",
+      btnText: "Know More ›",
+      link: "/about",
     },
+
     items: [
       {
         title: "About Us",
@@ -137,7 +144,7 @@ export const menuData = {
       },
       {
         title: "Reviews & Feedback",
-        desc: "Discover what our clients say about working with KeyRoutes,",
+        desc: "Discover what our clients say about working with KeyRoutes.",
         icon: <FaNewspaper />,
         link: "/about#media-resources",
       },
@@ -146,6 +153,7 @@ export const menuData = {
 
   careers: {
     title: "Careers",
+
     cta: {
       icon: "→",
       title: "Build With KeyRoutes",
@@ -153,6 +161,7 @@ export const menuData = {
       btnText: "Contact HR ›",
       link: "https://wa.me/918309436998",
     },
+
     items: [
       {
         title: "Life at KeyRoutes",
@@ -170,49 +179,96 @@ export const menuData = {
   },
 };
 
-const MegaMenu = ({ type, onItemClick }) => {
+const isExternalUrl = (url = "") =>
+  /^https?:\/\//i.test(url);
+
+const MegaMenu = ({
+  id,
+  type,
+  onItemClick,
+}) => {
   const data = menuData[type];
-  if (!data) return null;
+
+  if (!data) {
+    return null;
+  }
+
+  const handleItemClick = () => {
+    if (typeof onItemClick === "function") {
+      onItemClick();
+    }
+  };
 
   return (
-    <div className="mega-wrapper" onMouseDown={(e) => e.stopPropagation()}>
+    <div
+      id={id}
+      className="mega-wrapper"
+      role="region"
+      aria-label={`${data.title} menu`}
+    >
       <div className="mega-container">
         <div className="mega-cta-card">
-          <div className="mega-cta-icon">{data.cta.icon}</div>
+          <div
+            className="mega-cta-icon"
+            aria-hidden="true"
+          >
+            {data.cta.icon}
+          </div>
 
           <h3>{data.cta.title}</h3>
 
           <p>{data.cta.desc}</p>
 
-          <a
-            href={data.cta.link}
-            target="_blank"
-            rel="noreferrer"
-            className="mega-cta-btn"
-          >
-            {data.cta.btnText}
-          </a>
+          {isExternalUrl(data.cta.link) ? (
+            <a
+              href={data.cta.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mega-cta-btn"
+              onClick={handleItemClick}
+            >
+              {data.cta.btnText}
+            </a>
+          ) : (
+            <NavLink
+              to={data.cta.link}
+              className="mega-cta-btn"
+              onClick={handleItemClick}
+            >
+              {data.cta.btnText}
+            </NavLink>
+          )}
         </div>
 
         <div className="mega-content">
           <h4>{data.title}</h4>
 
           <div className="mega-grid">
-            {data.items.map((item, i) => (
+            {data.items.map((item) => (
               <NavLink
-                  key={i}
-                  to={item.link}
-                  className="mega-item"
-                  onClick={onItemClick}
+                key={item.link}
+                to={item.link}
+                className="mega-item"
+                onClick={handleItemClick}
+              >
+                <span
+                  className="mega-icon"
+                  aria-hidden="true"
                 >
-                <span className="mega-icon">{item.icon}</span>
+                  {item.icon}
+                </span>
 
                 <div className="mega-item-content">
                   <h5>{item.title}</h5>
                   <p>{item.desc}</p>
                 </div>
 
-                <span className="mega-arrow">›</span>
+                <span
+                  className="mega-arrow"
+                  aria-hidden="true"
+                >
+                  ›
+                </span>
               </NavLink>
             ))}
           </div>

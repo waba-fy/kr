@@ -15,7 +15,16 @@ import {
   FaChartPie,
   FaRobot,
 } from "react-icons/fa";
-import SEO from "../components/SEO";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import { createWebPageSchema } from "../seo/schemaHelper";
+import { supportingServicesSchema } from "../seo/serviceSchema";
+import {
+  supportingServicesBreadcrumbSchema,
+} from "../seo/breadcrumbSchema";
+
 import "../styles/supporting-services.css";
 
 const serviceData = [
@@ -201,34 +210,46 @@ const faqs = [
   },
 ];
 
+const supportingServicesDescription =
+  "Explore KeyRoutes supporting services for real estate, including market research, SEO, GEO, Google Ads, Meta Ads, website development, CRM, WhatsApp automation and analytics.";
+
+const supportingServicesPageSchema =
+  createWebPageSchema({
+    name:
+      "Supporting Real Estate Growth Services",
+    description:
+      supportingServicesDescription,
+    url: "/supporting-services",
+  });
+
 const SupportingServices = () => {
   return (
     <main className="kr-ss-page">
       <SEO
-        title="Supporting Real Estate Services | SEO, GEO, Website, CRM & Automation | KeyRoutes"
-        description="Explore KeyRoutes supporting services for real estate including market research, SEO, GEO, Google Ads, Meta Ads, website development, CRM, WhatsApp automation and analytics."
-        keywords="real estate supporting services, real estate SEO services, GEO SEO for builders, Google Ads for real estate, real estate website development, CRM automation for builders, WhatsApp automation for real estate"
-        canonical="https://keyroutes.in/supporting-services"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Supporting Real Estate Growth Services",
-          provider: {
-            "@type": "Organization",
-            name: "KeyRoutes",
-            url: "https://keyroutes.in",
-          },
-          areaServed: "Hyderabad",
-          serviceType: [
-            "Market Research",
-            "SEO and GEO",
-            "Google Ads",
-            "Meta Ads",
-            "Website Development",
-            "CRM",
-            "WhatsApp Automation",
-          ],
-        }}
+        title="Supporting Real Estate Growth Services"
+        description={supportingServicesDescription}
+        canonical="/supporting-services"
+        keywords={[
+          "real estate supporting services",
+          "real estate SEO services",
+          "GEO for builders",
+          "Google Ads for real estate",
+          "Meta Ads for real estate",
+          "real estate website development",
+          "CRM automation for builders",
+          "WhatsApp automation for real estate",
+          "real estate lead generation",
+          "real estate analytics",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          supportingServicesPageSchema,
+          supportingServicesSchema,
+          supportingServicesBreadcrumbSchema,
+        ]}
       />
 
       <section className="kr-ss-hero">

@@ -705,3 +705,94 @@
   }
 
 }
+
+/* ==========================================
+   CAREERS - SUBMIT POINTS
+========================================== */
+
+.kr-careers-submit-points {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.kr-careers-submit-points p {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  margin: 0;
+  padding: 16px 20px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+
+  color: #444;
+  font-size: 0.98rem;
+  line-height: 1.65;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.3s ease;
+}
+
+.kr-careers-submit-points p:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(194, 24, 7, 0.25);
+
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+}
+
+.kr-careers-submit-points svg {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  color: var(--kr-red);
+
+  font-size: 1.15rem;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 768px) {
+  .kr-careers-submit-points {
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  .kr-careers-submit-points p {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .kr-careers-submit-points svg {
+    font-size: 1.05rem;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .kr-careers-submit-points {
+    gap: 12px;
+  }
+
+  .kr-careers-submit-points p {
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .kr-careers-submit-points svg {
+    font-size: 1rem;
+  }
+}

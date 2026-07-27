@@ -10,20 +10,23 @@ import {
   FaCheckCircle,
   FaBuilding,
   FaHome,
-  FaRoute,
   FaGlobe,
   FaGoogle,
   FaWhatsapp,
   FaDatabase,
-  FaPhoneAlt,
   FaArrowRight,
   FaBrain,
   FaMapSigns,
-  FaClipboardList,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import SEO from "../components/SEO";
-import StrategyDeepDive from "../components/StrategyDeepDive";
+import SEO from "../components/seo/SEO";
+import Schema from "../components/seo/Schema";
+
+import organizationSchema from "../seo/organizationSchema";
+import { strategyServiceSchema } from "../seo/serviceSchema";
+import { strategyBreadcrumbSchema } from "../seo/breadcrumbSchema";
+import { createWebPageSchema } from "../seo/schemaHelper";
+
 import "../styles/strategy-page.css";
 
 const trustItems = [
@@ -216,20 +219,20 @@ const localAreas = [
 
 const stats = [
   {
-    value: "90%",
-    label: "buyers research online before enquiring",
+    value: "Online First",
+    label: "buyers increasingly research projects before enquiring",
   },
   {
-    value: "3x",
-    label: "better conversion from focused landing pages",
+    value: "Conversion Focused",
+    label: "landing pages are planned around enquiry intent",
   },
   {
     value: "24/7",
-    label: "lead response through automation",
+    label: "lead response supported through automation",
   },
   {
-    value: "100%",
-    label: "strategy-led execution approach",
+    value: "Strategy Led",
+    label: "execution starts with a structured growth plan",
   },
 ];
 
@@ -357,80 +360,43 @@ Thank you.`
   return `https://wa.me/918309436998?text=${message}`;
 };
 
+const strategyDescription =
+  "KeyRoutes helps builders create real estate marketing strategies with SEO-ready websites, GEO, Google Ads, CRM, WhatsApp automation and lead generation systems.";
+
+const strategyPageSchema = createWebPageSchema({
+  name: "Real Estate Marketing Strategy for Builders",
+  description: strategyDescription,
+  url: "/strategy",
+});
+
 const Strategy = () => {
   return (
     <main className="kr-strategy-page">
       <SEO
-  title="Real Estate Marketing Strategy for Builders | KeyRoutes"
-  description="KeyRoutes helps builders create real estate marketing strategies with SEO-ready websites, GEO SEO, Google Ads, CRM, WhatsApp automation and lead generation systems."
-  keywords="real estate marketing strategy, builder marketing strategy, real estate SEO, GEO SEO for builders, Google Ads for real estate, real estate website development, CRM for builders, WhatsApp automation for real estate, Hyderabad real estate marketing"
-  canonical="https://keyroutes.in/strategy"
-  schema={{
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://keyroutes.in/#organization",
-        name: "KeyRoutes",
-        url: "https://keyroutes.in",
-        logo: "https://keyroutes.in/key-routes-logo.png",
-        parentOrganization: {
-          "@type": "Organization",
-          name: "Sixedge Innovations",
-        },
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://keyroutes.in/#localbusiness",
-        name: "KeyRoutes",
-        url: "https://keyroutes.in",
-        telephone: "+918309436998",
-        areaServed: [
-          "Hyderabad",
-          "Kokapet",
-          "Tellapur",
-          "Narsingi",
-          "Gachibowli",
-          "Bachupally",
-          "Kollur",
-          "Shamshabad",
-        ],
-        serviceType: [
-          "Real Estate Marketing Strategy",
-          "Real Estate SEO",
-          "Google Ads for Real Estate",
-          "Website Development for Builders",
-          "CRM and Automation",
-        ],
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://keyroutes.in/strategy",
-        url: "https://keyroutes.in/strategy",
-        name: "Real Estate Marketing Strategy for Builders",
-        description:
-          "Strategy page for builders and real estate projects covering brand strategy, digital strategy, SEO, GEO SEO, Google Ads, CRM and automation.",
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://keyroutes.in",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Strategy",
-            item: "https://keyroutes.in/strategy",
-          },
-        ],
-      },
-    ],
-  }}
-/>
+        title="Real Estate Marketing Strategy for Builders"
+        description={strategyDescription}
+        canonical="/strategy"
+        keywords={[
+          "real estate marketing strategy",
+          "builder marketing strategy",
+          "real estate SEO",
+          "GEO for builders",
+          "Google Ads for real estate",
+          "real estate website development",
+          "CRM for builders",
+          "WhatsApp automation for real estate",
+          "Hyderabad real estate marketing",
+        ]}
+      />
+
+      <Schema
+        data={[
+          organizationSchema,
+          strategyPageSchema,
+          strategyServiceSchema,
+          strategyBreadcrumbSchema,
+        ]}
+      />
       <section className="kr-sp-hero">
         <div className="kr-sp-grid-bg"></div>
         <div className="kr-sp-glow"></div>

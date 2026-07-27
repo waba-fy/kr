@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+body {
+  padding-top: 80px;
+}
+
 .kr-navbar {
   position: fixed;
   top: 0;
@@ -23,85 +27,90 @@ body {
 }
 
 .kr-navbar-inner {
-  max-width: 1400px;
   width: 100%;
-  margin: auto;
-  padding: 14px 5px;
+  max-width: 1400px;
+  min-height: 80px;
+  margin: 0 auto;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
 }
 
-/* LOGO */
 .kr-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  text-decoration: none;
   flex-shrink: 0;
   min-width: 0;
+  text-decoration: none;
 }
 
 .kr-logo img {
+  display: block;
   width: 190px;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
-/* DESKTOP NAV */
 .kr-nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
-  flex: 1;
   justify-content: center;
+  flex: 1;
   min-width: 0;
+  gap: 28px;
 }
 
 .kr-nav-links button {
-  border: none;
-  font-size: 1.05rem;
-  background: transparent;
-  color: var(--kr-black);
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--kr-black);
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-.kr-nav-links button.active,
-.kr-nav-links button:hover {
+.kr-nav-links button:hover,
+.kr-nav-links button.active {
   color: var(--kr-red);
+}
+
+.kr-chevron {
+  display: inline-block;
+  font-size: 1.05rem;
+  transition: transform 0.25s ease;
 }
 
 .kr-nav-links button.active .kr-chevron {
   transform: rotate(180deg);
 }
 
-.kr-chevron {
-  font-size: 1.05rem;
-  transition: 0.25s ease;
-}
-
-/* RIGHT ACTIONS */
 .kr-nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex-shrink: 0;
+  gap: 12px;
 }
 
-.kr-whatsapp-btn {
+.kr-whatsapp-btn,
+.kr-mobile-call {
   background: var(--kr-black);
   color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.kr-whatsapp-btn {
+  padding: 10px 20px;
+  border-radius: 999px;
 }
 
 .kr-whatsapp-btn:hover {
@@ -109,110 +118,131 @@ body {
 }
 
 .kr-book-btn {
-  border: none;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 999px;
   background: var(--kr-red);
   color: #ffffff;
-  padding: 15px 20px;
-  border-radius: 999px;
+  font: inherit;
   font-weight: 700;
-  cursor: pointer;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .kr-book-btn:hover {
   background: var(--kr-red-dark);
 }
 
-.kr-mobile-call {
+.kr-mobile-call,
+.kr-mobile-btn,
+.kr-mobile-overlay,
+.kr-mobile-drawer {
   display: none;
-  background: var(--kr-black);
-  color: #ffffff;
-  padding: 12px 14px;
+}
+
+.kr-mobile-call {
+  padding: 10px 12px;
   border-radius: 10px;
-  text-decoration: none;
   font-size: 0.8rem;
-  font-weight: 700;
-  white-space: nowrap;
   line-height: 1;
 }
 
 .kr-mobile-btn {
-  display: none;
-  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
   background: transparent;
-  font-size: 1.7rem;
-  cursor: pointer;
   color: var(--kr-black);
+  font-size: 1.7rem;
   line-height: 1;
-  padding: 4px;
+  cursor: pointer;
 }
-
-/* =========================
-   MOBILE OVERLAY
-========================= */
 
 .kr-mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1998;
+  z-index: 3998;
+  width: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.55);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .kr-mobile-overlay.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
-
-/* =========================
-   MOBILE DRAWER
-========================= */
 
 .kr-mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: min(390px, 88vw);
+  right: 0;
+  z-index: 3999;
+  width: min(88vw, 390px);
+  max-width: 100%;
   height: 100dvh;
-  background: #ffffff;
-  z-index: 1999;
   padding: 18px;
-  transition: 0.3s ease;
+  flex-direction: column;
+  background: #ffffff;
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: contain;
+  transform: translateX(105%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s ease, visibility 0.3s ease;
 }
 
 .kr-mobile-drawer.active {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .kr-mobile-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
   gap: 12px;
-  margin-bottom: 22px;
+  min-height: 58px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--kr-border);
 }
 
 .kr-mobile-head .kr-logo img {
   width: 145px;
 }
 
-.kr-mobile-head button {
-  border: none;
+.kr-mobile-head > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
   background: transparent;
+  color: var(--kr-black);
   font-size: 1.4rem;
+  line-height: 1;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .kr-mobile-highlight {
-  background: var(--kr-light);
+  margin-bottom: 22px;
   padding: 18px;
   border-radius: 16px;
-  margin-bottom: 22px;
+  background: var(--kr-light);
 }
 
 .kr-mobile-highlight strong {
@@ -221,83 +251,107 @@ body {
 }
 
 .kr-mobile-highlight p {
+  margin: 0 0 14px;
   color: var(--kr-grey);
   font-size: 0.9rem;
-  margin-bottom: 14px;
 }
 
 .kr-mobile-whatsapp {
-  display: block;
-  background: var(--kr-black);
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 10px;
   padding: 11px 14px;
   border-radius: 999px;
+  background: var(--kr-black);
+  color: #ffffff;
+  text-align: center;
   text-decoration: none;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 10px;
 }
 
 .kr-book-btn.mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+}
+
+.kr-mobile-main {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.kr-mobile-main button,
-.kr-mobile-subpanel a {
+.kr-mobile-main > button,
+.kr-mobile-subpanel > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
-  padding: 16px 0;
-  border: none;
+  min-height: 56px;
+  padding: 14px 0;
+  border: 0;
   border-bottom: 1px solid var(--kr-border);
   background: transparent;
   color: var(--kr-black);
+  font: inherit;
   font-size: 1rem;
   font-weight: 600;
+  text-align: left;
   text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
   cursor: pointer;
 }
 
+.kr-mobile-subpanel {
+  width: 100%;
+}
+
 .kr-mobile-back {
-  border: none;
+  min-height: 42px;
+  margin-bottom: 14px;
+  padding: 8px 0;
+  border: 0;
   background: transparent;
   color: var(--kr-red);
+  font: inherit;
   font-weight: 700;
-  margin-bottom: 20px;
   cursor: pointer;
 }
 
 .kr-mobile-subpanel h4 {
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .kr-mobile-cta {
-  background: var(--kr-red);
-  color: #ffffff;
+  margin-top: 24px;
   padding: 18px;
   border-radius: 14px;
-  margin-top: 24px;
+  background: var(--kr-red);
+  color: #ffffff;
 }
 
 .kr-mobile-cta p {
-  font-size: 0.9rem;
   margin: 8px 0 14px;
+  font-size: 0.9rem;
 }
 
 .kr-mobile-cta a {
-  background: #ffffff;
-  color: var(--kr-red);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
   padding: 10px 16px;
   border-radius: 999px;
-  display: inline-block;
+  background: #ffffff;
+  color: var(--kr-red);
   text-decoration: none;
   font-weight: 700;
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 1200px) {
   .kr-navbar-inner {
@@ -323,19 +377,31 @@ body {
   body {
     padding-top: 68px;
   }
-  .kr-navbar-inner {
-    padding: 15px 14px;
-    gap: 8px;
+
+  .kr-navbar {
+    position: fixed;
+    z-index: 3000;
   }
 
-  .kr-nav-links,
-  .kr-whatsapp-btn,
-  .kr-book-btn:not(.mobile) {
-    display: none;
+  .kr-navbar-inner {
+    min-height: 68px;
+    padding: 10px 14px;
+    gap: 8px;
   }
 
   .kr-logo img {
     width: 145px;
+  }
+
+  .kr-nav-links,
+  .kr-whatsapp-btn,
+  .kr-nav-actions > .kr-book-btn:not(.mobile) {
+    display: none !important;
+  }
+
+  .kr-nav-actions {
+    margin-left: auto;
+    gap: 8px;
   }
 
   .kr-mobile-call {
@@ -346,14 +412,24 @@ body {
 
   .kr-mobile-btn {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .kr-mobile-overlay {
+    display: block;
+  }
+
+  .kr-mobile-drawer {
+    display: flex;
+  }
+
+  .mega-wrapper {
+    display: none !important;
   }
 }
 
 @media (max-width: 480px) {
   .kr-navbar-inner {
-    padding: 15px 10px;
+    padding: 10px 12px;
   }
 
   .kr-logo img {
@@ -361,12 +437,7 @@ body {
   }
 
   .kr-mobile-call {
-    font-size: 0.72rem;
-    padding: 8px 9px;
-  }
-
-  .kr-mobile-btn {
-    font-size: 1.45rem;
+    display: none;
   }
 
   .kr-mobile-drawer {
@@ -380,12 +451,9 @@ body {
     width: 112px;
   }
 
-  .kr-mobile-call {
-    font-size: 0.68rem;
-    padding: 7px 8px;
-  }
-
   .kr-mobile-btn {
-    font-size: 1.35rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.45rem;
   }
 }

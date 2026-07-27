@@ -20,7 +20,7 @@ export const reviews = [
     website: "https://myscapepalma.com/",
 
     logo: "/reviews/images/landrise.png",
-    image: "/reviews/images/landrise-realty-review.jpg",
+  
 
     /*
       Replace this draft with an approved client testimonial
@@ -53,18 +53,7 @@ export const reviews = [
       "Continuous campaign optimization",
     ],
 
-    video: "",
-
-    pdf: "/case-studies/pdf/landrise-realty-case-study.pdf",
-
-    gallery: [
-      "/case-studies/images/landrise-google-ads-dashboard.jpg",
-      "/case-studies/images/landrise-meta-ads-dashboard.jpg",
-      "/case-studies/images/myscape-palma-landing-page.jpg",
-      "/case-studies/images/jayabheri-pinnacle-landing-page.jpg",
-      "/case-studies/images/profound-vanam-landing-page.jpg",
-    ],
-
+    
     tags: [
       "Real Estate",
       "Google Ads",
@@ -97,7 +86,7 @@ export const reviews = [
     website: "https://urbanwoods-villas.com/",
 
     logo: "/reviews/images/sree-chaitanya.avif",
-    image: "/reviews/images/urban-woods-villas-review.jpg",
+  
 
     /*
       Draft only. Replace with an approved client testimonial.
@@ -129,17 +118,6 @@ export const reviews = [
       "Lead automation workflow",
     ],
 
-    video: "",
-
-    pdf:
-      "/case-studies/pdf/urban-woods-villas-case-study.pdf",
-
-    gallery: [
-      "/case-studies/images/urban-woods-villas-cover.jpg",
-      "/case-studies/images/urban-woods-google-ads-dashboard.jpg",
-      "/case-studies/images/urban-woods-meta-ads-dashboard.jpg",
-      "/case-studies/images/urban-woods-villas-homepage.jpg",
-    ],
 
     tags: [
       "Real Estate",
@@ -174,7 +152,7 @@ export const reviews = [
     website: "https://sujay-sierra.com/",
 
     logo: "/reviews/images/sujay.png",
-    image: "/reviews/images/sujay-sierra-review.jpg",
+   
 
     /*
       Draft only. Replace with an approved client testimonial.
@@ -205,10 +183,7 @@ export const reviews = [
       "Conversion tracking and analytics",
     ],
 
-    video: "",
-
-    pdf: "/case-studies/pdf/Sujay_Sierra_Branded_Reference_Report.pdf",
-
+  
     gallery: [
       "/case-studies/images/sujay-sierra-cover.jpg",
       "/case-studies/images/sujay-sierra-google-ads-dashboard.jpg",
