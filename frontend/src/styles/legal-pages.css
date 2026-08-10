@@ -1,17 +1,45 @@
 /* =====================================================
-   LEGAL PAGE
+   KEYROUTES LEGAL PAGES
+===================================================== */
+
+:root {
+  --kr-legal-red: #e10600;
+  --kr-legal-red-soft: #fff0f0;
+
+  --kr-legal-dark: #17191d;
+  --kr-legal-text: #1c1c1c;
+  --kr-legal-muted: #555555;
+
+  --kr-legal-border: #e5e5e5;
+
+  --kr-legal-bg: #f7f7f7;
+  --kr-legal-white: #ffffff;
+
+  --kr-legal-radius: 18px;
+
+  --kr-legal-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =====================================================
+   PAGE
 ===================================================== */
 
 .kr-legal-page {
+  width: 100%;
   min-height: 100vh;
-  background: #f7f7f7;
-  color: #1c1c1c;
+
+  background: var(--kr-legal-bg);
+  color: var(--kr-legal-text);
+
   overflow: visible;
 }
 
 .kr-legal-container {
-  width: min(1180px, calc(100% - 40px));
+  width: min(1240px, calc(100% - 40px));
+
   margin: 0 auto;
+
   overflow: visible;
 }
 
@@ -20,42 +48,70 @@
 ===================================================== */
 
 .kr-legal-hero {
+  width: 100%;
+
   padding: 110px 0 72px;
-  background: #17191d;
+
+  background: var(--kr-legal-dark);
+
   color: #ffffff;
 }
 
 .kr-legal-eyebrow {
   display: block;
+
   margin-bottom: 18px;
+
   color: #ef3934;
+
   font-size: 12px;
   font-weight: 800;
+
   letter-spacing: 0.16em;
+
+  text-transform: uppercase;
 }
 
 .kr-legal-hero h1 {
   max-width: 850px;
+
   margin: 0;
-  font-size: clamp(42px, 7vw, 76px);
+
+  color: #ffffff;
+
+  font-size: clamp(
+    42px,
+    7vw,
+    76px
+  );
+
   line-height: 0.98;
+
   letter-spacing: -0.045em;
 }
 
 .kr-legal-hero-description {
   max-width: 760px;
+
   margin: 25px 0 0;
+
   color: #c9cbd0;
+
   font-size: 18px;
+
   line-height: 1.75;
 }
 
 .kr-legal-dates {
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
+
+  gap: 12px 28px;
+
   margin-top: 30px;
+
   color: #aeb1b7;
+
   font-size: 13px;
 }
 
@@ -64,45 +120,85 @@
 }
 
 /* =====================================================
-   LAYOUT
+   MAIN LAYOUT
 ===================================================== */
+
 .kr-legal-layout {
   display: grid;
-  grid-template-columns: 270px minmax(0, 1fr);
+
+  grid-template-columns:
+    340px
+    minmax(0, 1fr);
+
   align-items: start;
-  gap: 46px;
+
+  gap: 38px;
+
   padding-top: 64px;
   padding-bottom: 90px;
+
   overflow: visible;
 }
 
 /* =====================================================
-   STICKY SIDEBAR
+   LEFT STICKY SIDEBAR
 ===================================================== */
+
 .kr-legal-sidebar {
   position: sticky;
-  top: 110px;
+
+  /*
+   * Keep this slightly below your navbar.
+   * Change to 90 / 100 / 120px depending on navbar height.
+   */
+  top: 105px;
+
   align-self: start;
-  z-index: 20;
+
+  width: 100%;
+
   min-width: 0;
-  max-height: calc(100vh - 140px);
+
+  z-index: 20;
+
+  overflow: visible;
 }
 
 .kr-legal-sidebar-inner {
   width: 100%;
-  max-height: calc(100vh - 140px);
+
+  /*
+   * Allows the card itself to scroll only if
+   * the navigation becomes taller than viewport.
+   */
+  max-height:
+    calc(100vh - 130px);
+
   overflow-y: auto;
+  overflow-x: hidden;
 
-  padding: 22px;
-  border: 1px solid #e5e5e5;
-  border-radius: 18px;
-  background: #ffffff;
+  padding: 28px;
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  border:
+    1px solid
+    var(--kr-legal-border);
+
+  border-radius: 20px;
+
+  background:
+    var(--kr-legal-white);
+
+  box-shadow:
+    0 14px 36px
+    rgba(0, 0, 0, 0.065);
 
   scrollbar-width: thin;
-  scrollbar-color: #d9d9d9 transparent;
+
+  scrollbar-color:
+    #d5d5d5
+    transparent;
 }
+
 .kr-legal-sidebar-inner::-webkit-scrollbar {
   width: 5px;
 }
@@ -113,144 +209,292 @@
 
 .kr-legal-sidebar-inner::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: #d9d9d9;
+
+  background: #d5d5d5;
 }
+
+/* =====================================================
+   SIDEBAR LABEL
+===================================================== */
+
 .kr-legal-sidebar-label {
   display: block;
-  margin-bottom: 14px;
+
+  margin-bottom: 18px;
+
   color: #888888;
+
   font-size: 10px;
   font-weight: 800;
+
   letter-spacing: 0.14em;
+
+  text-transform: uppercase;
 }
+
+/* =====================================================
+   SIDEBAR NAV
+===================================================== */
 
 .kr-legal-sidebar nav {
   display: grid;
-  gap: 7px;
+
+  gap: 8px;
 }
 
 .kr-legal-nav-link {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 13px;
-  border-radius: 9px;
+
+  gap: 14px;
+
+  width: 100%;
+
+  min-height: 48px;
+
+  padding: 13px 15px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 10px;
+
   color: #424242;
+
   font-size: 13px;
   font-weight: 650;
+
+  line-height: 1.45;
+
   text-decoration: none;
+
   transition:
     color 180ms ease,
-    background 180ms ease;
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .kr-legal-nav-link svg {
+  flex-shrink: 0;
+
+  color: currentColor;
+
   font-size: 10px;
-  opacity: 0.5;
+
+  opacity: 0.55;
 }
 
 .kr-legal-nav-link:hover {
-  background: #f5f5f5;
-  color: #e10600;
+  transform: translateX(3px);
+
+  border-color: #eeeeee;
+
+  background: #f6f6f6;
+
+  color: var(--kr-legal-red);
 }
 
 .kr-legal-nav-link.is-active {
-  background: #fff0f0;
-  color: #e10600;
+  border-color:
+    rgba(225, 6, 0, 0.12);
+
+  background:
+    var(--kr-legal-red-soft);
+
+  color:
+    var(--kr-legal-red);
 }
+
+/* =====================================================
+   SIDEBAR HELP
+===================================================== */
 
 .kr-legal-sidebar-help {
   display: grid;
+
   gap: 10px;
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: 1px solid #eeeeee;
+
+  margin-top: 26px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid
+    #eeeeee;
 }
 
 .kr-legal-sidebar-help > svg {
-  color: #e10600;
+  color:
+    var(--kr-legal-red);
+
+  font-size: 17px;
 }
 
 .kr-legal-sidebar-help strong {
   color: #202020;
+
   font-size: 14px;
+
+  line-height: 1.4;
 }
 
 .kr-legal-sidebar-help p {
   margin: 0;
+
   color: #737373;
+
   font-size: 12px;
-  line-height: 1.6;
+
+  line-height: 1.65;
 }
 
 .kr-legal-sidebar-help button {
   width: 100%;
-  min-height: 40px;
+
+  min-height: 42px;
+
+  padding: 0 14px;
+
   border: 0;
+
   border-radius: 8px;
-  background: #e10600;
+
+  background:
+    var(--kr-legal-red);
+
   color: #ffffff;
+
   font: inherit;
+
   font-size: 12px;
   font-weight: 700;
+
   cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.kr-legal-sidebar-help button:hover {
+  transform:
+    translateY(-1px);
+
+  background: #bd0500;
 }
 
 .kr-legal-sidebar-help a {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
-  color: #e10600;
+
+  color:
+    var(--kr-legal-red);
+
   font-size: 12px;
   font-weight: 700;
+
+  line-height: 1.5;
+
   text-decoration: none;
 }
 
 /* =====================================================
-   CONTENT
+   RIGHT CONTENT
 ===================================================== */
 
 .kr-legal-content {
   min-width: 0;
+
+  width: 100%;
 }
 
 .kr-legal-content > section {
+  width: 100%;
+
   margin-bottom: 22px;
-  padding: clamp(25px, 4vw, 42px);
-  border: 1px solid #e4e4e4;
-  border-radius: 18px;
+
+  padding:
+    clamp(
+      25px,
+      4vw,
+      42px
+    );
+
+  border:
+    1px solid
+    #e4e4e4;
+
+  border-radius:
+    var(--kr-legal-radius);
+
   background: #ffffff;
+
+  box-shadow:
+    0 6px 18px
+    rgba(0, 0, 0, 0.025);
+
+  scroll-margin-top: 120px;
 }
 
 .kr-legal-section-label {
   display: block;
+
   margin-bottom: 12px;
-  color: #e10600;
+
+  color:
+    var(--kr-legal-red);
+
   font-size: 11px;
   font-weight: 800;
+
   letter-spacing: 0.14em;
+
+  text-transform: uppercase;
 }
 
 .kr-legal-content h2 {
   margin: 0 0 18px;
+
   color: #191919;
-  font-size: clamp(24px, 3vw, 34px);
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      34px
+    );
+
   line-height: 1.2;
+
   letter-spacing: -0.025em;
 }
 
 .kr-legal-content h3 {
   margin: 0 0 10px;
+
   color: #202020;
+
   font-size: 18px;
+
+  line-height: 1.35;
 }
 
 .kr-legal-content p,
 .kr-legal-content li,
 .kr-legal-content address {
-  color: #555555;
+  color:
+    var(--kr-legal-muted);
+
   font-size: 15px;
+
   line-height: 1.8;
 }
 
@@ -265,13 +509,17 @@
 .kr-legal-content ul,
 .kr-legal-content ol {
   display: grid;
+
   gap: 9px;
+
   margin: 18px 0 0;
+
   padding-left: 20px;
 }
 
 .kr-legal-content a {
-  color: #e10600;
+  color:
+    var(--kr-legal-red);
 }
 
 .kr-legal-content address {
@@ -279,35 +527,57 @@
 }
 
 /* =====================================================
-   TABLE
+   LEGAL TABLE
 ===================================================== */
 
 .kr-legal-table-wrap {
+  width: 100%;
+
   overflow-x: auto;
+
   margin-top: 22px;
-  border: 1px solid #e5e5e5;
+
+  border:
+    1px solid
+    #e5e5e5;
+
   border-radius: 12px;
+
+  background: #ffffff;
 }
 
 .kr-legal-table-wrap table {
   width: 100%;
+
   min-width: 590px;
+
   border-collapse: collapse;
 }
 
 .kr-legal-table-wrap th,
 .kr-legal-table-wrap td {
-  padding: 15px 17px;
-  border-bottom: 1px solid #ececec;
+  padding:
+    15px 17px;
+
+  border-bottom:
+    1px solid
+    #ececec;
+
   text-align: left;
+
   vertical-align: top;
+
   font-size: 13px;
+
   line-height: 1.6;
 }
 
 .kr-legal-table-wrap th {
   background: #f7f7f7;
+
   color: #222222;
+
+  font-weight: 700;
 }
 
 .kr-legal-table-wrap td {
@@ -324,28 +594,47 @@
 
 .kr-cookie-category-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
   gap: 14px;
+
   margin-top: 22px;
 }
 
 .kr-cookie-category-grid article {
   padding: 21px;
-  border: 1px solid #e7e7e7;
+
+  border:
+    1px solid
+    #e7e7e7;
+
   border-radius: 13px;
+
   background: #fafafa;
 }
 
 .kr-cookie-category-grid article > span {
   display: block;
+
   margin-bottom: 10px;
-  color: #e10600;
+
+  color:
+    var(--kr-legal-red);
+
   font-size: 11px;
   font-weight: 800;
+
+  text-transform: uppercase;
 }
 
 .kr-cookie-category-grid article p {
   margin: 0;
+
   font-size: 13px;
 }
 
@@ -353,57 +642,104 @@
    SUPPORT CARD
 ===================================================== */
 
-.kr-legal-content > .kr-legal-support-card {
+.kr-legal-content
+  > .kr-legal-support-card {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
   gap: 20px;
+
   border-color: #f1c6c6;
+
   background: #fff8f8;
 }
 
 .kr-legal-support-icon {
   width: 48px;
+
   height: 48px;
+
   display: grid;
+
   place-items: center;
+
   border-radius: 13px;
-  background: #e10600;
+
+  background:
+    var(--kr-legal-red);
+
   color: #ffffff;
 }
 
 .kr-legal-support-actions {
   display: flex;
+
   flex-wrap: wrap;
+
   align-items: center;
+
   gap: 12px;
+
   margin-top: 22px;
 }
 
 .kr-legal-support-actions button,
 .kr-legal-support-actions a {
   min-height: 43px;
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   gap: 8px;
-  padding: 0 18px;
+
+  padding:
+    0 18px;
+
   border-radius: 8px;
+
   font: inherit;
+
   font-size: 13px;
   font-weight: 700;
+
   cursor: pointer;
+
   text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 .kr-legal-support-actions button {
   border: 0;
-  background: #e10600;
+
+  background:
+    var(--kr-legal-red);
+
   color: #ffffff;
 }
 
+.kr-legal-support-actions button:hover {
+  transform:
+    translateY(-1px);
+
+  background: #bd0500;
+}
+
 .kr-legal-support-actions a {
-  border: 1px solid #dfbcbc;
+  border:
+    1px solid
+    #dfbcbc;
+
   background: #ffffff;
+
   color: #b9211d;
 }
 
@@ -413,90 +749,260 @@
 
 .kr-legal-scroll-top {
   position: fixed;
+
   right: 24px;
+
   bottom: 24px;
+
   z-index: 40;
+
   width: 44px;
+
   height: 44px;
+
   display: grid;
+
   place-items: center;
+
   border: 0;
+
   border-radius: 50%;
+
   background: #1e2024;
+
   color: #ffffff;
+
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.kr-legal-scroll-top:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    var(--kr-legal-red);
 }
 
 /* =====================================================
-   RESPONSIVE
+   LARGE DESKTOP
 ===================================================== */
+
+@media (min-width: 1300px) {
+  .kr-legal-layout {
+    grid-template-columns:
+      360px
+      minmax(0, 1fr);
+
+    gap: 42px;
+  }
+
+  .kr-legal-sidebar-inner {
+    padding: 30px;
+  }
+}
+
+/* =====================================================
+   TABLET / SMALL DESKTOP
+===================================================== */
+
+@media (max-width: 1050px) {
+  .kr-legal-layout {
+    grid-template-columns:
+      300px
+      minmax(0, 1fr);
+
+    gap: 28px;
+  }
+
+  .kr-legal-sidebar-inner {
+    padding: 22px;
+  }
+}
+
+/* =====================================================
+   TABLET — STACK SIDEBAR ABOVE CONTENT
+===================================================== */
+
 @media (max-width: 900px) {
   .kr-legal-layout {
     grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    padding-top: 40px;
   }
 
   .kr-legal-sidebar {
     position: static;
+
     top: auto;
+
+    width: 100%;
+
     max-height: none;
+
+    z-index: auto;
   }
 
   .kr-legal-sidebar-inner {
+    width: 100%;
+
     max-height: none;
+
     overflow: visible;
+
+    padding: 20px;
   }
 
   .kr-legal-sidebar nav {
     grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 9px;
   }
 
   .kr-legal-nav-link {
-    border: 1px solid #eeeeee;
+    border:
+      1px solid
+      #eeeeee;
+  }
+
+  .kr-legal-nav-link:hover {
+    transform: none;
   }
 
   .kr-legal-sidebar-help {
     display: none;
   }
 }
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media (max-width: 680px) {
   .kr-legal-container {
-    width: min(100% - 24px, 1180px);
+    width:
+      calc(
+        100% - 24px
+      );
   }
 
   .kr-legal-hero {
-    padding: 88px 0 52px;
+    padding:
+      88px 0
+      52px;
+  }
+
+  .kr-legal-eyebrow {
+    font-size: 10px;
+  }
+
+  .kr-legal-hero h1 {
+    font-size:
+      clamp(
+        36px,
+        11vw,
+        54px
+      );
+
+    line-height: 1.03;
   }
 
   .kr-legal-hero-description {
+    margin-top: 20px;
+
     font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .kr-legal-dates {
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 24px;
   }
 
   .kr-legal-layout {
-    gap: 25px;
+    gap: 24px;
+
     padding-top: 30px;
+
     padding-bottom: 60px;
   }
 
   .kr-legal-sidebar-inner {
     padding: 14px;
+
+    border-radius: 14px;
+  }
+
+  .kr-legal-sidebar-label {
+    margin-bottom: 12px;
   }
 
   .kr-legal-sidebar nav {
     grid-template-columns: 1fr;
   }
 
+  .kr-legal-nav-link {
+    min-height: 45px;
+
+    padding:
+      11px 13px;
+
+    font-size: 12px;
+  }
+
+  .kr-legal-content > section {
+    padding: 22px;
+
+    border-radius: 14px;
+
+    scroll-margin-top: 90px;
+  }
+
+  .kr-legal-content h2 {
+    font-size: 25px;
+  }
+
+  .kr-legal-content h3 {
+    font-size: 17px;
+  }
+
+  .kr-legal-content p,
+  .kr-legal-content li,
+  .kr-legal-content address {
+    font-size: 14px;
+
+    line-height: 1.75;
+  }
+
   .kr-cookie-category-grid {
     grid-template-columns: 1fr;
   }
 
-  .kr-legal-content > .kr-legal-support-card {
+  .kr-legal-content
+    > .kr-legal-support-card {
     grid-template-columns: 1fr;
   }
 
   .kr-legal-support-actions {
     align-items: stretch;
+
     flex-direction: column;
   }
 
@@ -507,6 +1013,165 @@
 
   .kr-legal-scroll-top {
     right: 14px;
+
     bottom: 14px;
+
+    width: 42px;
+
+    height: 42px;
+  }
+}
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+  .kr-legal-container {
+    width:
+      calc(
+        100% - 20px
+      );
+  }
+
+  .kr-legal-hero {
+    padding:
+      80px 0
+      44px;
+  }
+
+  .kr-legal-content > section {
+    padding: 18px;
+  }
+
+  .kr-legal-content h2 {
+    font-size: 23px;
+  }
+
+  .kr-legal-nav-link {
+    font-size: 12px;
+  }
+
+  .kr-legal-table-wrap {
+    margin-left: 0;
+
+    margin-right: 0;
+  }
+}
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+@media print {
+  .kr-legal-page {
+    background: #ffffff;
+  }
+
+  .kr-legal-hero {
+    padding:
+      30px 0;
+
+    background: #ffffff;
+
+    color: #000000;
+  }
+
+  .kr-legal-hero h1 {
+    color: #000000;
+  }
+
+  .kr-legal-hero-description,
+  .kr-legal-dates {
+    color: #444444;
+  }
+
+  .kr-legal-sidebar,
+  .kr-legal-scroll-top {
+    display: none;
+  }
+
+  .kr-legal-layout {
+    display: block;
+
+    padding:
+      30px 0;
+  }
+
+  .kr-legal-content > section {
+    break-inside: avoid;
+
+    page-break-inside: avoid;
+
+    box-shadow: none;
+  }
+}
+
+/* =====================================================
+   FINAL LEGAL DESKTOP STICKY SIDEBAR
+===================================================== */
+
+@media (min-width: 901px) {
+  .kr-legal-page {
+    overflow: visible !important;
+  }
+
+  .kr-legal-container {
+    overflow: visible !important;
+  }
+
+  .kr-legal-layout {
+    display: grid;
+
+    grid-template-columns:
+      340px minmax(0, 1fr);
+
+    gap: 38px;
+
+    align-items: start;
+
+    overflow: visible !important;
+  }
+
+  .kr-legal-sidebar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+
+    top: 100px;
+
+    align-self: start;
+
+    width: 100%;
+    height: fit-content;
+
+    z-index: 20;
+
+    overflow: visible !important;
+  }
+
+  .kr-legal-sidebar-inner {
+    width: 100%;
+
+    max-height: calc(100vh - 125px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+
+    box-shadow:
+      0 14px 36px rgba(0, 0, 0, 0.06);
+  }
+
+  .kr-legal-content {
+    width: 100%;
+    min-width: 0;
+
+    overflow: visible !important;
   }
 }

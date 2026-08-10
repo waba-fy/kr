@@ -70,12 +70,16 @@ const ReportProblemModal = ({
   isOpen,
   onClose,
 }) => {
-  const [formData, setFormData] = useState(initialForm);
+  const [formData, setFormData] =
+    useState(initialForm);
+
   const [status, setStatus] = useState({
     type: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
+
+  const [loading, setLoading] =
+    useState(false);
 
   useEffect(() => {
     if (!isOpen) {
@@ -91,27 +95,51 @@ const ReportProblemModal = ({
           : ""),
     }));
 
+    const previousOverflow =
+      document.body.style.overflow;
+
     const handleEscape = (event) => {
-      if (event.key === "Escape") {
+      if (
+        event.key === "Escape" &&
+        !loading
+      ) {
         onClose();
       }
     };
 
-    document.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
+    document.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    document.body.style.overflow =
+      "hidden";
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+
+      document.body.style.overflow =
+        previousOverflow;
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, loading]);
 
   const updateField = (event) => {
-    const { name, value, type, checked } = event.target;
+    const {
+      name,
+      value,
+      type,
+      checked,
+    } = event.target;
 
     setFormData((current) => ({
       ...current,
-      [name]: type === "checkbox" ? checked : value,
+      [name]:
+        type === "checkbox"
+          ? checked
+          : value,
     }));
 
     if (status.message) {
@@ -134,7 +162,11 @@ const ReportProblemModal = ({
       return "Please enter your email address.";
     }
 
-    if (!emailPattern.test(formData.email.trim())) {
+    if (
+      !emailPattern.test(
+        formData.email.trim()
+      )
+    ) {
       return "Please enter a valid email address.";
     }
 
@@ -142,7 +174,10 @@ const ReportProblemModal = ({
       return "Please select the type of issue.";
     }
 
-    if (formData.description.trim().length < 15) {
+    if (
+      formData.description.trim().length <
+      15
+    ) {
       return "Please provide at least 15 characters describing the issue.";
     }
 
@@ -156,18 +191,25 @@ const ReportProblemModal = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const validationMessage = validateForm();
+    if (loading) {
+      return;
+    }
+
+    const validationMessage =
+      validateForm();
 
     if (validationMessage) {
       setStatus({
         type: "error",
         message: validationMessage,
       });
+
       return;
     }
 
     try {
       setLoading(true);
+
       setStatus({
         type: "",
         message: "",
@@ -177,23 +219,45 @@ const ReportProblemModal = ({
         `${API_BASE_URL}/support/report-problem`,
         {
           method: "POST",
+
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
+
           body: JSON.stringify({
-            name: formData.name.trim(),
-            email: formData.email.trim().toLowerCase(),
-            issueType: formData.issueType,
-            pageUrl: formData.pageUrl.trim(),
-            description: formData.description.trim(),
-            submittedAt: new Date().toISOString(),
+            name:
+              formData.name.trim(),
+
+            email:
+              formData.email
+                .trim()
+                .toLowerCase(),
+
+            issueType:
+              formData.issueType,
+
+            pageUrl:
+              formData.pageUrl.trim(),
+
+            description:
+              formData.description.trim(),
+
+            submittedAt:
+              new Date().toISOString(),
           }),
         }
       );
 
-      const result = await response.json().catch(() => ({}));
+      const result =
+        await response
+          .json()
+          .catch(() => ({}));
 
-      if (!response.ok || result.success === false) {
+      if (
+        !response.ok ||
+        result.success === false
+      ) {
         throw new Error(
           result.message ||
             "Unable to submit your report right now."
@@ -209,16 +273,21 @@ const ReportProblemModal = ({
 
       setFormData({
         ...initialForm,
+
         pageUrl:
           typeof window !== "undefined"
             ? window.location.href
             : "",
       });
     } catch (error) {
-      console.error("Report problem error:", error);
+      console.error(
+        "Report problem error:",
+        error
+      );
 
       setStatus({
         type: "error",
+
         message:
           error.message ||
           "Unable to submit your report. Please email hello@keyroutes.co.",
@@ -226,6 +295,14 @@ const ReportProblemModal = ({
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClose = () => {
+    if (loading) {
+      return;
+    }
+
+    onClose();
   };
 
   if (!isOpen) {
@@ -237,8 +314,12 @@ const ReportProblemModal = ({
       className="kr-problem-modal-overlay"
       role="presentation"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose();
+        if (
+          event.target ===
+            event.currentTarget &&
+          !loading
+        ) {
+          handleClose();
         }
       }}
     >
@@ -247,11 +328,13 @@ const ReportProblemModal = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="kr-problem-modal-title"
+        aria-busy={loading}
       >
         <button
           type="button"
           className="kr-problem-modal-close"
-          onClick={onClose}
+          onClick={handleClose}
+          disabled={loading}
           aria-label="Close report a problem form"
         >
           <FaTimes />
@@ -285,182 +368,190 @@ const ReportProblemModal = ({
           onSubmit={handleSubmit}
           noValidate
         >
-          <div className="kr-problem-form-grid">
-            <div className="kr-problem-field">
-              <label htmlFor="problem-name">
-                Name <span>*</span>
-              </label>
+          <fieldset
+            disabled={loading}
+            className="kr-problem-fieldset"
+          >
+            <div className="kr-problem-form-grid">
+              <div className="kr-problem-field">
+                <label htmlFor="problem-name">
+                  Name <span>*</span>
+                </label>
 
-              <input
-                id="problem-name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={updateField}
-                placeholder="Enter your full name"
-                autoComplete="name"
-                disabled={loading}
-              />
+                <input
+                  id="problem-name"
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={updateField}
+                  placeholder="Enter your full name"
+                  autoComplete="name"
+                />
+              </div>
+
+              <div className="kr-problem-field">
+                <label htmlFor="problem-email">
+                  Email address <span>*</span>
+                </label>
+
+                <input
+                  id="problem-email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={updateField}
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                />
+              </div>
             </div>
 
             <div className="kr-problem-field">
-              <label htmlFor="problem-email">
-                Email address <span>*</span>
+              <label htmlFor="problem-issue-type">
+                Select the issue <span>*</span>
               </label>
 
-              <input
-                id="problem-email"
-                name="email"
-                type="email"
-                value={formData.email}
+              <select
+                id="problem-issue-type"
+                name="issueType"
+                value={formData.issueType}
                 onChange={updateField}
-                placeholder="you@example.com"
-                autoComplete="email"
-                disabled={loading}
-              />
-            </div>
-          </div>
-
-          <div className="kr-problem-field">
-            <label htmlFor="problem-issue-type">
-              Select the issue <span>*</span>
-            </label>
-
-            <select
-              id="problem-issue-type"
-              name="issueType"
-              value={formData.issueType}
-              onChange={updateField}
-              disabled={loading}
-            >
-              <option value="">
-                Choose an issue type
-              </option>
-
-              {ISSUE_OPTIONS.map((option) => (
-                <option
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.label}
+              >
+                <option value="">
+                  Choose an issue type
                 </option>
-              ))}
-            </select>
-          </div>
 
-          <div className="kr-problem-field">
-            <label htmlFor="problem-page-url">
-              Related page URL
+                {ISSUE_OPTIONS.map(
+                  (option) => (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </option>
+                  )
+                )}
+              </select>
+            </div>
+
+            <div className="kr-problem-field">
+              <label htmlFor="problem-page-url">
+                Related page URL
+              </label>
+
+              <input
+                id="problem-page-url"
+                name="pageUrl"
+                type="url"
+                value={formData.pageUrl}
+                onChange={updateField}
+                placeholder="https://keyroutes.co/page"
+              />
+
+              <small>
+                The current page is added automatically. You may
+                replace it with another KeyRoutes page.
+              </small>
+            </div>
+
+            <div className="kr-problem-field">
+              <label htmlFor="problem-description">
+                Description <span>*</span>
+              </label>
+
+              <textarea
+                id="problem-description"
+                name="description"
+                rows="6"
+                value={formData.description}
+                onChange={updateField}
+                placeholder="Describe the problem, the information involved, and the action you would like us to take."
+              />
+
+              <small>
+                Do not include passwords, payment details,
+                government identification numbers, or other highly
+                sensitive information.
+              </small>
+            </div>
+
+            <label className="kr-problem-consent">
+              <input
+                type="checkbox"
+                name="consent"
+                checked={formData.consent}
+                onChange={updateField}
+              />
+
+              <span>
+                I confirm that the information provided is accurate
+                and permit KeyRoutes to contact me regarding this
+                report.
+              </span>
             </label>
 
-            <input
-              id="problem-page-url"
-              name="pageUrl"
-              type="url"
-              value={formData.pageUrl}
-              onChange={updateField}
-              placeholder="https://keyroutes.co/page"
-              disabled={loading}
-            />
-
-            <small>
-              The current page is added automatically. You may
-              replace it with another KeyRoutes page.
-            </small>
-          </div>
-
-          <div className="kr-problem-field">
-            <label htmlFor="problem-description">
-              Description <span>*</span>
-            </label>
-
-            <textarea
-              id="problem-description"
-              name="description"
-              rows="6"
-              value={formData.description}
-              onChange={updateField}
-              placeholder="Describe the problem, the information involved, and the action you would like us to take."
-              disabled={loading}
-            />
-
-            <small>
-              Do not include passwords, payment details, government
-              identification numbers, or other highly sensitive
-              information.
-            </small>
-          </div>
-
-          <label className="kr-problem-consent">
-            <input
-              type="checkbox"
-              name="consent"
-              checked={formData.consent}
-              onChange={updateField}
-              disabled={loading}
-            />
-
-            <span>
-              I confirm that the information provided is accurate
-              and permit KeyRoutes to contact me regarding this
-              report.
-            </span>
-          </label>
-
-          {status.message && (
-            <div
-              className={`kr-problem-status ${
-                status.type === "success"
-                  ? "is-success"
-                  : "is-error"
-              }`}
-              role={
-                status.type === "error"
-                  ? "alert"
-                  : "status"
-              }
-              aria-live="polite"
-            >
-              {status.type === "success" ? (
-                <FaCheckCircle />
-              ) : (
-                <FaExclamationTriangle />
-              )}
-
-              <span>{status.message}</span>
-            </div>
-          )}
-
-          <div className="kr-problem-form-footer">
-            <p >
-              You can also contact us directly at{" "}
-              <a href="mailto:hello@keyroutes.co">
-                <FaEnvelope />
-                hello@keyroutes.co
-              </a>
-            </p>
-
-            <div className="kr-problem-form-actions">
-              <button
-                type="button"
-                className="kr-problem-cancel"
-                onClick={onClose}
-                disabled={loading}
+            {status.message && (
+              <div
+                className={`kr-problem-status ${
+                  status.type === "success"
+                    ? "is-success"
+                    : "is-error"
+                }`}
+                role={
+                  status.type === "error"
+                    ? "alert"
+                    : "status"
+                }
+                aria-live="polite"
               >
-                Cancel
-              </button>
+                {status.type ===
+                "success" ? (
+                  <FaCheckCircle />
+                ) : (
+                  <FaExclamationTriangle />
+                )}
 
-              <button
-                type="submit"
-                className="kr-problem-submit"
-                disabled={loading}
-              >
-                {loading
-                  ? "Submitting..."
-                  : "Submit Report"}
-              </button>
+                <span>
+                  {status.message}
+                </span>
+              </div>
+            )}
+
+            <div className="kr-problem-form-footer">
+              <p>
+                You can also contact us directly at{" "}
+                <a href="mailto:hello@keyroutes.co">
+                  <FaEnvelope />
+                  hello@keyroutes.co
+                </a>
+              </p>
+
+              <div className="kr-problem-form-actions">
+                <button
+                  type="button"
+                  className="kr-problem-cancel"
+                  onClick={handleClose}
+                  disabled={loading}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className={`kr-problem-submit ${
+                    loading
+                      ? "is-submitting"
+                      : ""
+                  }`}
+                  disabled={loading}
+                >
+                  {loading
+                    ? "Submitting..."
+                    : "Submit Report"}
+                </button>
+              </div>
             </div>
-          </div>
+          </fieldset>
         </form>
       </section>
     </div>

@@ -1,6 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
-  FaArrowUp,
   FaEnvelope,
   FaExclamationTriangle,
   FaExternalLinkAlt,
@@ -29,11 +28,13 @@ const LegalLayout = ({
   updatedDate = "24 July 2026",
   children,
   onReportProblem,
-})=> {
-  
-
+}) => {
   return (
     <main className="kr-legal-page">
+      {/* ==========================================
+          HERO
+      ========================================== */}
+
       <header className="kr-legal-hero">
         <div className="kr-legal-container">
           <span className="kr-legal-eyebrow">
@@ -50,18 +51,31 @@ const LegalLayout = ({
 
           <div className="kr-legal-dates">
             <span>
-              <strong>Effective:</strong> {effectiveDate}
+              <strong>Effective:</strong>{" "}
+              {effectiveDate}
             </span>
 
             <span>
-              <strong>Last updated:</strong> {updatedDate}
+              <strong>Last updated:</strong>{" "}
+              {updatedDate}
             </span>
           </div>
         </div>
       </header>
 
+      {/* ==========================================
+          CONTENT LAYOUT
+      ========================================== */}
+
       <div className="kr-legal-container kr-legal-layout">
-        <aside className="kr-legal-sidebar">
+        {/* ========================================
+            STICKY LEFT SIDEBAR
+        ======================================== */}
+
+        <aside
+          className="kr-legal-sidebar"
+          aria-label="Legal navigation"
+        >
           <div className="kr-legal-sidebar-inner">
             <span className="kr-legal-sidebar-label">
               LEGAL DOCUMENTS
@@ -72,8 +86,6 @@ const LegalLayout = ({
                 <NavLink
                   key={page.path}
                   to={page.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={({ isActive }) =>
                     isActive
                       ? "kr-legal-nav-link is-active"
@@ -81,22 +93,35 @@ const LegalLayout = ({
                   }
                 >
                   <span>{page.label}</span>
-                  <FaExternalLinkAlt />
+
+                  <FaExternalLinkAlt
+                    aria-hidden="true"
+                  />
                 </NavLink>
               ))}
             </nav>
 
-            <div className="kr-legal-sidebar-help">
-              <FaExclamationTriangle />
+            {/* ====================================
+                SIDEBAR HELP
+            ==================================== */}
 
-              <strong>Need assistance?</strong>
+            <div className="kr-legal-sidebar-help">
+              <FaExclamationTriangle
+                aria-hidden="true"
+              />
+
+              <strong>
+                Need assistance?
+              </strong>
 
               <p>
-                Report a privacy, content, data, accessibility,
-                security or website concern.
+                Report a privacy, content, data,
+                accessibility, security or website
+                concern.
               </p>
 
-              {typeof onReportProblem === "function" && (
+              {typeof onReportProblem ===
+                "function" && (
                 <button
                   type="button"
                   onClick={onReportProblem}
@@ -106,19 +131,32 @@ const LegalLayout = ({
               )}
 
               <a href="mailto:hello@keyroutes.co">
-                <FaEnvelope />
-                hello@keyroutes.co
+                <FaEnvelope aria-hidden="true" />
+
+                <span>
+                  hello@keyroutes.co
+                </span>
               </a>
             </div>
           </div>
         </aside>
 
+        {/* ========================================
+            RIGHT LEGAL CONTENT
+        ======================================== */}
+
         <article className="kr-legal-content">
           {children}
 
+          {/* ======================================
+              SUPPORT CARD
+          ====================================== */}
+
           <section className="kr-legal-support-card">
             <div className="kr-legal-support-icon">
-              <FaExclamationTriangle />
+              <FaExclamationTriangle
+                aria-hidden="true"
+              />
             </div>
 
             <div>
@@ -126,18 +164,23 @@ const LegalLayout = ({
                 QUESTIONS, REQUESTS OR CONCERNS
               </span>
 
-              <h2>Report a legal or website issue</h2>
+              <h2>
+                Report a legal or website issue
+              </h2>
 
               <p>
-                Contact us to request access, correction or
-                deletion of personal data, withdraw consent,
-                report inaccurate content, or raise a privacy,
-                cookie, security, accessibility, copyright or
+                Contact us to request access,
+                correction or deletion of personal
+                data, withdraw consent, report
+                inaccurate content, or raise a
+                privacy, cookie, security,
+                accessibility, copyright or
                 technical concern.
               </p>
 
               <div className="kr-legal-support-actions">
-                {typeof onReportProblem === "function" && (
+                {typeof onReportProblem ===
+                  "function" && (
                   <button
                     type="button"
                     onClick={onReportProblem}
@@ -147,16 +190,17 @@ const LegalLayout = ({
                 )}
 
                 <a href="mailto:hello@keyroutes.co">
-                  <FaEnvelope />
-                  hello@keyroutes.co
+                  <FaEnvelope aria-hidden="true" />
+
+                  <span>
+                    hello@keyroutes.co
+                  </span>
                 </a>
               </div>
             </div>
           </section>
         </article>
       </div>
-
-      
     </main>
   );
 };

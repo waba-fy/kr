@@ -324,3 +324,30 @@
 }
 
 }
+
+.kr-problem-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.kr-problem-submit.is-submitting,
+.kr-problem-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.kr-problem-modal-close:disabled,
+.kr-problem-cancel:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.kr-problem-fieldset:disabled input,
+.kr-problem-fieldset:disabled select,
+.kr-problem-fieldset:disabled textarea {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
