@@ -80,7 +80,7 @@ export const clientStories = [
 
       location: "Hyderabad, India",
 
-      projectsSupported: 4,
+      projectsSupported: 5,
 
       highlights: [
         {
@@ -92,7 +92,7 @@ export const clientStories = [
           label: "Engagement Status",
         },
         {
-          value: "4",
+          value: "5",
           label: "Projects Supported",
         },
         {
@@ -393,80 +393,102 @@ export const clientStories = [
     /* =====================================================
        7. WEBSITE SHOWCASE
     ===================================================== */
+showcase: {
+  eyebrow: "WEBSITE SHOWCASE",
 
-    showcase: {
-      eyebrow: "WEBSITE SHOWCASE",
+  title:
+    "Dedicated Digital Experiences Across Five Real Estate Projects",
 
-      title:
-        "Dedicated Digital Experiences for Individual Real Estate Projects",
+  description:
+    "The Landrise Realty portfolio is supported through project-specific websites and landing pages designed to communicate each development clearly, align with campaign messaging and guide prospective buyers towards enquiry actions.",
 
-      description:
-        "Each project was supported through a focused landing-page experience designed to communicate the property clearly and guide prospective buyers towards enquiry actions.",
+  websites: [
+    {
+      id: "myscape-palma",
 
-      websites: [
-        {
-          id: "jayabheri-pinnacle",
+      name: "Myscape Palma",
 
-          name: "Jayabheri Pinnacle",
+      category:
+        "Residential Project Experience",
 
-          category: "Residential Project Experience",
+      image:
+        "/case-studies/images/myscape-palma.png",
 
-          image:
-            "/case-studies/images/jayabheri-web.png",
+      website:
+        "https://myscapepalma.com/",
 
-          website:
-            "https://jayabheripinnacle.com/",
-
-          status: "READY TO MOVE",
-        },
-        {
-          id: "profound-vanam",
-
-          name: "Profound Vanam",
-
-          category: "Residential Project Experience",
-
-          image:
-            "/case-studies/images/profound-vanam.png",
-
-          website:
-            "https://profoundvanam.in/",
-
-          status: "UNDER CONSTRUCTION",
-        },
-        {
-          id: "myscape-palma",
-
-          name: "Myscape Palma",
-
-          category: "Residential Project Experience",
-
-          image:
-            "/case-studies/images/myscape-palma.png",
-
-          website:
-            "https://myscapepalma.com/",
-
-          status: "READY TO MOVE",
-        },
-        {
-          id: "ramky-one",
-
-          name: "Ramkyone-Odyssey",
-
-          category: "Residential Project Experience",
-
-          image:
-            "/case-studies/images/ramky-one.png",
-
-          website:
-            "https://ramkyone-odyssey.in/",
-
-          status: "READY TO MOVE",
-        },
-      ],
+      status: "READY TO MOVE",
     },
 
+    {
+      id: "jayabheri-pinnacle",
+
+      name: "Jayabheri Pinnacle",
+
+      category:
+        "Residential Project Experience",
+
+      image:
+        "/case-studies/images/jayabheri-web.png",
+
+      website:
+        "https://jayabheripinnacle.com/",
+
+      status: "READY TO MOVE",
+    },
+
+    {
+      id: "jayabheri-nirvana",
+
+      name: "Jayabheri Nirvana",
+
+      category:
+        "Residential Project Experience",
+
+      image:
+        "/case-studies/images/jayabheri-nirvana.png",
+
+      website:
+        "https://www.jayabherinirvana.in/",
+
+      status: "READY TO MOVE",
+    },
+
+    {
+      id: "profound-vanam",
+
+      name: "Profound Vanam",
+
+      category:
+        "Residential Project Experience",
+
+      image:
+        "/case-studies/images/profound-vanam.png",
+
+      website:
+        "https://profoundvanam.in/",
+
+      status: "UNDER CONSTRUCTION",
+    },
+
+    {
+      id: "ramkyone-odyssey",
+
+      name: "Ramky One Odyssey",
+
+      category:
+        "Residential Project Experience",
+
+      image:
+        "/case-studies/images/ramky-one.png",
+
+      website:
+        "https://ramkyone-odyssey.in/",
+
+      status: "UNDER CONSTRUCTION",
+    },
+  ],
+},
     /* =====================================================
        8. WHY IT WORKED
     ===================================================== */
@@ -592,117 +614,151 @@ export const clientStories = [
   ===================================================== */
 
   hero: {
-    eyebrow: "CLIENT SUCCESS STORY",
+  eyebrow: "CLIENT SUCCESS STORY",
 
-    title: "Urban Woods Villas",
+  title: "Landrise Realty",
 
-    subtitle: "Premium Villa Community",
+  subtitle:
+    "Five-Project Real Estate Digital Growth Partnership",
 
-    location: "Thimmapur, Hyderabad",
+  location: "Madhapur, Hyderabad",
 
-    services:
-      "Website • Google Ads • Meta Ads • SEO • Lead Automation",
+  services:
+    "Project Websites • Landing Pages • Google Ads • Meta Ads • Lead Automation",
 
-    result:
-      "From a New Digital Presence to a Connected Lead-Generation System",
+  result:
+    "A Scalable Digital Growth System Supporting Five Real Estate Projects",
 
-    description:
-      "KeyRoutes partnered with Sree Chaitanya Constructions to build a complete digital growth ecosystem for Urban Woods Villas, combining website development, paid campaigns, search visibility, analytics and structured lead workflows.",
+  description:
+    "KeyRoutes partners with Landrise Realty across a growing five-project residential portfolio, connecting dedicated project websites and landing pages, Google Ads, Meta Ads, conversion tracking, lead reporting, automation and continuous campaign optimisation.",
 
-    logo:
-      "/reviews/images/sree-chaitanya.avif",
+  logo:
+    "/reviews/images/landrise.png",
 
-    coverImage:
-      "/case-studies/images/urbanwoods-web.png",
+  coverImage:
+    "/case-studies/images/jayabheri-web.png",
 
-    status: "ONGOING PARTNERSHIP",
+  status: "ONGOING PARTNERSHIP",
 
-    primaryAction: {
-      label: "Explore the Success Story",
-
-      href: "#partnership",
-    },
-
-    secondaryAction: {
-      label: "View Detailed Case Study",
-
-      href: "/case-studies/urban-woods-villas",
-    },
+  primaryAction: {
+    label: "Explore the Success Story",
+    href: "#partnership",
   },
+
+  secondaryAction: {
+    label: "View Detailed Case Study",
+    href: "/case-studies/landrise-realty",
+  },
+},
 
   /* =====================================================
      2. PARTNERSHIP SNAPSHOT
   ===================================================== */
+partnership: {
+  eyebrow: "PARTNERSHIP SNAPSHOT",
 
-  partnership: {
-    eyebrow: "PARTNERSHIP SNAPSHOT",
+  title:
+    "A Long-Term Growth Partnership Across Five Residential Developments",
 
-    title:
-      "Building the Digital Foundation for a Premium Villa Community",
+  description:
+    "The partnership began in 2024 and continues across five real estate projects. Each development receives project-specific positioning, website or landing-page communication and campaign support while using one consistent framework for lead generation, attribution, reporting and ongoing optimisation.",
 
-    description:
-      "The partnership began in May 2026 with the objective of building a complete digital presence for Urban Woods Villas. KeyRoutes connected the project website, landing pages, Google Ads, Meta Ads, SEO, analytics and lead automation into one coordinated system.",
+  since: "2024",
 
-    since: "May 2026",
+  duration: "2024–Present",
 
-    duration: "May 2026–Present",
+  status: "Ongoing",
 
-    status: "Ongoing",
+  category:
+    "Real Estate Marketing Partnership",
 
-    category: "Premium Villa Community",
+  projectType:
+    "Five-Project Residential Portfolio",
 
-    projectType: "Luxury Villas",
+  location:
+    "Hyderabad, India",
 
-    location: "Thimmapur, Hyderabad",
+  projectsSupported: 5,
 
-    projectsSupported: 1,
+  highlights: [
+    {
+      value: "2024",
+      label: "Partnership Started",
+    },
+    {
+      value: "Ongoing",
+      label: "Engagement Status",
+    },
+    {
+      value: "5",
+      label: "Projects Supported",
+    },
+    {
+      value: "Google + Meta",
+      label: "Paid Media Channels",
+    },
+  ],
 
-    highlights: [
-      {
-        value: "May 2026",
+  channels: [
+    "Project Websites",
+    "Landing Pages",
+    "Google Ads",
+    "Meta Ads",
+    "Conversion Tracking",
+    "Analytics",
+    "Lead Reporting",
+    "Lead Automation",
+  ],
 
-        label: "Partnership Started",
-      },
-      {
-        value: "Ongoing",
+  projects: [
+    {
+      id: "myscape-palma",
+      name: "Myscape Palma",
+      website: "https://myscapepalma.com/",
+      status: "READY TO MOVE",
+      coverImage:
+        "/case-studies/images/myscape-palma.png",
+    },
 
-        label: "Engagement Status",
-      },
-      {
-        value: "Premium Villas",
+    {
+      id: "jayabheri-pinnacle",
+      name: "Jayabheri Pinnacle",
+      website: "https://jayabheripinnacle.com/",
+      status: "READY TO MOVE",
+      coverImage:
+        "/case-studies/images/jayabheri-web.png",
+    },
 
-        label: "Project Category",
-      },
-      {
-        value: "Google + Meta + Website",
+    {
+      id: "jayabheri-nirvana",
+      name: "Jayabheri Nirvana",
+      website:
+        "https://www.jayabherinirvana.in/",
+      status: "READY TO MOVE",
+      coverImage:
+        "/case-studies/images/jayabheri-nirvana.png",
+    },
 
-        label: "Digital Growth Channels",
-      },
-    ],
+    {
+      id: "profound-vanam",
+      name: "Profound Vanam",
+      website: "https://profoundvanam.in/",
+      status: "UNDER CONSTRUCTION",
+      coverImage:
+        "/case-studies/images/profound-vanam.png",
+    },
 
-    channels: [
-      "Website Development",
-      "Landing Pages",
-      "Google Ads",
-      "Meta Ads",
-      "SEO",
-      "GEO Optimisation",
-      "Analytics",
-      "Lead Automation",
-    ],
-
-    projects: [
-      {
-        id: "urban-woods-villas",
-
-        name: "Urban Woods Villas",
-
-        website: "https://urbanwoods-villas.com/",
-
-        status: "UNDER CONSTRUCTION",
-      },
-    ],
-  },
+    {
+      id: "ramkyone-odyssey",
+      name: "Ramky One Odyssey",
+      website:
+        "https://ramkyone-odyssey.in/",
+      status: "UNDER CONSTRUCTION",
+      coverImage:
+        "/case-studies/images/ramky-one.png",
+    },
+  ],
+},
 
   /* =====================================================
      3. HAPPY CLIENT
@@ -1244,68 +1300,80 @@ export const clientStories = [
   /* =====================================================
      4. WHAT KEYROUTES DELIVERED
   ===================================================== */
+servicesDelivered: {
+  eyebrow: "WHAT KEYROUTES DELIVERED",
 
-  servicesDelivered: {
-    eyebrow: "WHAT KEYROUTES DELIVERED",
+  title:
+    "One Connected Digital Growth Framework Across Five Real Estate Projects",
 
-    title:
-      "One Connected Customer Acquisition System",
+  description:
+    "KeyRoutes created a repeatable digital system that allows each development to maintain its own positioning and buyer journey while benefiting from shared campaign management, conversion tracking, reporting and optimisation.",
 
-    description:
-      "KeyRoutes connected paid advertising, landing pages, conversion tracking and social media into one coordinated marketing ecosystem.",
+  services: [
+    {
+      title: "Project Websites & Landing Pages",
 
-    services: [
-      {
-        title: "Landing Pages",
+      description:
+        "Dedicated digital experiences aligned with each project's positioning, campaign messaging and buyer journey.",
+    },
 
-        description:
-          "Campaign-focused landing experiences for higher enquiry conversion.",
-      },
-      {
-        title: "Google Ads",
+    {
+      title: "Google Ads",
 
-        description:
-          "Search campaigns targeting high-intent apartment buyers.",
-      },
-      {
-        title: "Meta Ads",
+      description:
+        "High-intent search campaigns targeting buyers actively looking for relevant residential projects.",
+    },
 
-        description:
-          "Lead generation and awareness campaigns across Meta platforms.",
-      },
-      {
-        title: "Social Media Management",
+    {
+      title: "Meta Ads",
 
-        description:
-          "Consistent content planning and profile management across major social channels.",
-      },
-      {
-        title: "Content Planning",
+      description:
+        "Lead-generation, traffic and project-visibility campaigns across Meta platforms.",
+    },
 
-        description:
-          "Campaign creatives and organic content aligned with project positioning.",
-      },
-      {
-        title: "Conversion Tracking",
+    {
+      title: "Campaign Strategy",
 
-        description:
-          "Measurement of enquiries, campaign performance and buyer interactions.",
-      },
-      {
-        title: "Lead Generation",
+      description:
+        "Project-specific audience planning, messaging, creative direction and budget allocation.",
+    },
 
-        description:
-          "Structured campaigns focused on generating quality residential enquiries.",
-      },
-      {
-        title: "Lead Automation",
+    {
+      title: "Conversion Tracking",
 
-        description:
-          "Lead reporting and organised follow-up workflows.",
-      },
-    ],
-  },
+      description:
+        "Measurement of lead forms, project enquiries and campaign actions across digital channels.",
+    },
 
+    {
+      title: "Lead Generation",
+
+      description:
+        "Structured acquisition campaigns designed to generate relevant property enquiries.",
+    },
+
+    {
+      title: "Lead Reporting",
+
+      description:
+        "Structured visibility into enquiry sources, project attribution, campaign performance and lead quality.",
+    },
+
+    {
+      title: "Lead Automation",
+
+      description:
+        "Organised lead capture, source identification, reporting and sales-team visibility.",
+    },
+
+    {
+      title: "Campaign Optimisation",
+
+      description:
+        "Continuous improvements to keywords, audiences, budgets, creatives and campaign structure.",
+    },
+  ],
+},
   /* =====================================================
      5. PERFORMANCE HIGHLIGHTS
   ===================================================== */

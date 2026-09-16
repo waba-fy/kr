@@ -364,10 +364,7 @@ grid-template-columns:1fr;
 }
 
 @media (max-width: 700px) {
-  .kr-case-studies-page {
-    padding-top: 78px;
-  }
-
+  
   .kr-case-studies-page .kr-success-stories-container {
     width: min(100% - 28px, 1180px);
   }

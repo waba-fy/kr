@@ -7,96 +7,102 @@ export const caseStudies = [
        1. COVER
     ===================================================== */
 
-    cover: {
-      title: "Landrise Realty",
+   cover: {
+  title: "Landrise Realty",
 
-      subtitle:
-        "Building a Connected Multi-Project Real Estate Growth System",
+  subtitle:
+    "Building a Connected Multi-Project Real Estate Growth System",
 
-      description:
-        "How KeyRoutes helped Landrise Realty manage multiple real estate projects through dedicated landing pages, paid media, campaign tracking, lead reporting and continuous performance optimization.",
+  description:
+    "How KeyRoutes supports Landrise Realty across a growing portfolio of five real estate projects through dedicated websites and landing pages, Google Ads, Meta Ads, conversion tracking, lead reporting and continuous performance optimization.",
 
-      category:
-        "Real Estate Digital Growth Case Study",
+  category:
+    "Real Estate Digital Growth Case Study",
 
-      status:
-        "ONGOING ENGAGEMENT",
+  status:
+    "ONGOING ENGAGEMENT",
 
-      projectStatus:
-        "MULTI-PROJECT PORTFOLIO",
+  projectStatus:
+    "5-PROJECT PORTFOLIO",
 
-      logo:
-        "/case-studies/images/landrise-realty-logo.png",
+  logo:
+    "/case-studies/images/landrise-realty-logo.png",
 
-      coverImage:
-        "/case-studies/images/jayabheri-web.png",
+  coverImage:
+    "/case-studies/images/jayabheri-web.png",
 
-      preparedBy:
-        "KeyRoutes",
+  preparedBy:
+    "KeyRoutes",
 
-      snapshotDate:
-        "2026-07-22",
+  snapshotDate:
+    "2026-07-22",
 
-      metrics: [
-        {
-          value: "1,205",
-          label: "Total Leads",
-        },
-        {
-          value: "880",
-          label: "Qualified Leads",
-        },
-        {
-          value: "73.03%",
-          label: "Qualified Lead Rate",
-        },
-        {
-          value: "₹312.40",
-          label: "Blended Cost per Lead",
-        },
-      ],
+  metrics: [
+    {
+      value: "5",
+      label: "Projects Supported",
     },
 
+    {
+      value: "1,205",
+      label: "Total Leads",
+    },
+
+    {
+      value: "880",
+      label: "Qualified Leads",
+    },
+
+    {
+      value: "73.03%",
+      label: "Qualified Lead Rate",
+    },
+
+    {
+      value: "₹312.40",
+      label: "Blended Cost per Lead",
+    },
+  ],
+},
     /* =====================================================
        2. EXECUTIVE SUMMARY
     ===================================================== */
 
-    executiveSummary: {
-      eyebrow:
-        "EXECUTIVE SUMMARY",
+   executiveSummary: {
+  eyebrow:
+    "EXECUTIVE SUMMARY",
 
-      title:
-        "From Separate Campaign Activities to One Connected Growth Framework",
+  title:
+    "From Separate Campaign Activities to One Connected Growth Framework",
 
-      description:
-        "Landrise Realty manages and promotes multiple residential developments, with each project requiring different positioning, audiences, landing pages and advertising campaigns. KeyRoutes created a structured digital growth framework that connected project-specific landing pages, Google Ads, Meta Ads, conversion tracking, reporting and ongoing optimization.",
+  description:
+    "Landrise Realty manages and promotes a growing portfolio of residential developments, with each project requiring distinct positioning, buyer audiences, websites or landing pages, advertising campaigns and reporting. KeyRoutes created a structured digital growth framework connecting project-specific digital experiences, Google Ads, Meta Ads, conversion tracking, lead reporting and ongoing optimization across five projects.",
 
-      transformation:
-        "The engagement transformed separate project-level marketing activities into a more organized multi-project lead-generation and reporting system.",
+  transformation:
+    "The engagement transformed separate project-level marketing activities into a structured and scalable multi-project lead-generation, attribution and reporting system.",
 
-      result:
-        "Ongoing Multi-Project Digital Growth Partnership",
+  result:
+    "Ongoing 5-Project Digital Growth Partnership",
 
-      highlights: [
-        {
-          value: "3",
-          label: "Projects Supported",
-        },
-        {
-          value: "2024–Present",
-          label: "Partnership Duration",
-        },
-        {
-          value: "Google + Meta",
-          label: "Paid Media Channels",
-        },
-        {
-          value: "Multi-Project",
-          label: "Growth Framework",
-        },
-      ],
+  highlights: [
+    {
+      value: "5",
+      label: "Projects Supported",
     },
-
+    {
+      value: "2024–Present",
+      label: "Partnership Duration",
+    },
+    {
+      value: "Google + Meta",
+      label: "Paid Media Channels",
+    },
+    {
+      value: "Multi-Project",
+      label: "Growth Framework",
+    },
+  ],
+},
     /* =====================================================
        3. CLIENT & PROJECT
     ===================================================== */
@@ -138,64 +144,51 @@ export const caseStudies = [
       ],
 
       projects: [
-        {
-          id:
-            "myscape-palma",
+  {
+    id: "myscape-palma",
+    name: "Myscape Palma",
+    type: "Premium Residential Apartments",
+    location: "Hyderabad",
+    website: "https://myscapepalma.com/",
+    status: "READY TO MOVE",
+  },
 
-          name:
-            "Myscape Palma",
+  {
+    id: "jayabheri-pinnacle",
+    name: "Jayabheri Pinnacle",
+    type: "Luxury Residential Apartments",
+    location: "Hyderabad",
+    website: "https://jayabheripinnacle.com/",
+    status: "READY TO MOVE",
+  },
 
-          type:
-            "Premium Residential Apartments",
+  {
+    id: "jayabheri-nirvana",
+    name: "Jayabheri Nirvana",
+    type: "Residential Development",
+    location: "Hyderabad",
+    website: "https://www.jayabherinirvana.in/",
+    status: "ACTIVE PROJECT",
+  },
 
-          location:
-            "Hyderabad",
+  {
+    id: "profound-vanam",
+    name: "Profound Vanam",
+    type: "Premium Residential Apartments",
+    location: "Hyderabad",
+    website: "https://profoundvanam.in/",
+    status: "UNDER CONSTRUCTION",
+  },
 
-          website:
-            "https://myscapepalma.com/",
-
-          status:
-            "READY TO MOVE",
-        },
-        {
-          id:
-            "jayabheri-pinnacle",
-
-          name:
-            "Jayabheri Pinnacle",
-
-          type:
-            "Luxury High-Rise Apartments",
-
-          location:
-            "Kokapet, Hyderabad",
-
-          website:
-            "https://jayabheripinnacle.com/",
-
-          status:
-            "READY TO MOVE",
-        },
-        {
-          id:
-            "profound-vanam",
-
-          name:
-            "Profound Vanam",
-
-          type:
-            "Premium Residential Apartments",
-
-          location:
-            "Bachupally, Hyderabad",
-
-          website:
-            "https://profoundvanam.in/",
-
-          status:
-            "UNDER CONSTRUCTION",
-        },
-      ],
+  {
+    id: "ramky-one-odyssey",
+    name: "Ramky One Odyssey",
+    type: "Residential Apartments",
+    location: "Hyderabad",
+    website: "https://ramkyone-odyssey.in/",
+    status: "UNDER CONSTRUCTION",
+  },
+],
 
       services: [
         "Project Positioning",
@@ -665,10 +658,10 @@ export const caseStudies = [
         },
         {
           title:
-            "Three Dedicated Project Journeys",
+            "Five Project Digital Journeys",
 
           description:
-            "Each active development received its own positioning and campaign landing-page experience.",
+            "The portfolio expanded to five supported developments, with project-specific websites or landing pages, positioning and campaign experiences.",
         },
         {
           title:
@@ -873,10 +866,6 @@ export const caseStudies = [
       },
     },
 
-   /* =====================================================
-   8. WEBSITE SHOWCASE & LEARNINGS
-===================================================== */
-
 /* =====================================================
    8. WEBSITE SHOWCASE & LEARNINGS
 ===================================================== */
@@ -884,76 +873,126 @@ export const caseStudies = [
 evidence: {
   eyebrow: "WEBSITE SHOWCASE",
 
-  title: "Project Websites & Landing Pages",
+  title:
+    "Project Websites & Landing Pages",
 
   description:
-    "Each project received a dedicated digital experience designed to align with campaign messaging, improve buyer confidence and generate qualified property enquiries.",
+    "Dedicated digital experiences supporting Myscape Palma, Jayabheri Pinnacle, Jayabheri Nirvana, Profound Vanam and Ramky One Odyssey.",
 
-  items: [
-    {
-      id: "jayabheri-website",
+  category:
+    "Digital Experience",
 
-      platform: "Luxury Apartments",
+ items: [
+  {
+    id: "myscape-palma-website",
 
-      title: "Jayabheri Pinnacle Website",
+    platform:
+      "Premium Residential Apartments",
 
-      capturedOn: "2026-07-26",
+    title:
+      "Myscape Palma Website",
 
-      image:
-        "/case-studies/images/jayabheri-web.png",
+    capturedOn:
+      "2026-07-26",
 
-      note:
-        "A premium website created to showcase luxury residences, highlight project amenities and support high-intent buyer enquiries.",
-    },
+    image:
+      "/case-studies/images/myscape-palma.png",
 
-    {
-      id: "myscape-palma-website",
+    website:
+      "https://myscapepalma.com/",
 
-      platform: "Premium Residential Apartments",
+    note:
+      "A premium residential website designed to communicate project positioning, lifestyle value and enquiry-focused buyer journeys.",
+  },
 
-      title: "Myscape Palma Website",
+  {
+    id: "jayabheri-pinnacle-website",
 
-      capturedOn: "2026-07-26",
+    platform:
+      "Luxury Residential Apartments",
 
-      image:
-        "/case-studies/images/myscape-palma.png",
+    title:
+      "Jayabheri Pinnacle Website",
 
-      note:
-        "A premium residential website designed to present the project clearly, communicate lifestyle value and guide prospective buyers towards enquiry actions.",
-    },
+    capturedOn:
+      "2026-07-26",
 
-    {
-      id: "profound-website",
+    image:
+      "/case-studies/images/jayabheri-web.png",
 
-      platform: "Premium Apartments",
+    website:
+      "https://jayabheripinnacle.com/",
 
-      title: "Profound Vanam Landing Page",
+    note:
+      "A premium website created to showcase the residential development, communicate project advantages and support high-intent buyer enquiries.",
+  },
 
-      capturedOn: "2026-07-26",
+  {
+    id: "jayabheri-nirvana-website",
 
-      image:
-        "/case-studies/images/profound-vanam.png",
+    platform:
+      "Residential Development",
 
-      note:
-        "A campaign-focused landing page built to present the project clearly, improve user engagement and convert advertising traffic into qualified leads.",
-    },
+    title:
+      "Jayabheri Nirvana Website",
 
-    {
-      id: "ramky-website",
+    capturedOn:
+      "2026-09-16",
 
-      platform: "Residential Apartments",
+    image:
+      "/case-studies/images/jayabheri-nirvana.png",
 
-      title: "Ramky One Odyssey Landing Page",
+    website:
+      "https://www.jayabherinirvana.in/",
 
-      capturedOn: "2026-07-26",
+    note:
+      "A dedicated digital experience supporting project presentation, campaign communication and buyer enquiry generation for Jayabheri Nirvana.",
+  },
 
-      image:
-        "/case-studies/images/ramky-one.png",
+  {
+    id: "profound-vanam-website",
 
-      note:
-        "A responsive project landing page developed to communicate project advantages and encourage enquiry submissions across Google and Meta campaigns.",
-    },
-  ],
+    platform:
+      "Premium Residential Apartments",
+
+    title:
+      "Profound Vanam Landing Page",
+
+    capturedOn:
+      "2026-07-26",
+
+    image:
+      "/case-studies/images/profound-vanam.png",
+
+    website:
+      "https://profoundvanam.in/",
+
+    note:
+      "A campaign-focused landing page built to present the project clearly, improve user engagement and convert advertising traffic into qualified enquiries.",
+  },
+
+  {
+    id: "ramky-one-odyssey-website",
+
+    platform:
+      "Residential Apartments",
+
+    title:
+      "Ramky One Odyssey Landing Page",
+
+    capturedOn:
+      "2026-07-26",
+
+    image:
+      "/case-studies/images/ramky-one.png",
+
+    website:
+      "https://ramkyone-odyssey.in/",
+
+    note:
+      "A responsive project landing page developed to communicate project advantages and encourage enquiry submissions across Google and Meta campaigns.",
+  },
+],
 
   reportingNotes: [
     "Only website and landing-page previews are displayed as supporting evidence in this public case study.",

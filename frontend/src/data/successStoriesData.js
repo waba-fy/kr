@@ -8,8 +8,8 @@ export const successStories = [
 
     title: "Landrise Realty",
     slug: "/success-stories/landrise-realty",
-    client: "Jayabheri Pinnacle",
-    builder: "Landrise Realty Channel Partner",
+    client: "Landrise Realty",
+    builder: "Multiple Developers",
     category: "Real Estate Marketing Partnership",
     projectType: "Multi-Project Portfolio",
     location: "Madhapur, Hyderabad",
@@ -18,8 +18,7 @@ export const successStories = [
     year: "2024–Present",
     status: "Ongoing",
     featured: true,
-    status: "Ongoing",
-    projectStatus: "READY TO MOVE",
+    projectStatus: "MULTI-PROJECT PORTFOLIO",
     subtitle:
       "Landing Pages, Google Ads, Meta Ads and Multi-Project Lead Generation",
 
@@ -34,13 +33,14 @@ export const successStories = [
     overview:
       "The engagement began in 2024 and continues across multiple developments. Each project receives a dedicated campaign and landing-page strategy while sharing a consistent framework for tracking, lead generation, reporting and optimization.",
 
-    projects: [
+   projects: [
   {
     id: "myscape-palma",
     name: "Myscape Palma",
     website: "https://myscapepalma.com/",
     status: "READY TO MOVE",
-    coverImage: "/case-studies/images/myscape-palma.png",
+    coverImage:
+      "/case-studies/images/myscape-palma.png",
   },
 
   {
@@ -48,7 +48,17 @@ export const successStories = [
     name: "Jayabheri Pinnacle",
     website: "https://jayabheripinnacle.com/",
     status: "READY TO MOVE",
-    coverImage: "/case-studies/images/jayabheri-web.png",
+    coverImage:
+      "/case-studies/images/jayabheri-web.png",
+  },
+
+  {
+    id: "jayabheri-nirvana",
+    name: "Jayabheri Nirvana",
+    website: "https://www.jayabherinirvana.in/",
+    status: "READY TO MOVE",
+    coverImage:
+      "/case-studies/images/jayabheri-nirvana.png",
   },
 
   {
@@ -56,15 +66,17 @@ export const successStories = [
     name: "Profound Vanam",
     website: "https://profoundvanam.in/",
     status: "UNDER CONSTRUCTION",
-    coverImage: "/case-studies/images/profound-vanam.png",
+    coverImage:
+      "/case-studies/images/profound-vanam.png",
   },
 
   {
     id: "ramkyone-odyssey",
-    name: "Ramkyone Odyssey",
+    name: "Ramky One Odyssey",
     website: "https://ramkyone-odyssey.in/",
     status: "UNDER CONSTRUCTION",
-    coverImage: "/case-studies/images/ramky-one.png",
+    coverImage:
+      "/case-studies/images/ramky-one.png",
   },
 ],
 
@@ -208,7 +220,7 @@ services: [
 
     kpis: [
       {
-        value: "4",
+        value: "5",
         label: "Projects Supported",
       },
       {
