@@ -5,7 +5,8 @@ import {
 } from "react-icons/fa";
 
 import SEO from "../components/seo/SEO";
-import { successStories } from "../data/successStoriesData";
+import { caseStudies as fallbackStudies } from "../data/caseStudiesData";
+import useManagedContent from "../hooks/useManagedContent";
 
 import "../styles/case-studies.css";
 
@@ -18,6 +19,7 @@ const normalizeSlug = (value = "") => {
 };
 
 const CaseStudies = () => {
+  const { items: successStories } = useManagedContent("case-studies", fallbackStudies);
   const caseStudies = Array.isArray(successStories)
     ? successStories.filter(
         (story) =>
@@ -120,12 +122,12 @@ const CaseStudies = () => {
 
                     <h2>
                       {story.caseStudyTitle ||
-                        `${story.title} Case Study`}
+                        `${story.title || story.cover?.title || "Client"} Case Study`}
                     </h2>
 
                     <p>
                       {story.caseStudyDescription ||
-                        story.summary ||
+                        story.summary || story.cover?.description ||
                         story.subtitle ||
                         story.result ||
                         "Explore the complete digital growth case study."}

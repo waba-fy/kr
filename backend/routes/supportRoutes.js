@@ -1,6 +1,9 @@
+const { verifyTurnstile } = require("../middleware/turnstile");
 const express = require("express");
 
-const transporter = require("../config/mail");
+const emailService = require("../services/emailService");
+const emailLogService = require("../services/emailLogService");
+const SupportReport = require("../models/SupportReport");
 
 const {
   reportProblemAdminTemplate,
@@ -66,6 +69,7 @@ const cleanText = (value = "") =>
 
 router.post(
   "/report-problem",
+  verifyTurnstile,
   async (req, res) => {
     try {
       const {
@@ -260,6 +264,12 @@ router.post(
           new Date(),
       };
 
+      const storedReport = await SupportReport.create({
+        name: report.name, email: report.email, issueType: report.issueType,
+        issueTypeCode: report.issueTypeCode, pageUrl: cleanPageUrl,
+        description: report.description, status: report.status,
+      });
+
       console.log(
         "Report a Problem submission:",
         report
@@ -269,19 +279,15 @@ router.post(
          Mail configuration
       ----------------------------------- */
 
+      const activeMailConfig = await emailService.getMailConfig();
       const adminEmail =
-        process.env.ADMIN_EMAIL ||
+        activeMailConfig.adminEmail ||
         process.env.SUPPORT_EMAIL ||
         "hello@keyroutes.co";
 
-      const senderEmail =
-        process.env.FROM_EMAIL ||
-        process.env.SMTP_USER;
+      const senderEmail = activeMailConfig.fromEmail;
 
-      const senderName =
-        process.env.FROM_NAME ||
-        process.env.COMPANY_NAME ||
-        "KeyRoutes";
+      const senderName = activeMailConfig.fromName;
 
       if (!senderEmail) {
         console.error(
@@ -363,13 +369,9 @@ router.post(
 
       const emailResults =
         await Promise.allSettled([
-          transporter.sendMail(
-            adminMailOptions
-          ),
+          emailService.sendEmail(adminMailOptions),
 
-          transporter.sendMail(
-            customerMailOptions
-          ),
+          emailService.sendEmail(customerMailOptions),
         ]);
 
       const [
@@ -384,6 +386,17 @@ router.post(
       const customerEmailSent =
         customerEmailResult.status ===
         "fulfilled";
+
+      const logResult = async (result, options) => {
+        if (result.status !== "fulfilled") return;
+        await emailLogService.createLog({
+          to: options.to, subject: options.subject, type: "General", status: "Sent",
+          messageId: result.value.messageId, trackingToken: result.value.trackingToken,
+        });
+      };
+      await Promise.all([logResult(adminEmailResult, adminMailOptions), logResult(customerEmailResult, customerMailOptions)]);
+      storedReport.emailStatus = { admin: adminEmailSent, customer: customerEmailSent };
+      await storedReport.save();
 
       if (!adminEmailSent) {
         console.error(

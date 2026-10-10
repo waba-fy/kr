@@ -1,0 +1,3 @@
+const mongoose = require('mongoose');
+const schema = new mongoose.Schema({ name: { type: String, required: true, maxlength: 120 }, subject: { type: String, required: true, maxlength: 200 }, headline: { type: String, required: true, maxlength: 200 }, body: { type: String, required: true, maxlength: 10000 }, imageUrl: { type: String, default: '', maxlength: 1000 }, buttonLabel: { type: String, default: '', maxlength: 60 }, buttonUrl: { type: String, default: '', maxlength: 1000 }, style: { type: String, enum: ['classic', 'minimal'], default: 'classic' }, createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' } }, { timestamps: true });
+module.exports = mongoose.models.MarketingTemplate || mongoose.model('MarketingTemplate', schema);

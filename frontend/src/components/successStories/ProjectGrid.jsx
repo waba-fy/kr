@@ -3,7 +3,8 @@ import { useMemo, useState } from "react";
 import SuccessStoryFilters from "./SuccessStoryFilters";
 import SuccessStoryGrid from "./SuccessStoryGrid";
 
-import { clientStories } from "../../data/clientStories";
+import { clientStories as fallbackClientStories } from "../../data/clientStories";
+import useManagedContent from "../../hooks/useManagedContent";
 
 /* =====================================================
    HELPERS
@@ -265,6 +266,7 @@ const createSearchableContent = (story) => {
 ===================================================== */
 
 const ProjectGrid = () => {
+  const { items: clientStories } = useManagedContent("client-stories", fallbackClientStories);
   const [search, setSearch] = useState("");
   const [industry, setIndustry] =
     useState("All");
@@ -313,7 +315,7 @@ const ProjectGrid = () => {
           normaliseText(storyB.hero?.title)
         );
       });
-  }, []);
+  }, [clientStories]);
 
   /*
    * Industry filter values.

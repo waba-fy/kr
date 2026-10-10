@@ -31,7 +31,6 @@ const ReviewCard = ({ review, onReadMore }) => {
     reviewer,
     rating = 0,
     logo,
-    image,
     shortReview,
     review: fullReview,
     services = [],

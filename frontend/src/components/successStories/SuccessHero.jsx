@@ -9,9 +9,11 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-import { clientStories } from "../../data/clientStories";
+import { clientStories as fallbackClientStories } from "../../data/clientStories";
+import useManagedContent from "../../hooks/useManagedContent";
 
 const SuccessHero = () => {
+  const { items: clientStories } = useManagedContent("client-stories", fallbackClientStories);
   const stats = useMemo(() => {
     const validStories = Array.isArray(clientStories)
       ? clientStories.filter(
@@ -46,7 +48,7 @@ const SuccessHero = () => {
       ongoingPartnerships,
       happyClients,
     };
-  }, []);
+  }, [clientStories]);
 
   return (
     <section

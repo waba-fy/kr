@@ -23,6 +23,7 @@ import {
 } from "../seo/breadcrumbSchema";
 
 import "../styles/about.css";
+import useManagedContent from "../hooks/useManagedContent";
 
 const aboutDescription =
   "Learn about KeyRoutes, our mission, vision, process and commitment to helping real estate businesses grow through strategy, websites, SEO, GEO, campaigns, CRM and automation.";
@@ -34,7 +35,7 @@ const aboutPageSchema =
     url: "/about",
   });
 
-const pillars = [
+const fallbackPillars = [
   {
     icon: <FaBullseye />,
     title: "Our Mission",
@@ -95,6 +96,10 @@ const resources = [
 ];
 
 const About = () => {
+  const { items: managedAbout, loadedFromApi } = useManagedContent("about", []);
+  const pillars = loadedFromApi
+    ? managedAbout.filter((item) => item.kind === "pillar").map((item, index) => ({ ...item, icon: fallbackPillars[index % fallbackPillars.length]?.icon }))
+    : fallbackPillars;
   return (
     <main className="kr-about-page">
       <SEO

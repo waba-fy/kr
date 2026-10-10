@@ -29,6 +29,8 @@ const createEmailLog = async ({
   subject,
   status,
   errorMessage = "",
+  messageId = "",
+  trackingToken,
 }) => {
   try {
     await emailLogService.createLog({
@@ -37,6 +39,8 @@ const createEmailLog = async ({
       type: "Consultation",
       status,
       errorMessage,
+      messageId,
+      trackingToken,
     });
   } catch (error) {
     console.error(
@@ -69,6 +73,8 @@ const sendConsultationEmail = async ({
       to,
       subject,
       status: "Sent",
+      messageId: result.messageId,
+      trackingToken: result.trackingToken,
     });
 
     return {
@@ -90,6 +96,7 @@ const sendConsultationEmail = async ({
       to,
       subject,
       status: "Failed",
+      trackingToken: error.trackingToken,
       errorMessage,
     });
 
@@ -133,15 +140,16 @@ exports.createConsultation = async (data, req) => {
   const clientSubject =
     "Thank You for Contacting KeyRoutes";
 
+  const mailConfig = await emailService.getMailConfig();
   let adminEmailResult = {
     success: false,
     error: "ADMIN_EMAIL is not configured.",
   };
 
-  if (process.env.ADMIN_EMAIL) {
+  if (mailConfig.adminEmail) {
     adminEmailResult =
       await sendConsultationEmail({
-        to: process.env.ADMIN_EMAIL,
+        to: mailConfig.adminEmail,
         subject: adminSubject,
         html: consultationAdminTemplate(
           consultation
@@ -162,8 +170,7 @@ exports.createConsultation = async (data, req) => {
         consultation
       ),
       replyTo:
-        process.env.FROM_EMAIL ||
-        process.env.SMTP_USER,
+        mailConfig.fromEmail,
     });
 
   return {

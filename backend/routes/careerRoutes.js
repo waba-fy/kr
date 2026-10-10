@@ -1,3 +1,4 @@
+const { verifyTurnstile } = require("../middleware/turnstile");
 const express = require("express");
 
 const careerController = require("../controllers/careerController");
@@ -20,6 +21,7 @@ const router = express.Router();
 
 router.post(
   "/apply",
+  verifyTurnstile,
   resumeUpload.single("resume"),
   careerController.createCareerApplication
 );

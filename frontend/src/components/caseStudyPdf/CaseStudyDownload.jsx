@@ -59,7 +59,13 @@ const CaseStudyDownload = ({ data }) => {
           </div>
         </div>
 
-        
+        <div className="cs-download-links">
+          {downloadableItems.map((item, index) => (
+            <a key={item.id || index} href={item.file} target="_blank" rel="noopener noreferrer" download>
+              <FaFilePdf aria-hidden="true" /> {item.title || "Download case study"} <FaDownload aria-hidden="true" />
+            </a>
+          ))}
+        </div>
       </div>
 
       <div className="cs-download-footer">

@@ -1,3 +1,5 @@
+import Turnstile from "./common/Turnstile";
+import { readTurnstileToken, resetTurnstile } from "./common/turnstileUtils";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -34,6 +36,7 @@ const Footer = () => {
   const [isProblemModalOpen, setIsProblemModalOpen] = useState(false);
   const handleNewsletterSubmit = async (event) => {
     event.preventDefault();
+    const submittedForm = event.currentTarget;
 
     const email = newsletterEmail.trim().toLowerCase();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -69,6 +72,7 @@ const Footer = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            turnstileToken: readTurnstileToken(submittedForm),
             email,
             pageUrl: window.location.href,
           }),
@@ -101,6 +105,7 @@ const Footer = () => {
           "Unable to subscribe right now. Please try again.",
       });
     } finally {
+      resetTurnstile(submittedForm);
       setNewsletterLoading(false);
     }
   };
@@ -315,6 +320,7 @@ const Footer = () => {
                   </button>
                 </div>
 
+<Turnstile />
                 {newsletterStatus.message && (
                   <div
                     className={`kr-footer-newsletter-message ${

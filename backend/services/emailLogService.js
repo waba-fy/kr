@@ -9,16 +9,21 @@ const createLog = async ({
   type = "General",
   status = "Sent",
   errorMessage = "",
+  messageId = "",
+  trackingToken,
 }) => {
   try {
-    return await EmailLog.create({
+    const data = {
       to,
       subject,
       type,
       status,
       errorMessage,
-      sentAt: new Date(),
-    });
+      messageId,
+      trackingToken,
+      sentAt: status === "Sent" ? new Date() : null,
+    };
+    return trackingToken ? await EmailLog.findOneAndUpdate({ trackingToken }, { $set: data }, { upsert: true, new: true }) : await EmailLog.create(data);
   } catch (error) {
     console.error(
       "Email log creation failed:",

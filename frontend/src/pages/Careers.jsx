@@ -1,4 +1,6 @@
-import { useRef, useState } from "react";
+import Turnstile from "../components/common/Turnstile";
+import { readTurnstileToken, resetTurnstile } from "../components/common/turnstileUtils";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaBriefcase,
@@ -22,6 +24,7 @@ import {
 } from "../seo/breadcrumbSchema";
 
 import "../styles/careers.css";
+import useManagedContent from "../hooks/useManagedContent";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000/api";
@@ -44,7 +47,7 @@ const allowedMimeTypes = [
 
 const MAX_RESUME_SIZE = 5 * 1024 * 1024;
 
-const lifeItems = [
+const fallbackLifeItems = [
   {
     icon: <FaRocket />,
     title: "Growth-Focused Culture",
@@ -71,7 +74,7 @@ const whyJoin = [
   "Hands-on experience with websites, SEO, CRM and campaigns",
 ];
 
-const openings = [
+const fallbackOpenings = [
   {
     role: "Digital Marketing Executive",
     type: "Full Time",
@@ -116,6 +119,29 @@ const Careers = () => {
     type: "",
     message: "",
   });
+  const [openings, setOpenings] = useState(fallbackOpenings);
+  const { items: managedCareerContent, loadedFromApi } = useManagedContent("careers", []);
+  const lifeItems = loadedFromApi
+    ? managedCareerContent.filter((item) => item.kind === "culture").map((item, index) => ({ ...item, icon: fallbackLifeItems[index % fallbackLifeItems.length]?.icon }))
+    : fallbackLifeItems;
+
+  useEffect(() => {
+    let active = true;
+    fetch(`${API_BASE_URL}/public/jobs`)
+      .then((response) => response.json())
+      .then((result) => {
+        if (!active || !Array.isArray(result.data)) return;
+        setOpenings(result.data.map((job) => ({
+          role: job.title,
+          type: job.employmentType,
+          location: job.location,
+          desc: job.summary || job.description,
+          skills: Array.isArray(job.skills) ? job.skills : [],
+        })));
+      })
+      .catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   const clearFieldError = (fieldName) => {
     setErrors((currentErrors) => {
@@ -305,6 +331,7 @@ const Careers = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const submittedForm = event.currentTarget;
 
     if (!validateForm()) {
       setSubmitStatus({
@@ -339,6 +366,7 @@ const Careers = () => {
         `${API_BASE_URL}/careers/apply`,
         {
           method: "POST",
+          headers: { "X-Turnstile-Token": readTurnstileToken(submittedForm) },
           body: formData,
         }
       );
@@ -388,6 +416,7 @@ const Careers = () => {
           "Unable to submit your application. Please try again.",
       });
     } finally {
+      resetTurnstile(submittedForm);
       setIsSubmitting(false);
     }
   };
@@ -829,6 +858,7 @@ const Careers = () => {
               </div>
             )}
 
+<Turnstile />
             <button
               type="submit"
               className="kr-careers-submit-button"

@@ -1,20 +1,55 @@
 const dotenv = require("dotenv");
 
+dotenv.config({ path: require("path").join(__dirname, ".env.local"), quiet: true });
 dotenv.config();
 
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 const multer = require("multer");
 
 const connectDB = require("./config/db");
+const Client = require("./models/Client");
 
 const consultationRoutes = require("./routes/consultationRoutes");
 const newsletterRoutes = require("./routes/newsletterRoutes");
 const careerRoutes = require("./routes/careerRoutes");
 const supportRoutes = require("./routes/supportRoutes");
+const { createInvoiceRouter } = require("./routes/invoiceRoutes");
+const { createTicketRouter } = require("./routes/supportTicketRoutes");
+const marketingRoutes = require("./routes/marketingRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const contentRoutes = require("./routes/contentRoutes");
+const trackingRoutes = require("./routes/trackingRoutes");
+const settingsRoutes = require("./routes/settingsRoutes");
+const clientRoutes = require("./routes/clientRoutes");
+const adminClientRoutes = require("./routes/adminClientRoutes");
 
 const app = express();
+
+app.disable("x-powered-by");
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  next();
+});
+
+const publicPostAttempts = new Map();
+const protectPublicForms = (req, res, next) => {
+  if (req.method !== "POST" || req.path.startsWith("/api/admin/") || req.path === "/api/client/events/collect") return next();
+  const ip = String(req.headers["x-forwarded-for"] || req.socket.remoteAddress || "unknown").split(",")[0].trim();
+  const key = `${ip}:${req.path}`;
+  const now = Date.now();
+  const current = publicPostAttempts.get(key) || { count: 0, resetAt: now + 15 * 60 * 1000 };
+  if (now > current.resetAt) { current.count = 0; current.resetAt = now + 15 * 60 * 1000; }
+  current.count += 1;
+  publicPostAttempts.set(key, current);
+  if (current.count > 20) {
+    return res.status(429).json({ success: false, message: "Too many submissions. Please try again later." });
+  }
+  return next();
+};
 
 /* ----------------------------------
    CORS
@@ -24,15 +59,16 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://localhost:5176",
   "http://localhost:5173",
+  "http://127.0.0.1:5176",
+  "http://127.0.0.1:5173",
   "https://keyroutes.co",
   "https://www.keyroutes.co"
 ].filter(Boolean);
 
-console.log("Environment check:", {
-  SMTP_HOST: process.env.SMTP_HOST,
-  SMTP_USER: process.env.SMTP_USER,
-  FROM_EMAIL: process.env.FROM_EMAIL,
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+console.log("Environment loaded:", {
+  database: Boolean(process.env.MONGO_URI),
+  mail: Boolean(process.env.SMTP_HOST && process.env.SMTP_USER),
+  jwt: Boolean(process.env.JWT_SECRET),
 });
 
 app.use(
@@ -45,18 +81,19 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-
-      const error = new Error(
-        `CORS blocked request from origin: ${origin}`
-      );
-
-      error.statusCode = 403;
-
-      return callback(error);
+      let hostname = "";
+      try { hostname = new URL(origin).hostname.toLowerCase().replace(/^www\./, ""); } catch { hostname = ""; }
+      const escapedHostname = hostname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return Client.exists({ status: "Active", $or: [
+        { domain: hostname },
+        { landingPages: { $elemMatch: { isActive: { $ne: false }, url: { $regex: `^https?://(www\\.)?${escapedHostname}(/|$)`, $options: "i" } } } },
+      ] })
+        .then((exists) => callback(exists ? null : Object.assign(new Error(`CORS blocked request from origin: ${origin}`), { statusCode: 403 }), Boolean(exists)))
+        .catch(() => callback(Object.assign(new Error("Unable to validate request origin."), { statusCode: 503 })));
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Turnstile-Token"],
   })
 );
 
@@ -81,19 +118,7 @@ app.use(
    Static Uploads
 ----------------------------------- */
 
-app.use(
-  "/uploads",
-  express.static(
-    path.join(__dirname, "uploads"),
-    {
-      fallthrough: false,
-      maxAge:
-        process.env.NODE_ENV === "production"
-          ? "1d"
-          : 0,
-    }
-  )
-);
+// Uploaded resumes contain personal information and are intentionally not public.
 
 /* ----------------------------------
    Health Check
@@ -120,6 +145,8 @@ app.get("/api/health", (_req, res) => {
    API Routes
 ----------------------------------- */
 
+app.use(protectPublicForms);
+
 app.use(
   "/api/consultations",
   consultationRoutes
@@ -138,6 +165,20 @@ app.use(
 app.use("/api/support", 
   supportRoutes
 );
+
+app.use("/api/tracking", trackingRoutes);
+app.use("/api/content", contentRoutes);
+app.use("/api/public", require("./routes/crawlRoutes"));
+app.use("/api/public", settingsRoutes);
+app.use("/api/client", clientRoutes);
+app.use("/api/admin/clients", adminClientRoutes);
+app.use("/api/client/invoices", createInvoiceRouter(false));
+app.use("/api/admin/invoices", createInvoiceRouter(true));
+app.use("/api/client/tickets", createTicketRouter(false));
+app.use("/api/admin/tickets", createTicketRouter(true));
+app.use("/api/marketing", marketingRoutes);
+app.use("/api/admin/marketing", marketingRoutes);
+app.use("/api/admin", adminRoutes);
 /* ----------------------------------
    404 Handler
 ----------------------------------- */

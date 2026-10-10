@@ -1,63 +1,59 @@
 const nodemailer = require("nodemailer");
+const SystemSetting = require("../models/SystemSetting");
+const { decrypt } = require("../utils/encryption");
 
-const requiredEnv = [
-  "SMTP_HOST",
-  "SMTP_PORT",
-  "SMTP_USER",
-  "SMTP_PASS",
-  "FROM_EMAIL",
-  "ADMIN_EMAIL",
-];
-
-const missing = requiredEnv.filter(
-  (key) => !process.env[key]
-);
-
-if (missing.length) {
-  console.warn(
-    `⚠ Missing environment variables: ${missing.join(", ")}`
-  );
-}
-
-const smtpPort = Number(process.env.SMTP_PORT || 465);
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: smtpPort,
-
-  // Port 465 = SSL
-  // Port 587 = STARTTLS
-  secure:
-    process.env.SMTP_SECURE === "true" ||
-    smtpPort === 465,
-
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 20000,
-});
-
-/*
-|--------------------------------------------------------------------------
-| Verify SMTP Connection
-|--------------------------------------------------------------------------
-*/
-
-(async () => {
+const getMailConfig = async () => {
+  let saved = null;
   try {
-    await transporter.verify();
-
-    console.log("✓ SMTP connected successfully");
-  } catch (error) {
-    console.error(
-      "✗ SMTP connection failed:",
-      error.message
-    );
+    saved = await SystemSetting.findOne({ key: "email" }).select("+encryptedValue").lean();
+  } catch (_error) {
+    // Environment configuration remains available during database recovery.
   }
-})();
+  const value = saved?.value || {};
+  let password = process.env.SMTP_PASS || "";
+  if (saved?.encryptedValue) {
+    try { password = decrypt(saved.encryptedValue); }
+    catch (error) { console.error("Unable to decrypt saved SMTP password:", error.message); }
+  }
+  const port = Number(value.smtpPort || process.env.SMTP_PORT || 465);
+  return {
+    host: value.smtpHost || process.env.SMTP_HOST,
+    port,
+    secure: typeof value.smtpSecure === "boolean" ? value.smtpSecure : (process.env.SMTP_SECURE === "true" || port === 465),
+    user: value.smtpUser || process.env.SMTP_USER,
+    password,
+    fromName: value.fromName || process.env.FROM_NAME || "KeyRoutes",
+    fromEmail: value.fromEmail || process.env.FROM_EMAIL || process.env.SMTP_USER,
+    adminEmail: value.adminEmail || process.env.ADMIN_EMAIL,
+  };
+};
 
-module.exports = transporter;
+const createTransport = async () => {
+  const config = await getMailConfig();
+  return {
+    transporter: nodemailer.createTransport({
+      host: config.host,
+      port: config.port,
+      secure: config.secure,
+      auth: { user: config.user, pass: config.password },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
+    }),
+    config,
+  };
+};
+
+module.exports = {
+  async sendMail(options) {
+    const { transporter, config } = await createTransport();
+    const nextOptions = { ...options };
+    if (!nextOptions.from) nextOptions.from = `"${config.fromName}" <${config.fromEmail}>`;
+    return transporter.sendMail(nextOptions);
+  },
+  async verify() {
+    const { transporter } = await createTransport();
+    return transporter.verify();
+  },
+  getMailConfig,
+};

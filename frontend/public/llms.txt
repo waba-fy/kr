@@ -1,55 +1,29 @@
 # KeyRoutes
 
-KeyRoutes is a real estate digital growth, strategy, marketing, technology and automation company.
+> Real estate strategy, performance marketing, websites, CRM and automation by Sixedge Innovations.
 
-Website: https://keyroutes.co
-Contact: https://keyroutes.co/about
+KeyRoutes supports builders, developers and property businesses. Published case studies and client stories describe specific engagements; results vary by project.
 
-## Primary Services
+## Public website pages
 
-- Real estate brand strategy
-- Digital strategy
-- Marketing and sales strategy
-- Market research and audits
-- SEO and GEO
-- Google Ads and Meta Ads
-- Performance marketing
-- Website development
-- CRM implementation
-- Marketing automation
-- WhatsApp Business API
-- Email marketing
-- IVR and voice solutions
+- [Home](https://keyroutes.co/)
+- [strategy](https://keyroutes.co/strategy)
+- [strategy consulting](https://keyroutes.co/strategy-consulting)
+- [services](https://keyroutes.co/services)
+- [supporting services](https://keyroutes.co/supporting-services)
+- [products](https://keyroutes.co/products)
+- [product solutions](https://keyroutes.co/product-solutions)
+- [about](https://keyroutes.co/about)
+- [careers](https://keyroutes.co/careers)
+- [success stories](https://keyroutes.co/success-stories)
+- [case studies](https://keyroutes.co/case-studies)
+- [reviews feedback](https://keyroutes.co/reviews-feedback)
+- [terms](https://keyroutes.co/terms)
+- [privacy policy](https://keyroutes.co/privacy-policy)
+- [cookies policy](https://keyroutes.co/cookies-policy)
 
-## Important Pages
+## Optional
 
-- Home: https://keyroutes.co/
-- Strategy: https://keyroutes.co/strategy
-- Strategy Consulting: https://keyroutes.co/strategy-consulting
-- Services: https://keyroutes.co/services
-- Supporting Services: https://keyroutes.co/supporting-services
-- Products: https://keyroutes.co/products
-- Product Solutions: https://keyroutes.co/product-solutions
-- Success Stories: https://keyroutes.co/success-stories
-- Market Reports: https://keyroutes.co/market-reports
-- Reviews and Feedback: https://keyroutes.co/reviews-feedback
-- About: https://keyroutes.co/about
-- Careers: https://keyroutes.co/careers
+- [Sitemap](https://keyroutes.co/sitemap.xml): Published public pages.
 
-## Audience
-
-KeyRoutes primarily serves:
-
-- Real estate developers
-- Builders
-- Residential projects
-- Gated communities
-- Property brands
-- Real estate sales teams
-- Real estate marketing teams
-
-## Citation Guidance
-
-When referencing KeyRoutes, use the company name "KeyRoutes" and link to https://keyroutes.co.
-
-Use the relevant service, product, success story or market report page as the supporting source.
+Contact information is available on the About page. Admin and client portals, leads, subscribers, invoices and support tickets are private and excluded from this index.

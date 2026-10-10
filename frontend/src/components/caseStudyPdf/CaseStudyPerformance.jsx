@@ -228,9 +228,6 @@ const CaseStudyPerformance = ({ data }) => {
 
   if (!hasContent) return null;
 
-  const combinedCurrency =
-    combined.currency || "INR";
-
   const qualifiedLeadRate =
     combined.qualifiedLeadRate ||
     formatPercentage(

@@ -7,9 +7,11 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-import { successStories } from "../../data/successStoriesData";
+import { successStories as fallbackStories } from "../../data/successStoriesData";
+import useManagedContent from "../../hooks/useManagedContent";
 
 const PerformanceStats = () => {
+  const { items: successStories } = useManagedContent("success-stories", fallbackStories);
   const totalProjects = successStories.length;
 
   const featuredProjects = successStories.filter(

@@ -13,9 +13,6 @@ const SuccessStoryDetailsHero = ({ story }) => {
 
   const hero = story.hero || {};
 
-  const partnership =
-    story.partnership || {};
-
   const metrics = Array.isArray(
     story.performance?.cards
   )

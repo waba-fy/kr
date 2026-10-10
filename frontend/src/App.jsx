@@ -1,8 +1,10 @@
+import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import {
   Navigate,
   Route,
   Routes,
+  useLocation,
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -31,8 +33,13 @@ import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiesPolicy from "./pages/CookiesPolicy";
 import SuccessStoryDetails from "./pages/SuccessStoryDetails";
+import Admin from "./pages/Admin";
+import ClientDashboard from "./pages/ClientDashboard";
+import SiteIntegrations from "./components/SiteIntegrations";
 
 export default function App() {
+  const location = useLocation();
+  const isPortal = location.pathname.startsWith("/admin") || location.pathname.startsWith("/client");
   const [consultOpen, setConsultOpen] =
     useState(false);
 
@@ -46,9 +53,11 @@ export default function App() {
 
   return (
     <>
-      <Navbar
+      {isPortal && <Helmet><meta name="robots" content="noindex, nofollow" /></Helmet>}
+      <SiteIntegrations />
+      {!isPortal && <Navbar
         onConsultationClick={openConsultation}
-      />
+      />}
 
       <ScrollToHash />
 
@@ -144,6 +153,9 @@ export default function App() {
           element={<CookiesPolicy />}
         />
 
+        <Route path="/admin/*" element={<Admin />} />
+        <Route path="/client/*" element={<ClientDashboard />} />
+
         <Route
           path="*"
           element={
@@ -155,14 +167,14 @@ export default function App() {
         />
       </Routes>
 
-      <Footer />
+      {!isPortal && <Footer />}
 
-      <ScrollToTopButton />
+      {!isPortal && <ScrollToTopButton />}
 
-      <ConsultationPopup
+      {!isPortal && <ConsultationPopup
         open={consultOpen}
         onClose={closeConsultation}
-      />
+      />}
     </>
   );
 }

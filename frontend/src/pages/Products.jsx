@@ -28,6 +28,7 @@ import {
 } from "../seo/breadcrumbSchema";
 
 import "../styles/products.css";
+import useManagedContent from "../hooks/useManagedContent";
 
 const productsDescription =
   "Explore KeyRoutes automation products for real estate businesses, including WhatsApp Business API, Google Sheet automation, email marketing, IVR, CRM integrations, lead management and analytics solutions.";
@@ -95,7 +96,7 @@ const integrationsSchema =
       "Business Integration Software",
   });
 
-const productCards = [
+const fallbackProductCards = [
   {
     icon: <FaWhatsapp />,
     title: "WhatsApp Business API",
@@ -187,6 +188,10 @@ const benefitCards = [
 ];
 
 const Products = () => {
+  const { items: managedProducts, loadedFromApi } = useManagedContent("products", []);
+  const productCards = loadedFromApi
+    ? managedProducts.filter((item) => item.kind === "product").map((item, index) => ({ ...item, icon: fallbackProductCards[index % fallbackProductCards.length]?.icon }))
+    : fallbackProductCards;
   return (
     <main className="kr-products-page">
       <SEO

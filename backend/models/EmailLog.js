@@ -9,6 +9,10 @@ const emailLogSchema = new mongoose.Schema(
       lowercase: true,
     },
 
+    html: { type: String, default: "", select: false },
+    text: { type: String, default: "", select: false },
+    marketing: { type: Boolean, default: false },
+    canResend: { type: Boolean, default: false },
     subject: {
       type: String,
       required: true,
@@ -22,6 +26,7 @@ const emailLogSchema = new mongoose.Schema(
         "Consultation",
         "Newsletter",
         "General",
+        "Career",
       ],
       default: "General",
       index: true,
@@ -48,6 +53,16 @@ const emailLogSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+
+    messageId: { type: String, default: "", trim: true },
+    trackingToken: { type: String, unique: true, sparse: true, index: true },
+    openedAt: { type: Date, default: null, index: true },
+    openCount: { type: Number, default: 0, min: 0 },
+    lastOpenedAt: { type: Date, default: null },
+    clickedAt: { type: Date, default: null, index: true },
+    clickCount: { type: Number, default: 0, min: 0 },
+    lastClickedAt: { type: Date, default: null },
+    lastClickedUrl: { type: String, default: "", maxlength: 2000 },
   },
   {
     timestamps: true,

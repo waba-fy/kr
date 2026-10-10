@@ -28,6 +28,7 @@ import { strategyBreadcrumbSchema } from "../seo/breadcrumbSchema";
 import { createWebPageSchema } from "../seo/schemaHelper";
 
 import "../styles/strategy-page.css";
+import useManagedContent from "../hooks/useManagedContent";
 
 const trustItems = [
   "Real Estate Focused",
@@ -109,7 +110,7 @@ const process = [
   },
 ];
 
-const pillars = [
+const fallbackPillars = [
   {
     icon: <FaBullhorn />,
     title: "Brand Strategy",
@@ -288,24 +289,6 @@ const relatedServices = [
   },
 ];
 
-const exploreLinks = [
-  {
-    title: "Brand Strategy",
-    desc: "Build project trust, positioning and identity.",
-    link: "/strategy#brand-strategy",
-  },
-  {
-    title: "Digital Strategy",
-    desc: "Plan SEO, GEO, website, campaigns and funnels.",
-    link: "/strategy#digital-strategy",
-  },
-  {
-    title: "Marketing & Sales",
-    desc: "Connect campaigns, CRM, follow-ups and sales.",
-    link: "/strategy#marketing-sales",
-  },
-];
-
 const faqs = [
   {
     q: "Why does a real estate project need strategy before marketing?",
@@ -370,6 +353,10 @@ const strategyPageSchema = createWebPageSchema({
 });
 
 const Strategy = () => {
+  const { items: managedStrategy, loadedFromApi } = useManagedContent("strategy", []);
+  const pillars = loadedFromApi
+    ? managedStrategy.filter((item) => item.kind === "pillar").map((item, index) => ({ ...item, icon: fallbackPillars[index % fallbackPillars.length]?.icon }))
+    : fallbackPillars;
   return (
     <main className="kr-strategy-page">
       <SEO

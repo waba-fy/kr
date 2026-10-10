@@ -6,6 +6,9 @@ frontend/node_modules/
 .env.*
 !.env.production
 !frontend/.env.production
+!backend/.env.example
 dist/
 build/
 uploads/
+
+backend/data/sampleInvoice.local.json

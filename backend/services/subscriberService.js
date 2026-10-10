@@ -32,6 +32,8 @@ const createEmailLog = async ({
   subject,
   status,
   errorMessage = "",
+  messageId = "",
+  trackingToken,
 }) => {
   try {
     await emailLogService.createLog({
@@ -40,6 +42,8 @@ const createEmailLog = async ({
       type: "Newsletter",
       status,
       errorMessage,
+      messageId,
+      trackingToken,
     });
   } catch (error) {
     console.error(
@@ -53,18 +57,22 @@ const sendNewsletterEmail = async ({
   to,
   subject,
   html,
+  marketing = false,
 }) => {
   try {
     const result = await emailService.sendEmail({
       to,
       subject,
       html,
+      marketing,
     });
 
     await createEmailLog({
       to,
       subject,
       status: "Sent",
+      messageId: result.messageId,
+      trackingToken: result.trackingToken,
     });
 
     return {
@@ -81,6 +89,7 @@ const sendNewsletterEmail = async ({
       to,
       subject,
       status: "Failed",
+      trackingToken: error.trackingToken,
       errorMessage:
         error.originalError?.message ||
         error.message ||
@@ -129,6 +138,9 @@ exports.subscribe = async (data, req) => {
     };
   }
 
+  if (existingSubscriber && await require("../models/MarketingPreference").exists({ email, unsubscribedAt: { $ne: null } })) {
+    return { subscriber: existingSubscriber, alreadySubscribed: true };
+  }
   const clientIp = getClientIp(req);
   const userAgent =
     req?.headers?.["user-agent"] || "";
@@ -205,8 +217,8 @@ exports.subscribe = async (data, req) => {
     }
   }
 
-  const adminEmail =
-    process.env.ADMIN_EMAIL;
+  const mailConfig = await emailService.getMailConfig();
+  const adminEmail = mailConfig.adminEmail;
 
   if (adminEmail) {
     await sendNewsletterEmail({
@@ -224,6 +236,7 @@ exports.subscribe = async (data, req) => {
 
   const clientEmail =
     await sendNewsletterEmail({
+      marketing: true,
       to: subscriber.email,
       subject:
         "Thank You for Subscribing to KeyRoutes",

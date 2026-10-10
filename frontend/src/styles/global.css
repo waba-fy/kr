@@ -101,3 +101,89 @@ h6,
   font-weight: 600;
   text-decoration: none;
 }
+
+/* Portal screens do not have the public fixed navbar. */
+body:has(.kr-admin-shell, .kr-admin-login, .client-shell, .client-login) { padding-top: 0; }
+.kr-portal-logo { display: block; width: 100%; max-width: 190px; height: auto; padding: 10px; background: #fff; border-radius: 8px; margin-bottom: 8px; }
+.kr-portal-login-logo { display: block; width: 230px; max-width: 100%; height: auto; margin-bottom: 24px; }
+
+.kr-recovery-card { width: min(440px, 100%); background: #fff; border-radius: 24px; padding: 32px; box-shadow: 0 24px 70px #1112; }
+.kr-recovery-card form { width: 100%; padding: 0; border-radius: 0; box-shadow: none; }
+.kr-password-recovery label { display: grid; gap: 8px; margin: 18px 0; font-weight: 700; }
+.kr-password-recovery input { width: 100%; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; font: inherit; }
+.kr-password-recovery button { width: 100%; background: #e10600; color: #fff; border: 0; border-radius: 10px; padding: 14px; font-weight: 700; cursor: pointer; }
+.kr-admin-login button.kr-recovery-link, .client-login button.kr-recovery-link { width: auto; display: block; margin: 12px auto 0; padding: 8px; background: transparent; color: #b91c1c; text-decoration: underline; }
+.kr-password-recovery [role="alert"] { color: #b91c1c; }
+.kr-password-recovery button:disabled { opacity: .6; cursor: wait; }
+
+.kr-tickets { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 22px; }
+.kr-ticket-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.kr-tickets label { display: grid; gap: 7px; margin: 14px 0; font-weight: 700; }
+.kr-tickets input, .kr-tickets textarea, .kr-tickets select { width: 100%; font: inherit; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; }
+.kr-tickets button { background: #111; color: #fff; border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.kr-ticket-list { display: grid; gap: 10px; margin: 22px 0; }
+.kr-ticket-list>button { display: grid; gap: 6px; text-align: left; background: #f8fafc; color: #111; border: 1px solid #e5e7eb; }
+.kr-ticket-message { white-space: pre-wrap; overflow-wrap: anywhere; }
+.kr-ticket-reply { background: #f8fafc; border-radius: 8px; padding: 12px; margin: 12px 0; }
+.kr-tickets button:disabled { opacity: .6; cursor: wait; }
+
+.kr-invoices { background: #fff; padding: 22px; border: 1px solid #e5e7eb; border-radius: 14px; }
+.kr-invoices label { display: grid; gap: 7px; margin: 14px 0; }
+.kr-invoices input,.kr-invoices textarea,.kr-invoices select { width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; font: inherit; }
+.kr-invoices button { background: #111; color: #fff; border: 0; padding: 10px 14px; border-radius: 8px; margin: 4px; cursor: pointer; }
+.kr-invoices button:disabled { opacity: .5; cursor: wait; }
+.kr-invoice-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.kr-invoice-item { display: grid; grid-template-columns: 3fr 1fr 1fr auto; gap: 12px; align-items: center; }
+.kr-invoice-list { display: grid; gap: 12px; margin-top: 24px; }
+.kr-invoice-list>article { padding: 14px; border: 1px solid #e5e7eb; border-radius: 10px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.kr-invoice-modal { position: fixed; inset: 0; z-index: 2200; background: #0009; padding: 24px; display: grid; place-items: center; }
+.kr-invoice-document { background: white; width: min(850px,100%); padding: 30px; max-height: 92vh; overflow: auto; }
+.kr-invoice-document table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.kr-invoice-document td,.kr-invoice-document th { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+.kr-invoice-totals { text-align: right; }
+.kr-invoice-controls { display: flex; justify-content: flex-end; }
+@media(max-width:600px) { .kr-invoice-fields,.kr-invoice-item { grid-template-columns: 1fr; } .kr-invoice-document { padding: 16px; } }
+@media print { body:has(.kr-invoice-document) * { visibility: hidden; } body:has(.kr-invoice-document) .kr-invoice-document, body:has(.kr-invoice-document) .kr-invoice-document * { visibility: visible; } .kr-invoice-modal { position: absolute; inset: 0; padding: 0; background: white; display: block; } .kr-invoice-document { width: 100%; max-height: none; overflow: visible; padding: 20px; } .kr-invoice-controls { display: none; } }
+
+.kr-tax-invoice table { border-collapse: collapse; table-layout: auto; width: 100%; font-family: Arial,sans-serif; font-size: 12px; margin: 0; }
+.kr-tax-invoice td,.kr-tax-invoice th { border: 1px solid #999; padding: 5px; vertical-align: top; overflow-wrap: anywhere; }
+.kr-tax-invoice .kr-tax-title { text-align: center; font-size: 17px; border: 1px solid #111; }
+.kr-tax-party p,.kr-tax-bank p,.kr-tax-signature p { margin: 5px 0; white-space: pre-wrap; }
+.kr-tax-columns th { border-color: #111; }
+.kr-tax-invoice td:last-child { text-align: right; }
+.kr-tax-party:last-child,.kr-tax-signature:last-child { text-align: left !important; }
+.kr-tax-signature { text-align: center !important; }
+.kr-tax-signature div { height: 85px; }
+.kr-tax-signature p { text-align: center; }
+.kr-tax-total td { font-weight: bold; border-color: #111; }
+.kr-tax-words { font-style: italic; text-align: left !important; }
+.kr-tax-spacer { height: 28px; }
+.kr-invoice-annexure { margin-top: 50px; }
+.kr-invoice-annexure h2,.kr-invoice-annexure>p { text-align: center; font-size: 16px; }
+.kr-invoice-annexure h2 { text-decoration: underline; }
+.kr-invoice-annexure td { border: 1px solid #111; width: 50%; }
+.kr-invoice-item { grid-template-columns: 3fr 1fr 1fr 1fr 1fr auto; }
+@media(max-width:850px) { .kr-invoice-item { grid-template-columns: 1fr 1fr; } }
+@media print { .kr-tax-invoice { page-break-inside: avoid; } .kr-invoice-annexure { break-before: page; padding-top: 80px; } .kr-tax-invoice table { font-size: 11px; } }
+
+.kr-scc-invoice table { width: 100%; border-collapse: collapse; font: 12px Arial,sans-serif; table-layout: fixed; margin: 0; }
+.kr-scc-invoice td,.kr-scc-invoice th { border: 1px solid #111; padding: 4px; text-align: left; vertical-align: middle; overflow-wrap: anywhere; }
+.kr-scc-invoice .kr-scc-title { text-align: center; font-size: 20px; padding: 4px; }
+.kr-scc-party { height: 92px; }
+.kr-scc-party span,.kr-scc-party strong { display: block; }
+.kr-scc-party p { margin: 0; white-space: pre-wrap; }
+.kr-scc-gap { height: 24px; }
+.kr-scc-invoice .kr-scc-center { text-align: center; }
+.kr-scc-invoice .kr-scc-total { text-align: center; font-size: 20px; }
+.kr-scc-total-value { font-size: 18px; }
+.kr-scc-bank { padding: 18px 4px 4px !important; }
+.kr-scc-bank>strong { display: block; margin: 4px 0 26px; font-size: 15px; }
+.kr-scc-bank-columns { display: grid; grid-template-columns: 3fr 1fr; gap: 12px; }
+.kr-scc-bank-columns p { margin: 0; white-space: pre-wrap; }
+.kr-scc-signature { text-align: center; }
+.kr-scc-signature img { width: 120px; height: 90px; object-fit: contain; }
+.kr-scc-signature-space { height: 75px; }
+.kr-invoice-item { grid-template-columns: repeat(4,1fr); }
+@media print { .kr-scc-invoice { break-inside: avoid; } .kr-invoice-document { padding: 15mm 10mm; } }
+
+.kr-scc-signature img.kr-scc-reference-signature { width: 165px; height: 110px; object-fit: contain; max-width: 100%; }

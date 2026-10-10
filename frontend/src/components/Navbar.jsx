@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import MegaMenu, { menuData } from "./MegaMenu";
+import MegaMenu from "./MegaMenu";
+import { menuData } from "./menuData";
 import "../styles/navbar.css";
 
 const navItems = [

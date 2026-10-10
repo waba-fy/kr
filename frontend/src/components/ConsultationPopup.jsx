@@ -1,3 +1,5 @@
+import Turnstile from "./common/Turnstile";
+import { readTurnstileToken, resetTurnstile } from "./common/turnstileUtils";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import "../styles/consultation-popup.css";
@@ -227,6 +229,7 @@ const ConsultationPopup = ({
     event
   ) => {
     event.preventDefault();
+    const submittedForm = event.currentTarget;
 
     /*
      * Prevent accidental double submissions.
@@ -255,6 +258,7 @@ const ConsultationPopup = ({
           },
 
           body: JSON.stringify({
+            turnstileToken: readTurnstileToken(submittedForm),
             ...form,
 
             fullPhone:
@@ -335,7 +339,8 @@ const ConsultationPopup = ({
        * On success the browser redirects to the
        * thank-you page anyway.
        */
-      setIsSubmitting(false);
+      resetTurnstile(submittedForm);
+    setIsSubmitting(false);
     }
   };
 
@@ -589,6 +594,7 @@ const ConsultationPopup = ({
               )}
             </div>
 
+<Turnstile />
             {/* SUBMIT */}
 
             <button

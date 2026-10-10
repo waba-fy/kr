@@ -24,14 +24,15 @@ import ReviewHero from "../components/reviews/ReviewHero";
 import ReviewFilters from "../components/reviews/ReviewFilters";
 import ReviewGrid from "../components/reviews/ReviewGrid";
 
-import { reviews } from "../data/reviewsData";
+import { reviews as fallbackReviews } from "../data/reviewsData";
+import useManagedContent from "../hooks/useManagedContent";
 
 import "../styles/reviews.css";
 
 const reviewsDescription =
   "Read reviews and feedback from businesses that partnered with KeyRoutes for strategy, website development, SEO, advertising, CRM and automation.";
 
-const reviewSchemas = reviews
+const reviewSchemas = fallbackReviews
   .filter(
     (review) =>
       (review.reviewer ||
@@ -59,6 +60,7 @@ const reviewSchemas = reviews
   );
 
 const Reviews = () => {
+  const { items: reviews } = useManagedContent("reviews", fallbackReviews);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [selectedReview, setSelectedReview] = useState(null);
@@ -73,7 +75,7 @@ const Reviews = () => {
     return Array.from(uniqueCategories).sort((a, b) =>
       a.localeCompare(b)
     );
-  }, []);
+  }, [reviews]);
 
   const filteredReviews = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
@@ -111,7 +113,7 @@ const Reviews = () => {
 
       return searchableContent.includes(normalizedSearch);
     });
-  }, [search, category]);
+  }, [search, category, reviews]);
 
   const totalReviews = reviews.length;
 

@@ -33,6 +33,8 @@ const authenticateAdmin = async (req, res, next) => {
       });
     }
 
+    const changedAt = admin.passwordChangedAt?.getTime() || 0;
+    if (decoded.pwv !== undefined ? decoded.pwv !== changedAt : (changedAt && decoded.iat * 1000 < Math.floor(changedAt / 1000) * 1000)) return res.status(401).json({ success: false, message: "Password changed. Please sign in again." });
     req.admin = admin;
 
     return next();

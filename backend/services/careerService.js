@@ -32,18 +32,20 @@ const createEmailLog = async ({
   subject,
   status,
   errorMessage = "",
+  messageId = "",
+  trackingToken,
 }) => {
   try {
     await emailLogService.createLog({
       to,
       subject,
 
-      // Use General until "Career" is added
-      // to the EmailLog model enum.
-      type: "General",
+      type: "Career",
 
       status,
       errorMessage,
+      messageId,
+      trackingToken,
     });
   } catch (error) {
     console.error(
@@ -78,6 +80,8 @@ const sendCareerEmail = async ({
       to,
       subject,
       status: "Sent",
+      messageId: result.messageId,
+      trackingToken: result.trackingToken,
     });
 
     return {
@@ -101,6 +105,7 @@ const sendCareerEmail = async ({
       to,
       subject,
       status: "Failed",
+      trackingToken: error.trackingToken,
       errorMessage,
     });
 
@@ -201,8 +206,8 @@ exports.createCareerApplication = async (
     throw error;
   }
 
-  const adminEmail =
-    process.env.ADMIN_EMAIL;
+  const mailConfig = await emailService.getMailConfig();
+  const adminEmail = mailConfig.adminEmail;
 
   const adminSubject =
     `New Career Application - ${application.name} - ${application.role}`;
@@ -262,8 +267,7 @@ exports.createCareerApplication = async (
         application
       ),
       replyTo:
-        process.env.FROM_EMAIL ||
-        process.env.SMTP_USER,
+        mailConfig.fromEmail,
     });
 
   return {

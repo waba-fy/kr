@@ -6,7 +6,8 @@ import {
 import SEO from "../components/seo/SEO";
 import CaseStudyTemplate from "../components/caseStudyPdf/CaseStudyTemplate";
 
-import { caseStudies } from "../data/caseStudiesData";
+import { caseStudies as fallbackCaseStudies } from "../data/caseStudiesData";
+import useManagedContent from "../hooks/useManagedContent";
 
 const normalizeSlug = (value = "") => {
   return String(value)
@@ -17,6 +18,7 @@ const normalizeSlug = (value = "") => {
 };
 
 const CaseStudyDetails = () => {
+  const { items: caseStudies, loading } = useManagedContent("case-studies", fallbackCaseStudies);
   const { slug } = useParams();
 
   const currentSlug = normalizeSlug(slug);
@@ -29,6 +31,8 @@ const CaseStudyDetails = () => {
     (item) =>
       normalizeSlug(item.slug) === currentSlug
   );
+
+  if (!caseStudy && loading) return null;
 
   if (!caseStudy) {
     return (

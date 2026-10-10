@@ -1,3 +1,5 @@
+import Turnstile from "./Turnstile";
+import { readTurnstileToken, resetTurnstile } from "./turnstileUtils";
 import { useEffect, useState } from "react";
 import {
   FaCheckCircle,
@@ -85,15 +87,6 @@ const ReportProblemModal = ({
     if (!isOpen) {
       return undefined;
     }
-
-    setFormData((current) => ({
-      ...current,
-      pageUrl:
-        current.pageUrl ||
-        (typeof window !== "undefined"
-          ? window.location.href
-          : ""),
-    }));
 
     const previousOverflow =
       document.body.style.overflow;
@@ -190,6 +183,7 @@ const ReportProblemModal = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const submittedForm = event.currentTarget;
 
     if (loading) {
       return;
@@ -226,6 +220,7 @@ const ReportProblemModal = ({
           },
 
           body: JSON.stringify({
+            turnstileToken: readTurnstileToken(submittedForm),
             name:
               formData.name.trim(),
 
@@ -238,7 +233,7 @@ const ReportProblemModal = ({
               formData.issueType,
 
             pageUrl:
-              formData.pageUrl.trim(),
+              (formData.pageUrl || window.location.href).trim(),
 
             description:
               formData.description.trim(),
@@ -293,6 +288,7 @@ const ReportProblemModal = ({
           "Unable to submit your report. Please email hello@keyroutes.co.",
       });
     } finally {
+      resetTurnstile(submittedForm);
       setLoading(false);
     }
   };
@@ -443,7 +439,7 @@ const ReportProblemModal = ({
                 id="problem-page-url"
                 name="pageUrl"
                 type="url"
-                value={formData.pageUrl}
+                value={formData.pageUrl || window.location.href}
                 onChange={updateField}
                 placeholder="https://keyroutes.co/page"
               />
@@ -527,6 +523,7 @@ const ReportProblemModal = ({
               </p>
 
               <div className="kr-problem-form-actions">
+<Turnstile />
                 <button
                   type="button"
                   className="kr-problem-cancel"

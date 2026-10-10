@@ -1,0 +1,3 @@
+const mongoose = require('mongoose');
+const schema = new mongoose.Schema({ client: { type: mongoose.Schema.Types.ObjectId, ref: 'Client', required: true, index: true }, title: { type: String, required: true, maxlength: 200 }, provider: { type: String, enum: ['Service','Google','Meta','Other'], default: 'Service' }, status: { type: String, enum: ['Pending','Paid'], default: 'Paid' }, filename: String, content: { type: Buffer, required: true, select: false }, createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin', required: true } }, { timestamps: true });
+module.exports = mongoose.models.UploadedInvoice || mongoose.model('UploadedInvoice', schema);

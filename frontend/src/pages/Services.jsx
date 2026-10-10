@@ -31,6 +31,7 @@ import {
 } from "../seo/breadcrumbSchema";
 
 import "../styles/services.css";
+import useManagedContent from "../hooks/useManagedContent";
 
 const servicesDescription =
   "KeyRoutes provides real estate marketing services including market research, SEO, GEO, Google Ads, Meta Ads, website development, CRM and automation for builders and property businesses.";
@@ -52,7 +53,7 @@ const servicesSchema =
     areaServed: "India",
   });
 
-const serviceCategories = [
+const fallbackServiceCategories = [
   {
     icon: <FaSearch />,
     title: "Market Research & Audits",
@@ -128,6 +129,10 @@ const resultCards = [
 ];
 
 const Services = () => {
+  const { items: managedServices, loadedFromApi } = useManagedContent("services", []);
+  const serviceCategories = loadedFromApi
+    ? managedServices.filter((item) => item.kind === "service").map((item, index) => ({ ...item, icon: fallbackServiceCategories[index % fallbackServiceCategories.length]?.icon }))
+    : fallbackServiceCategories;
   return (
     <main className="kr-services-page">
       <SEO

@@ -1,0 +1,46 @@
+{
+  "number": "INV26-048",
+  "status": "Sample",
+  "currency": "INR",
+  "issueDate": "2026-10-04",
+  "dueDate": "2026-10-05",
+  "invoicePeriod": "1-Sep to 30-Sep 2026",
+  "sellerName": "Sixedge Innovations",
+  "sellerAddress": "#24-202/1/2/B, Aanya Avenue, Airport Colony,\nKothwalguda Road, Shamshabad,R.R Dist, 501218",
+  "billedTo": {
+    "name": "Sree Chaitanya Infra",
+    "address": "Rd No:. 48, Survey Of India Colony, Chanda Naik Nagar,\nMadhapur, Hyderabad- 500081"
+  },
+  "items": [
+    {
+      "description": "Social Media Maintenance",
+      "quantity": 1,
+      "sacCode": "998365",
+      "unitMinor": 1500000,
+      "discountMinor": 500000,
+      "totalMinor": 1000000
+    },
+    {
+      "description": "Performance Marketing",
+      "quantity": 1,
+      "sacCode": "998365",
+      "unitMinor": 2000000,
+      "discountMinor": 500000,
+      "totalMinor": 1500000
+    }
+  ],
+  "subtotalMinor": 2500000,
+  "taxMode": "No tax",
+  "taxRate": 0,
+  "taxMinor": 0,
+  "adjustmentMinor": 0,
+  "totalMinor": 2500000,
+  "amountInWords": "Twenty five thousand rupees only",
+  "bankAccountName": "Sample Beneficiary",
+  "bankAccountNumber": "000000000000",
+  "bankIfsc": "SAMPLE00000",
+  "bankName": "Sample Bank",
+  "bankBranch": "Sample Branch",
+  "signatoryName": "VR2 Technologies",
+  "signatureUrl": ""
+}

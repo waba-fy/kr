@@ -80,6 +80,8 @@ const consultationLeadSchema = new mongoose.Schema(
       default: "New",
     },
 
+    marketingOptOut: { type: Boolean, default: false, index: true },
+    marketingUnsubscribedAt: { type: Date, default: null },
     notes: {
       type: String,
       default: "",

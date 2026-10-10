@@ -12,7 +12,8 @@ import WebsiteShowcase from "../components/successStories/WebsiteShowcase";
 import WhyItWorked from "../components/successStories/WhyItWorked";
 import SuccessCTA from "../components/successStories/SuccessCTA";
 
-import { clientStories } from "../data/clientStories";
+import { clientStories as fallbackClientStories } from "../data/clientStories";
+import useManagedContent from "../hooks/useManagedContent";
 
 import "../styles/success-story-details.css";
 
@@ -25,6 +26,7 @@ const normaliseSlug = (value = "") =>
     .replace(/\/+$/, "");
 
 const SuccessStoryDetails = () => {
+  const { items: clientStories, loading } = useManagedContent("client-stories", fallbackClientStories);
   const { slug } = useParams();
 
   const currentSlug = normaliseSlug(slug);
@@ -35,6 +37,8 @@ const SuccessStoryDetails = () => {
           normaliseSlug(item?.slug) === currentSlug
       )
     : null;
+
+  if (!story && loading) return null;
 
   if (!story) {
     return (

@@ -69,15 +69,6 @@ const WebsiteShowcase = ({ story }) => {
     normaliseText(story?.hero?.coverImage) ||
     normaliseText(story?.coverImage);
 
-  const mainWebsite =
-    normaliseText(story?.website) ||
-    normaliseText(
-      story?.showcase?.websites?.[0]?.website
-    ) ||
-    normaliseText(
-      story?.partnership?.projects?.[0]?.website
-    );
-
   const mainTitle =
     normaliseText(story?.hero?.title) ||
     normaliseText(story?.title) ||

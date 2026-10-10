@@ -1,3 +1,4 @@
+const { verifyTurnstile } = require("../middleware/turnstile");
 const express = require("express");
 const consultationController = require("../controllers/consultationController");
 
@@ -8,6 +9,6 @@ const router = express.Router();
  * @desc    Submit a new consultation request
  * @access  Public
  */
-router.post("/", consultationController.createConsultationLead);
+router.post("/", verifyTurnstile, consultationController.createConsultationLead);
 
 module.exports = router;

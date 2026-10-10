@@ -525,7 +525,7 @@ const ProductSolutions = () => {
         title="Product Solutions | WhatsApp API, Email Marketing, IVR & CRM | KeyRoutes"
         description="Explore KeyRoutes product solutions for real estate lead follow-up including WhatsApp Business API, email marketing, IVR, CRM workflows and automation."
         keywords="WhatsApp Business API real estate, email marketing for builders, IVR for real estate, real estate CRM automation, lead follow-up automation, real estate product solutions"
-        canonical="https://keyroutes.in/product-solutions"
+        canonical="https://keyroutes.co/product-solutions"
         schema={{
           "@context": "https://schema.org",
           "@type": "Product",
