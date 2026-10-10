@@ -8,7 +8,7 @@ Plesk Node.js application root: `/frontend-ssr`.
 Document root: `/frontend-ssr/dist`.
 Startup file: `app.cjs`.
 Node.js: 24; application mode: production.
-Install dependencies with `npm install --omit=dev` after extracting the deployment package. The package contains the prebuilt client `dist`, private `server-build`, `server.mjs`, `app.cjs`, and package files. Do not place server-build under the document root. Do not copy the static SPA `.htaccess`, `crawl.php`, or static sitemap/robots/llms documents into this Node deployment; the server supplies current crawler documents through the public API.
+Install dependencies with `npm install --omit=dev` after extracting the deployment package. The package contains the prebuilt client `dist`, private `server-build`, `server.mjs`, `app.cjs`, and package files. Do not place server-build under the document root. The private HTML template lives in server-build/index.html. Exclude dist/index.html from the production archive so Apache does not bypass rendering for the homepage. Do not copy the static SPA `.htaccess`, `crawl.php`, or static sitemap/robots/llms documents into this Node deployment; the server supplies current crawler documents through the public API.
 
 Optional backend URL setting: `PUBLIC_API_URL=https://api.keyroutes.co/api` (default). No MongoDB credentials or backend secrets belong in this frontend app.
 

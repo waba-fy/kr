@@ -9,7 +9,7 @@ const api = (process.env.PUBLIC_API_URL || 'https://api.keyroutes.co/api').repla
 const pages = new Set(['/', '/strategy', '/strategy-consulting', '/services', '/supporting-services', '/products', '/product-solutions', '/about', '/careers', '/success-stories', '/case-studies', '/reviews-feedback', '/terms', '/privacy-policy', '/cookies-policy']);
 const sections = ['services', 'strategy', 'products', 'about', 'careers', 'reviews', 'success-stories', 'case-studies', 'client-stories'];
 const types = {'.js':'text/javascript', '.css':'text/css', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.svg':'image/svg+xml', '.webp':'image/webp', '.ico':'image/x-icon', '.woff2':'font/woff2', '.pdf':'application/pdf'};
-const template = await readFile(resolve(root, 'index.html'), 'utf8');
+const template = await readFile(resolve(root, '../server-build/index.html'), 'utf8');
 async function getPublic(path) {
   const response = await fetch(`${api}${path}`, {signal: AbortSignal.timeout(10000)});
   if (!response.ok) throw new Error('Public content unavailable');
