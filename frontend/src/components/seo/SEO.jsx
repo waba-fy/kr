@@ -11,18 +11,19 @@ const SEO = ({
   keywords = [],
   type = "website",
 }) => {
-  const canonicalUrl = `${SITE_URL}${canonical}`;
+  const canonicalUrl = canonical.startsWith("https://") ? canonical : `${SITE_URL}${canonical}`;
   const imageUrl = image.startsWith("http")
     ? image
     : `${SITE_URL}${image}`;
 
   const pageTitle = title
-    ? `${title} | KeyRoutes`
+    ? (/KeyRoutes$/i.test(title) ? title : `${title} | KeyRoutes`)
     : "KeyRoutes | Real Estate Strategy, Marketing & Technology";
 
   return (
     <Helmet>
       <title>{pageTitle}</title>
+      <script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":`${SITE_URL}/#organization`,name:"KeyRoutes",url:SITE_URL,logo:`${SITE_URL}/key-routes-logo.png`,parentOrganization:{"@type":"Organization",name:"Sixedge Innovations"}}, {"@type":"WebSite","@id":`${SITE_URL}/#website`,url:SITE_URL,name:"KeyRoutes",publisher:{"@id":`${SITE_URL}/#organization`}}, {"@type": canonicalUrl.endsWith("/about") ? "AboutPage" : canonicalUrl.endsWith("/contact") ? "ContactPage" : "WebPage","@id":`${canonicalUrl}#webpage`,url:canonicalUrl,name:pageTitle,description,isPartOf:{"@id":`${SITE_URL}/#website`},inLanguage:"en-IN"}]}).replace(/</g,"\\u003c")}</script>
 
       <meta
         name="description"
@@ -37,7 +38,7 @@ const SEO = ({
       {keywords.length > 0 && (
         <meta
           name="keywords"
-          content={keywords.join(", ")}
+          content={Array.isArray(keywords) ? keywords.join(", ") : keywords}
         />
       )}
 

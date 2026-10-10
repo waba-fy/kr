@@ -12,3 +12,5 @@ build/
 uploads/
 
 backend/data/sampleInvoice.local.json
+
+frontend/server-build/

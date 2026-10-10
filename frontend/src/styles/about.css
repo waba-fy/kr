@@ -583,3 +583,10 @@
     font-size: 1.3rem;
   }
 }
+/* Match the Services page's desktop content gutters. */
+@media (min-width: 769px) {
+  .kr-about-container {
+    width: calc(100% - 80px);
+    margin-inline: auto;
+  }
+}

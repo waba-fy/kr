@@ -1,5 +1,5 @@
+import NotFound from "./NotFound";
 import {
-  Navigate,
   useParams,
 } from "react-router-dom";
 
@@ -36,10 +36,7 @@ const CaseStudyDetails = () => {
 
   if (!caseStudy) {
     return (
-      <Navigate
-        to="/case-studies"
-        replace
-      />
+      <NotFound />
     );
   }
 

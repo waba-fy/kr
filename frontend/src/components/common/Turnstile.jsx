@@ -34,7 +34,7 @@ export default function Turnstile() {
       if (!active) return;
       api = turnstile;
       widget = api.render(container.current, {
-        sitekey, action: "public_form", size: "flexible", theme: "auto", "response-field": false,
+        sitekey, action: "public_form", size: container.current.clientWidth < 300 ? "compact" : "flexible", theme: "auto", "response-field": false,
         callback: token => { if (tokenField.current) tokenField.current.value = token; setError(""); },
         "expired-callback": reset,
         "error-callback": () => { clear(); setError("Security verification failed. Please retry."); },

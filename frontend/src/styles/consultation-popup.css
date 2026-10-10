@@ -132,7 +132,7 @@
 .kr-consult-head h2 {
   margin: 10px 0 12px;
 
-  color: white;
+  color: var(--kr-black);
 
   font-size: clamp(30px, 4vw, 38px);
   line-height: 1.12;
@@ -147,7 +147,7 @@
 
   margin: 0;
 
-  color: white;
+  color: var(--kr-black);
 
   font-size: 14px;
   line-height: 1.75;
@@ -512,4 +512,12 @@
   .kr-consult-form textarea {
     font-size: 13px;
   }
+}
+.kr-consult-popup { max-height: calc(100dvh - 40px); }
+@media (max-width: 768px) {
+  .kr-consult-popup { max-height: calc(100dvh - 28px); }
+  .kr-consult-form input, .kr-consult-form select, .kr-consult-form textarea { font-size: 16px; }
+}
+@media (max-width: 560px) {
+  .kr-consult-popup { max-height: calc(100dvh - 16px); }
 }

@@ -1,4 +1,5 @@
-import { Navigate, useParams } from "react-router-dom";
+import NotFound from "./NotFound";
+import { useParams } from "react-router-dom";
 
 import SEO from "../components/seo/SEO";
 
@@ -42,10 +43,7 @@ const SuccessStoryDetails = () => {
 
   if (!story) {
     return (
-      <Navigate
-        to="/success-stories"
-        replace
-      />
+      <NotFound />
     );
   }
 

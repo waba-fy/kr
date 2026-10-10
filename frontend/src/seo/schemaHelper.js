@@ -55,7 +55,7 @@ export const createCollectionPageSchema = ({
     name,
     description,
     url,
-    type: "Collection",
+    type: "CollectionPage",
   });
 
 export const createAboutPageSchema = ({
@@ -67,7 +67,7 @@ export const createAboutPageSchema = ({
     name,
     description,
     url,
-    type: "About",
+    type: "AboutPage",
   });
 
 export const createContactPageSchema = ({
@@ -79,5 +79,5 @@ export const createContactPageSchema = ({
     name,
     description,
     url,
-    type: "Contact",
+    type: "ContactPage",
   });

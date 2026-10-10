@@ -1,6 +1,7 @@
+import { ManagedContentContext } from "../hooks/ManagedContentContext";
 import Turnstile from "../components/common/Turnstile";
 import { readTurnstileToken, resetTurnstile } from "../components/common/turnstileUtils";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaBriefcase,
@@ -119,7 +120,8 @@ const Careers = () => {
     type: "",
     message: "",
   });
-  const [openings, setOpenings] = useState(fallbackOpenings);
+  const initialJobs = useContext(ManagedContentContext).__jobs;
+  const [openings, setOpenings] = useState(initialJobs ?? fallbackOpenings);
   const { items: managedCareerContent, loadedFromApi } = useManagedContent("careers", []);
   const lifeItems = loadedFromApi
     ? managedCareerContent.filter((item) => item.kind === "culture").map((item, index) => ({ ...item, icon: fallbackLifeItems[index % fallbackLifeItems.length]?.icon }))

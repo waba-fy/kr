@@ -16,7 +16,7 @@ const Schema = ({ data }) => {
           key={`${schema?.["@type"] || "schema"}-${index}`}
           type="application/ld+json"
         >
-          {JSON.stringify(schema)}
+          {JSON.stringify(schema).replace(/</g, "\\u003c")}
         </script>
       ))}
     </Helmet>

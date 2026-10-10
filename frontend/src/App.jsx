@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import {
-  Navigate,
   Route,
   Routes,
   useLocation,
@@ -15,6 +14,7 @@ import ScrollToTopButton from "./components/common/ScrollToTopButton";
 
 /* Public pages */
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Strategy from "./pages/Strategy";
 import StrategyConsulting from "./pages/StrategyConsulting";
 import Services from "./pages/Services";
@@ -159,10 +159,7 @@ export default function App() {
         <Route
           path="*"
           element={
-            <Navigate
-              to="/"
-              replace
-            />
+            <NotFound />
           }
         />
       </Routes>

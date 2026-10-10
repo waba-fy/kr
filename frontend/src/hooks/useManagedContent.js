@@ -1,12 +1,14 @@
+import { ManagedContentContext } from "./ManagedContentContext";
 import { loadManagedContent } from "./managedContent.mjs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 const useManagedContent = (section, fallback = []) => {
-  const [items, setItems] = useState(fallback);
-  const [loading, setLoading] = useState(true);
-  const [loadedFromApi, setLoadedFromApi] = useState(false);
+  const initial = useContext(ManagedContentContext)[section];
+  const [items, setItems] = useState(initial ?? fallback);
+  const [loading, setLoading] = useState(initial === undefined);
+  const [loadedFromApi, setLoadedFromApi] = useState(initial !== undefined);
 
   useEffect(() => {
     let active = true;

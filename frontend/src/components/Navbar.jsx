@@ -362,19 +362,19 @@ const Navbar = ({ onConsultationClick }) => {
 
             <div className="kr-mobile-cta">
               <strong>
-                What's Your Growth Score?
+                Plan Your Growth
               </strong>
 
               <p>
-                Get quick strategic insights for your
+                Explore our strategy framework for your
                 business.
               </p>
 
               <NavLink
-                to="/strategy-assessment"
+                to="/strategy#framework"
                 onClick={closeAll}
               >
-                Start Assessment
+                Explore Strategy
               </NavLink>
             </div>
           </div>

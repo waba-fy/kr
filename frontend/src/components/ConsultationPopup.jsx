@@ -378,7 +378,7 @@ const ConsultationPopup = ({
       }}
     >
       <div
-        className="kr-consult-modal"
+        className="kr-consult-popup"
         role="dialog"
         aria-modal="true"
         aria-labelledby="consultation-popup-title"

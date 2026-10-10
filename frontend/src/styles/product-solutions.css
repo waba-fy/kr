@@ -703,3 +703,10 @@
     padding: 24px 20px;
   }
 }
+/* Match the Services page's desktop content gutters. */
+@media (min-width: 769px) {
+  .kr-ps-container {
+    width: calc(100% - 80px);
+    margin-inline: auto;
+  }
+}
