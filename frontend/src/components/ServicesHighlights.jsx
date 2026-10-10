@@ -14,37 +14,37 @@ const services = [
     icon: <FaChartLine />,
     title: "PPC Campaigns",
     desc: "Run focused paid campaigns that generate quality enquiries and measurable performance.",
-    link: "/ppc-campaigns",
+    link: "/supporting-services#seo-geo-performance",
   },
   {
     icon: <FaBullhorn />,
     title: "Social Media Management",
     desc: "Build consistent brand presence with content, creatives, reels and campaign planning.",
-    link: "/social-media-management",
+    link: "/supporting-services#seo-geo-performance",
   },
   {
     icon: <FaLaptopCode />,
     title: "Website Design & Development",
     desc: "Create responsive websites designed for trust, lead capture and business conversion.",
-    link: "/website-design-development",
+    link: "/supporting-services#website-crm-automation",
   },
   {
     icon: <FaUsersCog />,
     title: "CRM & Integration",
     desc: "Connect your leads, teams and follow-ups through CRM workflows and smart integrations.",
-    link: "/crm-integration",
+    link: "/supporting-services#website-crm-automation",
   },
   {
     icon: <FaRobot />,
     title: "Automation",
     desc: "Automate WhatsApp, email, Google Sheets and task flows to reduce manual work.",
-    link: "/automation",
+    link: "/supporting-services#website-crm-automation",
   },
   {
     icon: <FaChartPie />,
     title: "Analytics",
     desc: "Track performance, understand customer behaviour and improve every growth decision.",
-    link: "/analytics",
+    link: "/supporting-services#seo-geo-performance",
   },
 ];
 

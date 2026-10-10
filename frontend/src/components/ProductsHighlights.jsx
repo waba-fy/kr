@@ -31,7 +31,7 @@ const products = [
     icon: <FaPhoneAlt />,
     title: "IVR & Toll-free Numbers",
     desc: "Manage incoming calls professionally with IVR flows, call routing and toll-free solutions.",
-    link: "/product-solutions#ivr-toll-free-numbers",
+    link: "/product-solutions#ivr-voice",
   },
   {
     icon: <FaPlug />,
